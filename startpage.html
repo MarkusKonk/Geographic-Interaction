@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- used librarys-->
+<link rel="stylesheet" href="leaflet-0.6.4/leaflet.css" ></link>
+<script src="leaflet-0.6.4/leaflet.js"></script>
+<script src="jQuery.js"></script>
+<!-- created style sheets and scripts-->
+<link rel="stylesheet" href="startpage.css"></link>
+<script src="startpageFunctions.js"></script>
+</head>
+<body>
+ <div id="map" >
+ </div>  
+ <script>
+/**
+The map is created and an openstreet map layer is added to the map.
+reference: http://leafletjs.com/examples/quick-start-example.html
+*/
+var map = L.map('map').setView([51.9604,7.6197], 14);
+var layer1=L.tileLayer('http://{s}.tile.cloudmade.com/BC9A493B41014CAABB98F0471D759707/997/256/{z}/{x}/{y}.png', {
+    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a>'
++' contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>,'
++'Imagery &copy <a href="http://cloudmade.com">CloudMade</a>',
+    maxZoom: 18
+});
+layer1.addTo(map);
+
+/**
+The sidebar is created. The function onAdd() creates a html object 
+for the sidebar and specifies the id of the html element.
+Moreover some attributes for design depending on other objects are defined.
+The listeners are added.
+*/
+var sidebar=L.control();
+sidebar.onAdd=function(map){
+ this._div = L.DomUtil.create('div', 'sidebar');
+ this._div.id="sideBar";
+ return this._div;
+};
+sidebar.addTo(map);
+
+var heightSidebar=map.getSize().y-(parseInt($(".leaflet-control-attribution").height()));
+$("#sideBar").css("height",heightSidebar);
+$("#sideBar").css("width",map.getSize().x/4);
+$("#sideBar").mouseenter(mouseEnterSidebar);
+$("#sideBar").mouseleave(mouseLeaveSidebar);
+
+/**
+The left border of the sidebar is created.
+Moreover some attributes for design depending on other objects are defined 
+and listeners are added.
+*/
+$("#sideBar").append("<div id='sidebarBorder'class='SidebarBorder' style='height:"+heightSidebar+"'>>></div>");
+$("#sidebarBorder").css("width",map.getSize().x/40);
+$("#sidebarBorder").css("height",heightSidebar);
+$("#sidebarBorder").css("padding-top",heightSidebar/2);
+$("#sidebarBorder").click(onClickSidebarBorder);
+
+/**
+This paragraph adds the title to the sidebar.
+Moreover the margin-left has to be defined so the title component doesn't overlaps with the sidebar border. 
+*/
+$("#sideBar").append("<div id='sidebarTitle'class='SidebarTitle' style='height:"+parseInt(heightSidebar/20)+"px'>More Information</div>");
+$("#sidebarTitle").css("margin-left",$("#sidebarBorder").width());
+/**
+The element 'sidebarContent' contains the different information boxes.
+Moreover some attributes for design depending on other objects are defined.
+*/
+$("#sideBar").append("<div id='sidebarContent'class='SidebarContent'></div>");
+$("#sidebarContent").css("max-width",parseInt(sidebar.getContainer().offsetWidth-parseInt($("#sidebarBorder").width()))+"px");
+$("#sidebarContent").css("margin-left",$("#sidebarBorder").width());
+$("#sidebarContent").css("height",parseInt(heightSidebar-(heightSidebar/20)-30)+"px");
+
+/**
+Here some information boxes are created. The id for each element is defined.
+Moreover the minimum height for the boxes will be defined depending on the height of the sidebar.
+*/
+for(var i=0;i<8;i++){
+$("#sidebarContent").append("<div id='sidebarItem"+i+"'class='SidebarItem'>hello</div>");
+$("#sidebarItem"+i).css("max-width",parseInt((sidebar.getContainer().offsetWidth)-parseInt($("#sidebarBorder").width()))+"px");
+$("#sidebarItem"+i).css("min-height",parseInt(heightSidebar/6)+"px");
+}
+<!--map.on('click', onClickMap); (Used while testing. If one click on the map, the sidebar opens. -->
+ </script>
+</body>
+</html>
+
+
