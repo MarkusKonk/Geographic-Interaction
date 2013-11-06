@@ -1,0 +1,21 @@
+﻿Der Buildvorgang wurde am 05.11.2013 15:43:18 gestartet.
+     1>Projekt "C:\Users\sumsum\Desktop\SimpleHandTracker\SimpleHandTracker.vcxproj" auf Knoten "2", Build Ziel(e).
+     1>Link:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\sumsum\Desktop\SimpleHandTracker\Debug\SimpleHandTracker.exe" /NOLOGO /LIBPATH:C:\Users\sumsum\Desktop\SimpleHandTracker\Debug\ /LIBPATH:"C:\Program Files\PrimeSense\NiTE2\Lib\\" /LIBPATH:"C:\Program Files\OpenNI2\Lib\\" NiTE2.lib OpenNI2.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\SimpleHandTracker.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\sumsum\Desktop\SimpleHandTracker\Debug\SimpleHandTracker.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\sumsum\Desktop\SimpleHandTracker\Debug\SimpleHandTracker.lib" /MACHINE:X86 Debug\main.obj
+     1>main.obj : error LNK2019: Verweis auf nicht aufgelöstes externes Symbol "__imp__oniFrameRelease" in Funktion ""public: void __thiscall openni::VideoFrameRef::release(void)" (?release@VideoFrameRef@openni@@QAEXXZ)".
+     1>main.obj : error LNK2019: Verweis auf nicht aufgelöstes externes Symbol "__imp__niteHandTrackerFrameRelease" in Funktion ""public: void __thiscall nite::HandTrackerFrameRef::release(void)" (?release@HandTrackerFrameRef@nite@@QAEXXZ)".
+     1>main.obj : error LNK2019: Verweis auf nicht aufgelöstes externes Symbol "__imp__niteInitializeHandTrackerByDevice" in Funktion ""public: enum nite::Status __thiscall nite::HandTracker::create(class openni::Device *)" (?create@HandTracker@nite@@QAE?AW4Status@2@PAVDevice@openni@@@Z)".
+     1>main.obj : error LNK2019: Verweis auf nicht aufgelöstes externes Symbol "__imp__niteInitializeHandTracker" in Funktion ""public: enum nite::Status __thiscall nite::HandTracker::create(class openni::Device *)" (?create@HandTracker@nite@@QAE?AW4Status@2@PAVDevice@openni@@@Z)".
+     1>main.obj : error LNK2019: Verweis auf nicht aufgelöstes externes Symbol "__imp__niteShutdownHandTracker" in Funktion ""public: void __thiscall nite::HandTracker::destroy(void)" (?destroy@HandTracker@nite@@QAEXXZ)".
+     1>main.obj : error LNK2019: Verweis auf nicht aufgelöstes externes Symbol "__imp__niteReadHandTrackerFrame" in Funktion ""public: enum nite::Status __thiscall nite::HandTracker::readFrame(class nite::HandTrackerFrameRef *)" (?readFrame@HandTracker@nite@@QAE?AW4Status@2@PAVHandTrackerFrameRef@2@@Z)".
+     1>main.obj : error LNK2019: Verweis auf nicht aufgelöstes externes Symbol "__imp__oniFrameAddRef" in Funktion ""public: void __thiscall openni::VideoFrameRef::_setFrame(struct OniFrame *)" (?_setFrame@VideoFrameRef@openni@@QAEXPAUOniFrame@@@Z)".
+     1>main.obj : error LNK2019: Verweis auf nicht aufgelöstes externes Symbol "__imp__niteStartHandTracking" in Funktion ""public: enum nite::Status __thiscall nite::HandTracker::startHandTracking(class nite::Point3f const &,short *)" (?startHandTracking@HandTracker@nite@@QAE?AW4Status@2@ABVPoint3f@2@PAF@Z)".
+     1>main.obj : error LNK2019: Verweis auf nicht aufgelöstes externes Symbol "__imp__niteStartGestureDetection" in Funktion ""public: enum nite::Status __thiscall nite::HandTracker::startGestureDetection(enum nite::GestureType)" (?startGestureDetection@HandTracker@nite@@QAE?AW4Status@2@W4GestureType@2@@Z)".
+     1>main.obj : error LNK2019: Verweis auf nicht aufgelöstes externes Symbol "__imp__niteInitialize" in Funktion ""public: static enum nite::Status __cdecl nite::NiTE::initialize(void)" (?initialize@NiTE@nite@@SA?AW4Status@2@XZ)".
+     1>main.obj : error LNK2019: Verweis auf nicht aufgelöstes externes Symbol "__imp__niteShutdown" in Funktion ""public: static void __cdecl nite::NiTE::shutdown(void)" (?shutdown@NiTE@nite@@SAXXZ)".
+     1>C:\Users\sumsum\Desktop\SimpleHandTracker\Debug\SimpleHandTracker.exe : fatal error LNK1120: 11 nicht aufgelöste externe Verweise.
+     1>Die Erstellung des Projekts "C:\Users\sumsum\Desktop\SimpleHandTracker\SimpleHandTracker.vcxproj" ist abgeschlossen, Build Ziel(e) -- FEHLER.
+
+Fehler beim Buildvorgang.
+
+Verstrichene Zeit 00:00:09.51

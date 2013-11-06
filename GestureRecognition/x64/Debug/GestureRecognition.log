@@ -1,0 +1,30 @@
+﻿Der Buildvorgang wurde am 06.11.2013 13:28:12 gestartet.
+     1>Projekt "C:\Users\sumsum\Desktop\Neuer Ordner\GestureRecognition.vcxproj" auf Knoten "2", Build Ziel(e).
+     1>ClCompile:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\CL.exe /c /I"C:\Program Files\OpenNI2\Include\\" /I. /I"C:\Program Files\PrimeSense\NiTE2\Include\\" /Zi /nologo /W3 /WX- /MP /Od /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Debug\\" /Fd"x64\Debug\vc100.pdb" /Gd /TP /errorReport:prompt main.cpp
+         main.cpp
+     1>main.cpp(95): warning C4244: 'Argument': Konvertierung von 'float' in 'int', möglicher Datenverlust
+     1>main.cpp(95): warning C4244: 'Argument': Konvertierung von 'float' in 'int', möglicher Datenverlust
+     1>main.cpp(121): warning C4244: 'Argument': Konvertierung von 'float' in 'int', möglicher Datenverlust
+     1>main.cpp(121): warning C4244: 'Argument': Konvertierung von 'float' in 'int', möglicher Datenverlust
+     1>main.cpp(131): warning C4244: 'Argument': Konvertierung von 'float' in 'int', möglicher Datenverlust
+     1>main.cpp(131): warning C4244: 'Argument': Konvertierung von 'float' in 'int', möglicher Datenverlust
+     1>main.cpp(151): warning C4244: 'Argument': Konvertierung von 'float' in 'int', möglicher Datenverlust
+     1>main.cpp(151): warning C4244: 'Argument': Konvertierung von 'float' in 'int', möglicher Datenverlust
+       Link:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\sumsum\Desktop\Neuer Ordner\x64\Debug\GestureRecognition.exe" /NOLOGO /LIBPATH:"C:\Users\sumsum\Desktop\Neuer Ordner\x64\Debug\\" /LIBPATH:"C:\Program Files\PrimeSense\NiTE2\Lib\\" /LIBPATH:"C:\Program Files\OpenNI2\Lib\\" NiTE2.lib OpenNI2.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"x64\Debug\GestureRecognition.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\sumsum\Desktop\Neuer Ordner\x64\Debug\GestureRecognition.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\sumsum\Desktop\Neuer Ordner\x64\Debug\GestureRecognition.lib" /MACHINE:X64 x64\Debug\main.obj
+         GestureRecognition.vcxproj -> C:\Users\sumsum\Desktop\Neuer Ordner\x64\Debug\GestureRecognition.exe
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"C:\Users\sumsum\Desktop\Neuer Ordner\x64\Debug\GestureRecognition.exe;#1" /manifest x64\Debug\GestureRecognition.exe.intermediate.manifest
+       PostBuildEvent:
+         xcopy /D /S /F /Y "C:\Program Files\OpenNI2\Redist\\*" "C:\Users\sumsum\Desktop\Neuer Ordner\x64\Debug\"
+         xcopy /D /S /F /Y "C:\Program Files\PrimeSense\NiTE2\Redist\\*" "C:\Users\sumsum\Desktop\Neuer Ordner\x64\Debug\"
+         
+         :VCEnd
+         0 Datei(en) kopiert
+         0 Datei(en) kopiert
+     1>Die Erstellung des Projekts "C:\Users\sumsum\Desktop\Neuer Ordner\GestureRecognition.vcxproj" ist abgeschlossen, Build Ziel(e).
+
+Build erfolgreich.
+
+Verstrichene Zeit 00:00:01.45
