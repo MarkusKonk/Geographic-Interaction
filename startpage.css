@@ -1,0 +1,37 @@
+#map { 
+height: 570px; 
+width:1333px;
+}
+.sidebar{
+text-align:center;
+font: 14px/16px Arial, Helvetica, sans-serif;
+background: white;
+background: rgba(255,255,255,0.85);
+box-shadow: 0 0 15px rgba(0,0,0,0.2);
+border-radius: 5px;
+}
+.SidebarBorder{
+position: absolute;
+text-align:center;
+color:gray;
+font-size:large;
+font-weight:bold;
+border-right:solid;
+border-right-color:rgb(180,180,180);
+border-right-Width:2px;
+}
+.SidebarTitle{
+font: 16px/18px Arial, Helvetica, sans-serif;
+font-weight:bold;
+margin-top:6%;
+margin-bottom:7px;
+}
+.SidebarContent{
+overflow-y:auto;
+}
+.SidebarItem{
+border:solid;
+border-width:1px;
+margin:4px;
+margin:4px;
+}
