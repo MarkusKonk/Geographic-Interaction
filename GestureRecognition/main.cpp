@@ -78,8 +78,13 @@ int main(int argc, char** argv)
 				znew = hand.getPosition().z;
 			}
 
+			//move right: coordinates become larger
+			//move left: coordinates become smaller, perhaps smaller then 0
+			//move down: coordinates become smaller, perhaps smaller then 0
+			//move up: coordinates become larger
+			
 			//detect movement
-			if ((xnew > xold) && (ynew<yold))		//move right and down
+			if ((xnew > xold) && (ynew<yold))		//move right and down (really down???)
 			{
 					xposnew = xcursorpos + (xnew - xold);
 
@@ -137,7 +142,7 @@ int main(int argc, char** argv)
 
 							if (xnew < 0)
 							{
-								xposnew = xcursorpos + (xold + (xnew*(-1)));
+								xposnew = xcursorpos - (xold + (xnew*(-1)));
 							}
 							else
 							{
