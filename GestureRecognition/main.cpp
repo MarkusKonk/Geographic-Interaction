@@ -50,6 +50,7 @@ int main(int argc, char** argv)
 		const nite::Array<nite::GestureData>& gestures = handTrackerFrame.getGestures();
 		for (int i = 0; i < gestures.getSize(); ++i)
 		{
+
 			if (gestures[i].isComplete())
 			{
 				nite::HandId newId;
