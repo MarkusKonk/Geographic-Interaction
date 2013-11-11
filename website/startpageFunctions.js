@@ -44,3 +44,27 @@ $("#sidebarTitle").text("");
 $("#sidebarContent").hide();
 }
 };
+
+function addPoint(){
+	function onMapClick(e) {
+		var marker = L.marker();
+		marker.bindPopup("Some kind of information")
+		marker
+				.setLatLng(e.latlng,{draggable:'true'})
+				.setIcon(icon)				
+				.addTo(map)
+		marker.dragging.enable();		
+	map.off('click', onMapClick);				
+	}
+	map.on('click', onMapClick);	
+};
+
+var icon = L.icon({
+    iconUrl: 'punkt.png',
+    iconSize:     [20, 20], // size of the icon
+});
+
+function save(){
+
+}
+
