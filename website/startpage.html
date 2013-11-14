@@ -13,6 +13,22 @@
 
  <div id="map" >
  </div>  
+	<div align="center"> 
+		<button type="button" onclick="mapup()"style="align:left; position:absolute;top:60%;left:10%;">up</button>
+		<input type='button' id='Btn1' value='Add Point' onclick='addPoint()' class='btnStyle span3' style="align:center; position:absolute;top:63%;left:49%;"/>
+	</div>
+	<div align="center">
+		<button type="button" onclick="mapleft()"style="align:left; position:absolute;top:63%;left:5%;">left</button> 
+		<button type="button"onclick="mapright()"style="align:left; position:absolute;top:63%;left:15%;">right</button>
+	</div>
+	<div align="center">
+		<button type="button"onclick="mapdown()"style="align:center; position:absolute;top:68%;left:10%;">down</button></div>
+	<div align="center">
+		<input type='button' id='Btn2' value='Save' onclick='save()' class='btnStyle span3'style="align:center; position:absolute;top:68%;left:50%;" />
+	</div>
+ 
+ 
+ </div> 
  <script>
 /**
 The map is created and some layers are added to the map.
@@ -146,9 +162,10 @@ $("#sidebarItem"+i).css("min-height",parseInt(heightSidebar/6)+"px");
 }
 <!--map.on('click', onClickMap); (Used while testing. If one click on the map, the sidebar opens. -->
   
+  
+  
  </script>
- <input type='button' id='Btn1' value='Add Point' onclick='addPoint()' class='btnStyle span3' />
- <input type='button' id='Btn2' value='Save' onclick='save()' class='btnStyle span3' />
+
 </body>
 </html>
 

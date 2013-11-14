@@ -68,3 +68,36 @@ function save(){
 
 }
 
+function up(){
+var latln=marker.getLatLng();
+var hoeher=latln.lat+0.001;
+marker.setLatLng(new L.LatLng(hoeher,latln.lng));
+}
+function down(){
+var latln=marker.getLatLng();
+var runter=latln.lat-0.001;
+marker.setLatLng(new L.LatLng(runter,latln.lng));
+}
+function right(){
+var latln=marker.getLatLng();
+var rechts=latln.lng+0.001;
+marker.setLatLng(new L.LatLng(latln.lat,rechts));
+}
+function left(){
+var latln=marker.getLatLng();
+var links=latln.lng-0.001;
+marker.setLatLng(new L.LatLng(latln.lat,links));
+}
+function mapup(){
+map.panBy([0, 50]);
+}
+function mapdown(){
+map.panBy([0, -5]);
+}
+function mapleft(){
+map.panBy([-5, 0]);
+}
+function mapright(){
+//map.panTo([51.95,7.6197]);
+map.panBy([5, 0]);
+}
