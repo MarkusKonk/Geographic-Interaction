@@ -1,5 +1,5 @@
 <?php
-$dbconn = pg_connect("host=localhost dbname=test user=postgres password=ehrenmann87")
+$dbconn = pg_connect("host=localhost dbname=test user=postgres password=***")
     or die('Verbindungsaufbau fehlgeschlagen: ' . pg_last_error());
 	
 	$query=pg_query($dbconn,"Insert into \"Feature\" values (30,'test','bla','{eins,zwei}','(51.1234,7.12345)');");
@@ -11,4 +11,4 @@ $dbconn = pg_connect("host=localhost dbname=test user=postgres password=ehrenman
     }
 }
 	
-	?>
+?>
