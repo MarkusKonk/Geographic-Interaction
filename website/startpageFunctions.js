@@ -45,6 +45,7 @@ $("#sidebarContent").hide();
 }
 };
 
+
 function addPoint(){
 	function onMapClick(e) {
 		var marker = L.marker();
@@ -53,10 +54,14 @@ function addPoint(){
 				.setLatLng(e.latlng,{draggable:'true'})
 				.setIcon(icon)				
 				.addTo(map)
-		marker.dragging.enable();		
+		marker.dragging.enable();
+			save();
+			
+			
 	map.off('click', onMapClick);				
 	}
 	map.on('click', onMapClick);	
+	
 };
 
 var icon = L.icon({
@@ -64,8 +69,26 @@ var icon = L.icon({
     iconSize:     [20, 20], // size of the icon
 });
 
-function save(){
 
+function save(){
+	var xmlhttp;
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xmlhttp.onreadystatechange=function()
+  {
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+    document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+    }
+  }
+	xmlhttp.open("GET","http://localhost/Geographic-Interaction/website/database.php",true);
+	xmlhttp.send();
 }
 
 function up(){
