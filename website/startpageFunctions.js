@@ -71,7 +71,7 @@ var icon = L.icon({
 
 
 function save(){
-	var xmlhttp;
+var xmlhttp;
 if (window.XMLHttpRequest)
   {// code for IE7+, Firefox, Chrome, Opera, Safari
   xmlhttp=new XMLHttpRequest();
@@ -87,7 +87,31 @@ xmlhttp.onreadystatechange=function()
     document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
     }
   }
-	xmlhttp.open("GET","http://localhost/Geographic-Interaction/website/database.php",true);
+  
+	xmlhttp.open("GET","http://localhost/Geographic-Interaction/website/database_insert.php",true);
+	xmlhttp.send();
+}
+
+function callPoints(){
+var xmlhttp;
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xmlhttp.onreadystatechange=function()
+  {
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+	var obj = jQuery.parseJSON(xmlhttp.responseText);
+    document.getElementById("myDiv").innerHTML=obj.Name;
+    }
+  }
+  //If data needs to be processed, "Post"
+	xmlhttp.open("GET","http://localhost/Geographic-Interaction/website/database_select.php",true);
 	xmlhttp.send();
 }
 
