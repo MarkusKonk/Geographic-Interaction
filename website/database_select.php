@@ -1,5 +1,5 @@
 <?php
-$dbconn = pg_connect("host=localhost dbname=test user=postgres password=***")
+$dbconn = pg_connect("host=localhost dbname=test user=postgres password=ehrenmann87")
     or die('Verbindungsaufbau fehlgeschlagen: ' . pg_last_error());
 	
 	$query=pg_query($dbconn,'select "Point" from "Feature" where "ID"=31;');

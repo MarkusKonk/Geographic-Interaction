@@ -1,4 +1,3 @@
-
 /**
 When the mouse enters the sidebar, the map control actions are disabled.
 */
@@ -49,13 +48,16 @@ $("#sidebarContent").hide();
 function addPoint(){
 	function onMapClick(e) {
 		var marker = L.marker();
-		marker.bindPopup("Some kind of information")
+		
 		marker
 				.setLatLng(e.latlng,{draggable:'true'})
 				.setIcon(icon)				
 				.addTo(map)
 		marker.dragging.enable();
-			save();
+		
+		var coordinates = marker.toGeoJSON().geometry.coordinates;
+		marker.bindPopup(coordinates.toString());
+			save(48,"Name","Description","{Comment1,Comment2}",coordinates);
 			
 			
 	map.off('click', onMapClick);				
@@ -70,26 +72,18 @@ var icon = L.icon({
 });
 
 
-function save(){
-var xmlhttp;
-if (window.XMLHttpRequest)
-  {// code for IE7+, Firefox, Chrome, Opera, Safari
-  xmlhttp=new XMLHttpRequest();
-  }
-else
-  {// code for IE6, IE5
-  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-  }
-xmlhttp.onreadystatechange=function()
-  {
-  if (xmlhttp.readyState==4 && xmlhttp.status==200)
-    {
-    document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
-    }
-  }
-  
-	xmlhttp.open("GET","http://localhost/Geographic-Interaction/website/database_insert.php",true);
-	xmlhttp.send();
+function save(id,name,des,com,coordinates){
+	$.post(
+		"database_insert.php?",
+		{
+		ID:id,
+		Name:name,
+		Description:des,
+		Comments:com,
+		Coordinates:coordinates
+		},
+		function(data){};}
+		)
 }
 
 function callPoints(){
@@ -106,12 +100,13 @@ xmlhttp.onreadystatechange=function()
   {
   if (xmlhttp.readyState==4 && xmlhttp.status==200)
     {
-	var obj = jQuery.parseJSON(xmlhttp.responseText);
-    document.getElementById("myDiv").innerHTML=obj.Name;
+		document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+//	var obj = jQuery.parseJSON(xmlhttp.responseText);
+//    document.getElementById("myDiv").innerHTML=obj.Name;
     }
   }
   //If data needs to be processed, "Post"
-	xmlhttp.open("GET","http://localhost/Geographic-Interaction/website/database_select.php",true);
+	xmlhttp.open("GET","http://localhost/Geographic-Interaction/website/database_insert.php",true);
 	xmlhttp.send();
 }
 
