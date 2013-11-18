@@ -101,7 +101,7 @@ xmlhttp.onreadystatechange=function()
   {
   if (xmlhttp.readyState==4 && xmlhttp.status==200)
     {
-	document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+	//document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
 	var obj = jQuery.parseJSON(xmlhttp.responseText);
     for(var i in obj)
 	{
