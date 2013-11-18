@@ -57,7 +57,7 @@ function addPoint(){
 		
 		var coordinates = marker.toGeoJSON().geometry.coordinates;
 		marker.bindPopup(coordinates.toString());
-			save(48,"Name","Description","{Comment1,Comment2}",coordinates);
+			save("Name","Description","{Comment1,Comment2}",coordinates);
 			
 			
 	map.off('click', onMapClick);				
@@ -72,18 +72,19 @@ var icon = L.icon({
 });
 
 
-function save(id,name,des,com,coordinates){
+function save(name,des,com,coordinates){
 	$.post(
 		"database_insert.php?",
-		{
-		ID:id,
+		{	
 		Name:name,
 		Description:des,
 		Comments:com,
 		Coordinates:coordinates
-		},
-		function(data){};}
-		)
+		}
+		//function(data){alert(data);}
+		
+		);
+		
 }
 
 function callPoints(){
@@ -100,13 +101,26 @@ xmlhttp.onreadystatechange=function()
   {
   if (xmlhttp.readyState==4 && xmlhttp.status==200)
     {
-		document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
-//	var obj = jQuery.parseJSON(xmlhttp.responseText);
-//    document.getElementById("myDiv").innerHTML=obj.Name;
+	document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+	var obj = jQuery.parseJSON(xmlhttp.responseText);
+    for(var i in obj)
+	{
+		var coordinates = obj[i].Coord.split(',');
+	
+		var marker = L.marker(new L.LatLng(parseFloat(coordinates[0]), parseFloat(coordinates[1])));		
+		marker
+		
+			.setIcon(icon)				
+			.addTo(map)
+			.bindPopup()
+		
+	}
+	//alert(obj.Person.name);
+	//document.getElementById("myDiv").innerHTML=obj;
     }
   }
   //If data needs to be processed, "Post"
-	xmlhttp.open("GET","http://localhost/Geographic-Interaction/website/database_insert.php",true);
+	xmlhttp.open("GET","http://localhost/Geographic-Interaction/website/database_select.php",true);
 	xmlhttp.send();
 }
 
