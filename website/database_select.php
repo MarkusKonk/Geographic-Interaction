@@ -1,10 +1,10 @@
 <?php
-$dbconn = pg_connect("host=localhost dbname=featuredb user=postgres password=IGIpostgres")
+$dbconn = pg_connect("host=localhost dbname=test user=postgres password=****")
     or die('Verbindungsaufbau fehlgeschlagen: ' . pg_last_error());
 	
 	$col_valueList = array();
 	for($i=27;$i<100;$i++){
-	$query=pg_query($dbconn,'select ID,Point FROM feature where ID='.$i.';');
+	$query=pg_query($dbconn,'select "ID","Point" FROM "Feature" where "ID"='.$i.';');
 	
 	while ($line = pg_fetch_array($query, null, PGSQL_ASSOC)) {
     foreach ($line as $col_value) {
