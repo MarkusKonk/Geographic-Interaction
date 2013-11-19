@@ -54,9 +54,14 @@ function addPoint(){
 				.setIcon(icon)				
 				.addTo(map)
 		marker.dragging.enable();
-		
+		var container = $('<div />');
 		var coordinates = marker.toGeoJSON().geometry.coordinates;
-		marker.bindPopup(coordinates.toString());
+		var coord=coordinates.toString();
+
+// Delegate all event handling for the container itself and its contents to the container
+	container.html('Coordination of Point Name: <br> ('+ coord+') <br>'+"<a href='#' font-size=30 > Website</a>"+ '&#09' +"<a href='#' font-size=30 > Delete</a>"+ '&#09' +"<a href='#' font-size=30 >  Edit</a>" );
+		
+    marker.bindPopup(container[0] );
 			save("Name","Description","{Comment1,Comment2}",coordinates);
 			
 			
@@ -101,7 +106,7 @@ xmlhttp.onreadystatechange=function()
   {
   if (xmlhttp.readyState==4 && xmlhttp.status==200)
     {
-	//document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+	document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
 	var obj = jQuery.parseJSON(xmlhttp.responseText);
     for(var i in obj)
 	{
