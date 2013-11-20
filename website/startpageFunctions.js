@@ -58,11 +58,9 @@ function addPoint(){
 		var coordinates = marker.toGeoJSON().geometry.coordinates;
 		var coord=coordinates.toString();
 
-// Delegate all event handling for the container itself and its contents to the container
-	container.html('Coordination of Point Name: <br> ('+ coord+') <br>'+"<a href='#' font-size=30 > Website</a>"+ '&#09' +"<a href='#' font-size=30 > Delete</a>"+ '&#09' +"<a href='#' font-size=30 >  Edit</a>" );
-		
-    marker.bindPopup(container[0] );
-			save("Name","Description","{Comment1,Comment2}",coordinates);
+                container.html('Coordination of Point Name: <br> ('+ coord+') <br>'+"<a href='#' font-size=30 > Website</a>"+ '&#09' +"<a href='#' font-size=30 > Delete</a>"+ '&#09' +"<a href='#' onClick=window.open('editform.html','mywindow','width=400,height=250,left=200,top=100') font-size=30 >  Edit</a>" );
+                marker.bindPopup(container[0] );
+		save("Name","Description","{Comment1,Comment2}",coordinates);
 			
 			
 	map.off('click', onMapClick);				
