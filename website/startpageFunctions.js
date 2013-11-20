@@ -43,6 +43,11 @@ $("#sidebarTitle").text("");
 $("#sidebarContent").hide();
 }
 };
+function Editing()
+{
+// to add
+
+}
 
 
 function confirmation()
@@ -61,9 +66,12 @@ else
 //document.getElementById("demo").innerHTML=x;
 }
 
+
 function addPoint(){
 	function onMapClick(e) {
 		var marker = L.marker();
+		var pointname= prompt("Please Enter Point Name: ","");
+		
 		
 		marker
 				.setLatLng(e.latlng,{draggable:'true'})
@@ -74,8 +82,12 @@ function addPoint(){
 		var coordinates = marker.toGeoJSON().geometry.coordinates;
 		var coord=coordinates.toString();
 
-	container.html('Coordination of Point Name: <br> ('+ coord+') <br>'+"<a href='#' font-size=30 > Website</a>"+ '&#09' +"<a href='#' font-size=30  onClick='confirmation()'> Delete</a>"+ '&#09' +"<a href='#' onClick=window.open('editform.html','mywindow','width=400,height=250,left=200,top=100') font-size=30 >  Edit</a>" );
-    marker.bindPopup(container[0] );
+		// 2 options to call the edit function, option 1: using prompt window ,, option 2 : using new form window .... option 1 is disactivated,, option 2 acitivated
+	//container.html('Coordination of Point Name: <br> ('+ coord+') <br>'+"<a href='#' font-size=30 > Website</a>"+ '&#09' +"<a href='#' font-size=30  onClick='confirmation()'> Delete</a>"+ '&#09' +"<a href='#' onClick=Editing() font-size=30 >  Edit</a>" );
+	container.html('Coordination of '+pointname +' is: <br> ('+ coord+') <br>'+"<a href='#' font-size=30 > Website</a>"+ '&#09' +"<a href='#' font-size=30  onClick='confirmation()'> Delete</a>"+ '&#09' +"<a href='#' onClick=window.open('editform.html','mywindow','width=400,height=250,left=200,top=100') font-size=30 >  Edit</a>" );
+   
+
+   marker.bindPopup(container[0] );
 			save("Name","Description","{Comment1,Comment2}",coordinates);
 			
 			
