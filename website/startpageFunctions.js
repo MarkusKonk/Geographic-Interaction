@@ -45,6 +45,22 @@ $("#sidebarContent").hide();
 };
 
 
+function confirmation()
+{
+var x;
+var r=confirm("Are You Sure to Delete the Point ? ");
+if (r==true)
+  {
+  //Call the delete Function 
+  }
+else
+  {
+// to not delete the function
+
+  }
+//document.getElementById("demo").innerHTML=x;
+}
+
 function addPoint(){
 	function onMapClick(e) {
 		var marker = L.marker();
@@ -58,9 +74,9 @@ function addPoint(){
 		var coordinates = marker.toGeoJSON().geometry.coordinates;
 		var coord=coordinates.toString();
 
-                container.html('Coordination of Point Name: <br> ('+ coord+') <br>'+"<a href='#' font-size=30 > Website</a>"+ '&#09' +"<a href='#' font-size=30 > Delete</a>"+ '&#09' +"<a href='#' onClick=window.open('editform.html','mywindow','width=400,height=250,left=200,top=100') font-size=30 >  Edit</a>" );
-                marker.bindPopup(container[0] );
-		save("Name","Description","{Comment1,Comment2}",coordinates);
+	container.html('Coordination of Point Name: <br> ('+ coord+') <br>'+"<a href='#' font-size=30 > Website</a>"+ '&#09' +"<a href='#' font-size=30  onClick='confirmation()'> Delete</a>"+ '&#09' +"<a href='#' onClick=window.open('editform.html','mywindow','width=400,height=250,left=200,top=100') font-size=30 >  Edit</a>" );
+    marker.bindPopup(container[0] );
+			save("Name","Description","{Comment1,Comment2}",coordinates);
 			
 			
 	map.off('click', onMapClick);				
