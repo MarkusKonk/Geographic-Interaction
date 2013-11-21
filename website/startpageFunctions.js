@@ -84,11 +84,11 @@ function addPoint(){
 
 		// 2 options to call the edit function, option 1: using prompt window ,, option 2 : using new form window .... option 1 is disactivated,, option 2 acitivated
 	//container.html('Coordination of Point Name: <br> ('+ coord+') <br>'+"<a href='#' font-size=30 > Website</a>"+ '&#09' +"<a href='#' font-size=30  onClick='confirmation()'> Delete</a>"+ '&#09' +"<a href='#' onClick=Editing() font-size=30 >  Edit</a>" );
-	container.html('Coordination of '+pointname +' is: <br> ('+ coord+') <br>'+"<a href='#' font-size=30 > Website</a>"+ '&#09' +"<a href='#' font-size=30  onClick='confirmation()'> Delete</a>"+ '&#09' +"<a href='#' onClick=window.open('editform.html','mywindow','width=400,height=250,left=200,top=100') font-size=30 >  Edit</a>" );
+	container.html('Coordination of '+pointname +' is: <br> ('+ coord+') <br>'+"<a href='#' font-size=30 > Website</a>"+ '&#09' +"<button type='button' onclick='deleting()' style='align:left;'>Delete</button>"+ '&#09' +"<a href='#' onClick=window.open('editform.html','mywindow','width=400,height=250,left=200,top=100') font-size=30 >  Edit</a>" );
    
 
    marker.bindPopup(container[0] );
-			save("Name","Description","{Comment1,Comment2}",coordinates);
+   save("Name","Description","{Comment1,Comment2}",coordinates);
 			
 			
 	map.off('click', onMapClick);				
@@ -132,7 +132,7 @@ xmlhttp.onreadystatechange=function()
   {
   if (xmlhttp.readyState==4 && xmlhttp.status==200)
     {
-	document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+	//document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
 	var obj = jQuery.parseJSON(xmlhttp.responseText);
     for(var i in obj)
 	{
@@ -143,7 +143,9 @@ xmlhttp.onreadystatechange=function()
 		
 			.setIcon(icon)				
 			.addTo(map)
-			.bindPopup()
+		var container = $('<div />');	
+	  		container.html('Coordination of (title:from database, not finished) is: <br> (coordinates:from database, not finished) <br>'+"<a href='#' font-size=30 > Website</a>"+ '&#09' +"<button type='button' onclick='deleting()' style='align:left;'>Delete</button>"+ '&#09' +"<a href='#' onClick=window.open('editform.html','mywindow','width=400,height=250,left=200,top=100') font-size=30 >  Edit</a>");
+			marker.bindPopup(container[0]);
 		
 	}
 	//alert(obj.Person.name);
@@ -187,4 +189,8 @@ map.panBy([-5, 0]);
 function mapright(){
 //map.panTo([51.95,7.6197]);
 map.panBy([5, 0]);
+}
+
+function deleting(){
+alert();
 }

@@ -1,5 +1,5 @@
 <?php
-$dbconn = pg_connect("host=localhost dbname=test user=postgres password=****")
+$dbconn = pg_connect("host=localhost dbname=test user=postgres password=***")
     or die('Verbindungsaufbau fehlgeschlagen: ' . pg_last_error());
 	
 	$col_valueList = array();
