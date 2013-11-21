@@ -138,13 +138,13 @@ xmlhttp.onreadystatechange=function()
 	{
 		var coordinates = obj[i].Coord.split(',');
 	
-		var marker = L.marker(new L.LatLng(parseFloat(coordinates[0]), parseFloat(coordinates[1])));		
+		var marker = L.marker(new L.LatLng(parseFloat(coordinates[0]), parseFloat(coordinates[1])),options={"id":obj[i].ID});		
 		marker
 		
 			.setIcon(icon)				
 			.addTo(map)
 		var container = $('<div />');	
-	  		container.html('Coordination of (title:from database, not finished) is: <br> (coordinates:from database, not finished) <br>'+"<a href='#' font-size=30 > Website</a>"+ '&#09' +"<button type='button' onclick='deleting()' style='align:left;'>Delete</button>"+ '&#09' +"<a href='#' onClick=window.open('editform.html','mywindow','width=400,height=250,left=200,top=100') font-size=30 >  Edit</a>");
+	  		container.html('Coordination of (title:from database, not finished) is: <br> (coordinates:from database, not finished) <br>'+"<a href='#' font-size=30 > Website</a>"+ '&#09' +"<button type='button' onclick='deleting("+obj[i].ID+")' style='align:left;'>Delete</button>"+ '&#09' +"<a href='#' onClick=window.open('editform.html','mywindow','width=400,height=250,left=200,top=100') font-size=30 >  Edit</a>");
 			marker.bindPopup(container[0]);
 		
 	}
@@ -191,6 +191,11 @@ function mapright(){
 map.panBy([5, 0]);
 }
 
-function deleting(){
-alert();
+function deleting(id){
+$.ajax({
+  type: "POST",
+  url: "database_delete.php?",
+  data:{ID: id},
+});
+javascript:location.reload()
 }
