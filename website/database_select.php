@@ -3,7 +3,7 @@ $dbconn = pg_connect("host=giv-geointeraction.uni-muenster.de port=5432 dbname=f
     or die('Verbindungsaufbau fehlgeschlagen: ' . pg_last_error());
 	
 	$col_valueList = array();
-	for($i=27;$i<100;$i++){
+	for($i=1;$i<100;$i++){
 	$query=pg_query($dbconn,'select "ID","Point" FROM "Feature" where "ID"='.$i.';');
 	
 	while ($line = pg_fetch_array($query, null, PGSQL_ASSOC)) {
