@@ -1,5 +1,5 @@
 <?php
-$dbconn = pg_connect("host=localhost dbname=test user=postgres password=***")
+$dbconn = pg_connect("host=giv-geointeraction.uni-muenster.de port=5432 dbname=featuredb user=postgres password=***")
     or die('Verbindungsaufbau fehlgeschlagen: ' . pg_last_error());
 	
 	$col_valueList = array();
