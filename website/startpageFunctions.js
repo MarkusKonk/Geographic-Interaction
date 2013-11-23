@@ -67,7 +67,7 @@ else
 //document.getElementById("demo").innerHTML=x;
 }
 
-var lastID=0;
+var lastID;
 function addPoint(){
 	function onMapClick(e) {
 		var marker = L.marker();
@@ -83,20 +83,17 @@ function addPoint(){
 		var coordinates = marker.toGeoJSON().geometry.coordinates;
 		var coord=coordinates.toString();
 	lastID=(lastID+1);
-	alert(lastID);
+	
 		// 2 options to call the edit function, option 1: using prompt window ,, option 2 : using new form window .... option 1 is disactivated,, option 2 acitivated
 	//container.html('Coordination of Point Name: <br> ('+ coord+') <br>'+"<a href='#' font-size=30 > Website</a>"+ '&#09' +"<a href='#' font-size=30  onClick='confirmation()'> Delete</a>"+ '&#09' +"<a href='#' onClick=Editing() font-size=30 >  Edit</a>" );
 	container.html('Coordination of '+pointname +' is: <br> ('+ coord+') <br>'+"<a href='#' font-size=30 > Website</a>"+ '&#09' +"<button type='button' onclick='deleting("+lastID+''+")' style='align:left;'>Delete</button>"+ '&#09' +"<a href='#' onClick=window.open('editform.html','mywindow','width=400,height=250,left=200,top=100') font-size=30 >  Edit</a>" );
 	
-
-   marker.bindPopup(container[0] );
-   save("","Description","{Comment1,Comment2}",coordinates);
-			
+   marker.bindPopup(container[0]);
+   save(pointname,"Description","{Comment1,Comment2}",coordinates,1);
 			
 	map.off('click', onMapClick);				
 	}
 	map.on('click', onMapClick);	
-	
 };
 
 var icon = L.icon({
@@ -104,20 +101,17 @@ var icon = L.icon({
     iconSize:     [20, 20], // size of the icon
 });
 
-
 function save(name,des,com,coordinates){
 	$.post(
-		"database_insert.php?",
+		"http://giv-geointeraction.uni-muenster.de/database_insert.php?",
 		{	
 		Name:name,
 		Description:des,
 		Comments:com,
 		Coordinates:coordinates
-		}
-		//function(data){alert(data);}
-		
-		);
-		
+		},
+		function(){javascript:location.reload()}	
+		);		
 }
 
 function callPoints(){
@@ -151,12 +145,11 @@ xmlhttp.onreadystatechange=function()
 		lastID=parseInt(obj[i].ID);
 		
 	}
-	alert(lastID);
 	//document.getElementById("myDiv").innerHTML=obj;
     }
   }
   //If data needs to be processed, "Post"
-	xmlhttp.open("GET","http://localhost/Geographic-Interaction/website/database_select.php",true);
+	xmlhttp.open("GET","http://giv-geointeraction.uni-muenster.de/database_select.php",true);
 	xmlhttp.send();
 }
 
