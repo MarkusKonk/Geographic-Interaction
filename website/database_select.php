@@ -1,9 +1,9 @@
 <?php
-$dbconn = pg_connect("host=giv-geointeraction.uni-muenster.de port=5432 dbname=featuredb user=postgres password=***")
+$dbconn = pg_connect("host=localhost dbname=test user=postgres password=ehrenmann87")
     or die('Verbindungsaufbau fehlgeschlagen: ' . pg_last_error());
 	
 	$col_valueList = array();
-	for($i=1;$i<100;$i++){
+	for($i=0;$i<1000;$i++){
 	$query=pg_query($dbconn,'select "ID","Point" FROM "Feature" where "ID"='.$i.';');
 	
 	while ($line = pg_fetch_array($query, null, PGSQL_ASSOC)) {
@@ -22,10 +22,5 @@ $dbconn = pg_connect("host=giv-geointeraction.uni-muenster.de port=5432 dbname=f
 	
 	echo $JSON;
 
-	/*echo '[{"Language":"jQuery","ID":"1"},{"Language":"C#","ID":"2"},
-                           {"Language":"PHP","ID":"3"},{"Language":"Java","ID":"4"},
-                           {"Language":"Python","ID":"5"},{"Language":"Perl","ID":"6"},
-                           {"Language":"C++","ID":"7"},{"Language":"ASP","ID":"8"},
-                           {"Language":"Ruby","ID":"9"}]';*/
 	
 ?>

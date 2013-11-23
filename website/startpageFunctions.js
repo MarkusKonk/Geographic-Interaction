@@ -67,7 +67,7 @@ else
 //document.getElementById("demo").innerHTML=x;
 }
 
-
+var lastID=0;
 function addPoint(){
 	function onMapClick(e) {
 		var marker = L.marker();
@@ -82,14 +82,15 @@ function addPoint(){
 		var container = $('<div />');
 		var coordinates = marker.toGeoJSON().geometry.coordinates;
 		var coord=coordinates.toString();
-
+	lastID=(lastID+1);
+	alert(lastID);
 		// 2 options to call the edit function, option 1: using prompt window ,, option 2 : using new form window .... option 1 is disactivated,, option 2 acitivated
 	//container.html('Coordination of Point Name: <br> ('+ coord+') <br>'+"<a href='#' font-size=30 > Website</a>"+ '&#09' +"<a href='#' font-size=30  onClick='confirmation()'> Delete</a>"+ '&#09' +"<a href='#' onClick=Editing() font-size=30 >  Edit</a>" );
-	container.html('Coordination of '+pointname +' is: <br> ('+ coord+') <br>'+"<a href='#' font-size=30 > Website</a>"+ '&#09' +"<button type='button' onclick='deleting()' style='align:left;'>Delete</button>"+ '&#09' +"<a href='#' onClick=window.open('editform.html','mywindow','width=400,height=250,left=200,top=100') font-size=30 >  Edit</a>" );
-   
+	container.html('Coordination of '+pointname +' is: <br> ('+ coord+') <br>'+"<a href='#' font-size=30 > Website</a>"+ '&#09' +"<button type='button' onclick='deleting("+lastID+''+")' style='align:left;'>Delete</button>"+ '&#09' +"<a href='#' onClick=window.open('editform.html','mywindow','width=400,height=250,left=200,top=100') font-size=30 >  Edit</a>" );
+	
 
    marker.bindPopup(container[0] );
-   save("Name","Description","{Comment1,Comment2}",coordinates);
+   save("","Description","{Comment1,Comment2}",coordinates);
 			
 			
 	map.off('click', onMapClick);				
@@ -147,9 +148,10 @@ xmlhttp.onreadystatechange=function()
 		var container = $('<div />');	
 	  		container.html('Coordination of (title:from database, not finished) is: <br> (coordinates:from database, not finished) <br>'+"<a href='#' font-size=30 > Website</a>"+ '&#09' +"<button type='button' onclick='deleting("+obj[i].ID+")' style='align:left;'>Delete</button>"+ '&#09' +"<a href='#' onClick=window.open('editform.html','mywindow','width=400,height=250,left=200,top=100') font-size=30 >  Edit</a>");
 			marker.bindPopup(container[0]);
+		lastID=parseInt(obj[i].ID);
 		
 	}
-	//alert(obj.Person.name);
+	alert(lastID);
 	//document.getElementById("myDiv").innerHTML=obj;
     }
   }
@@ -159,12 +161,10 @@ xmlhttp.onreadystatechange=function()
 }
 
 function deleting(id){
-$.ajax({
-  type: "POST",
-  url: "database_delete.php?",
-  data:{ID: id},
-});
-javascript:location.reload()
+$.post("database_delete.php?",
+  {ID: id},function(){javascript:location.reload()}
+);
+
 }
 
 function up(){
@@ -200,3 +200,4 @@ function mapright(){
 //map.panTo([51.95,7.6197]);
 map.panBy([50, 0]);
 }
+
