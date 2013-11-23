@@ -1,6 +1,6 @@
 /**
 When the mouse enters the sidebar, the map control actions are disabled.
-*/
+
 function mouseEnterSidebar(){
 map.dragging.disable();
 }
@@ -11,7 +11,7 @@ map.dragging.enable();
 Function to open and close the sidebar. First checks, if the sidebar is open or closed,
 then if it is open changes the text, hides the elements in the sidebar and removes the border.
 Otherwise the objects will be shown and a new border will be created.
-*/
+
 function onClickSidebarBorder(){
 if($("#sideBar").width()!=parseInt(map.getSize().x/4)){
 $("#sideBar").css("width",map.getSize().x/4);
@@ -33,7 +33,7 @@ $("#sidebarContent").hide();
 /**
 Function to test opening and closing the sidebar. Quite the same code like the paragraph before.
 If one click on the map, the sidebar will be closed.
-*/
+
 function onClickMap(e){
 if(e.containerPoint.x<(map.getSize().x-(sidebar.getContainer().offsetWidth))){
 $("#sideBar").css("width",map.getSize().x/40);
@@ -43,6 +43,7 @@ $("#sidebarTitle").text("");
 $("#sidebarContent").hide();
 }
 };
+*/
 function Editing()
 {
 // to add
@@ -157,6 +158,15 @@ xmlhttp.onreadystatechange=function()
 	xmlhttp.send();
 }
 
+function deleting(id){
+$.ajax({
+  type: "POST",
+  url: "database_delete.php?",
+  data:{ID: id},
+});
+javascript:location.reload()
+}
+
 function up(){
 var latln=marker.getLatLng();
 var hoeher=latln.lat+0.001;
@@ -178,24 +188,15 @@ var links=latln.lng-0.001;
 marker.setLatLng(new L.LatLng(latln.lat,links));
 }
 function mapup(){
-map.panBy([0, 50]);
+map.panBy([0, -50]);
 }
 function mapdown(){
-map.panBy([0, -5]);
+map.panBy([0, +50]);
 }
 function mapleft(){
-map.panBy([-5, 0]);
+map.panBy([-50, 0]);
 }
 function mapright(){
 //map.panTo([51.95,7.6197]);
-map.panBy([5, 0]);
-}
-
-function deleting(id){
-$.ajax({
-  type: "POST",
-  url: "database_delete.php?",
-  data:{ID: id},
-});
-javascript:location.reload()
+map.panBy([50, 0]);
 }

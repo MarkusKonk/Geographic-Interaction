@@ -110,7 +110,8 @@ The sidebar is created. The function onAdd() creates a html object
 for the sidebar and specifies the id of the html element.
 Moreover some attributes for design depending on other objects are defined.
 The listeners are added.
-*/
+
+
 var sidebar=L.control();
 sidebar.onAdd=function(map){
  this._div = L.DomUtil.create('div', 'sidebar');
@@ -129,7 +130,7 @@ $("#sideBar").mouseleave(mouseLeaveSidebar);
 The left border of the sidebar is created.
 Moreover some attributes for design depending on other objects are defined 
 and listeners are added.
-*/
+
 $("#sideBar").append("<div id='sidebarBorder'class='SidebarBorder' style='height:"+heightSidebar+"'>>></div>");
 $("#sidebarBorder").css("width",map.getSize().x/40);
 $("#sidebarBorder").css("height",heightSidebar);
@@ -139,30 +140,30 @@ $("#sidebarBorder").click(onClickSidebarBorder);
 /**
 This paragraph adds the title to the sidebar.
 Moreover the margin-left has to be defined so the title component doesn't overlaps with the sidebar border. 
-*/
+
 $("#sideBar").append("<div id='sidebarTitle'class='SidebarTitle' style='height:"+parseInt(heightSidebar/20)+"px'>More Information</div>");
 //$("#sideBar").append("<input type='button' id='Btn1' value='Add Point' onclick='addPoint()' class='btnStyle span3' />");
 //$("#sideBar").append("<input type='button' id='Btn1' value='Save' onclick='' class='btnStyle span3' />");
 $("#sidebarTitle").css("margin-left",$("#sidebarBorder").width());
-/**
+
 The element 'sidebarContent' contains the different information boxes.
 Moreover some attributes for design depending on other objects are defined.
-*/
+
 $("#sideBar").append("<div id='sidebarContent'class='SidebarContent'></div>");
 
 $("#sidebarContent").css("max-width",parseInt(sidebar.getContainer().offsetWidth-parseInt($("#sidebarBorder").width()))+"px");
 $("#sidebarContent").css("margin-left",$("#sidebarBorder").width());
 $("#sidebarContent").css("height",parseInt(heightSidebar-(heightSidebar/20)-30)+"px");
 
-/**
+
 Here some information boxes are created. The id for each element is defined.
 Moreover the minimum height for the boxes will be defined depending on the height of the sidebar.
-*/
+
 for(var i=0;i<8;i++){
 $("#sidebarContent").append("<div id='sidebarItem"+i+"'class='SidebarItem'>hello</div>");
 $("#sidebarItem"+i).css("max-width",parseInt((sidebar.getContainer().offsetWidth)-parseInt($("#sidebarBorder").width()))+"px");
 $("#sidebarItem"+i).css("min-height",parseInt(heightSidebar/6)+"px");
-}
+}*/
 <!--map.on('click', onClickMap); (Used while testing. If one click on the map, the sidebar opens. -->
   
   
