@@ -51,13 +51,14 @@ function Editing()
 }
 
 
-function confirmation()
+function confirmation(id)
 {
+var ID=id
 var x;
 var r=confirm("Are You Sure to Delete the Point ? ");
 if (r==true)
   {
-  //Call the delete Function 
+  deleting(ID);
   }
 else
   {
@@ -103,7 +104,7 @@ var icon = L.icon({
 
 function save(name,des,com,coordinates){
 	$.post(
-		"http://giv-geointeraction.uni-muenster.de/database_insert.php?",
+		"database_insert.php?",
 		{	
 		Name:name,
 		Description:des,
@@ -115,7 +116,7 @@ function save(name,des,com,coordinates){
 }
 
 function deleting(id){
-$.post("http://giv-geointeraction.uni-muenster.de/database_delete.php?",
+$.post("database_delete.php?",
 		{ID: id},
 		function(){javascript:location.reload()}
 		);
@@ -147,7 +148,7 @@ xmlhttp.onreadystatechange=function()
 			.setIcon(icon)				
 			.addTo(map)
 		var container = $('<div />');	
-	  		container.html('Coordination of (title:from database, not finished) is: <br> (coordinates:from database, not finished) <br>'+"<a href='#' font-size=30 > Website</a>"+ '&#09' +"<button type='button' onclick='deleting("+obj[i].ID+")' style='align:left;'>Delete</button>"+ '&#09' +"<a href='#' onClick=window.open('editform.html','mywindow','width=400,height=250,left=200,top=100') font-size=30 >  Edit</a>");
+	  		container.html('Coordination of '+obj[i].Name+' is: <br> '+obj[i].Coord+' <br>'+' Description: <br> '+obj[i].Description+' <br>'+"<a href='#' font-size=30 > Website</a>"+ '&#09' +"<button type='button' onclick='confirmation("+obj[i].ID+")' style='align:left;'>Delete</button>"+ '&#09' +"<a href='#' onClick=window.open('editform.html','mywindow','width=400,height=250,left=200,top=100') font-size=30 >  Edit</a>");
 			marker.bindPopup(container[0]);
 		lastID=parseInt(obj[i].ID);
 		
@@ -156,7 +157,7 @@ xmlhttp.onreadystatechange=function()
     }
   }
   //If data needs to be processed, "Post"
-	xmlhttp.open("GET","http://giv-geointeraction.uni-muenster.de/database_select.php",true);
+	xmlhttp.open("GET","database_select.php",true);
 	xmlhttp.send();
 }
 
