@@ -110,8 +110,15 @@ function save(name,des,com,coordinates){
 		Comments:com,
 		Coordinates:coordinates
 		},
-		function(){javascript:location.reload()}	
+		function(){callPoints()}	
 		);		
+}
+
+function deleting(id){
+$.post("http://giv-geointeraction.uni-muenster.de/database_delete.php?",
+		{ID: id},
+		function(){javascript:location.reload()}
+		);
 }
 
 function callPoints(){
@@ -153,12 +160,6 @@ xmlhttp.onreadystatechange=function()
 	xmlhttp.send();
 }
 
-function deleting(id){
-$.post("database_delete.php?",
-  {ID: id},function(){javascript:location.reload()}
-);
-
-}
 
 function up(){
 var latln=marker.getLatLng();
