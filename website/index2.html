@@ -187,18 +187,15 @@ position: 'topleft',
 
 			if (type === 'marker') {
 				layer.bindPopup('A popup!');
-				
-				var coordinates = layer.toGeoJSON().geometry.coordinates;
-				var coord=coordinates.toString();
-				addPoint(coord);
-				
-				//alert(layer.getLatLng())
-				//addPoint(layer.getLatLngs());
+				alert(layer.getLatLng())
 			}
-			 
-			if (type === 'polyline') {
-				var geojsonFeature = layer.toGeoJSON();
-				addLine(geojsonFeature.geometry.coordinates);			
+			
+				if (type === 'polyline') {
+			var geojsonFeature = layer.toGeoJSON();
+			alert(geojsonFeature.geometry.coordinates);
+			
+				alert(layer.getLatLngs());
+				
 			}
 				//save to db here , you can check the type is it marker or polygon ... then save it to db
 			drawnItems.addLayer(layer);
@@ -209,6 +206,9 @@ position: 'topleft',
 			var countOfEditedLayers = 0;
 			layers.eachLayer(function(layer) {
 				//save to db here , 
+			if (layer instanceof L.Marker){
+						alert ("Marker edited ")
+				}
 				
 			});
 			
@@ -221,7 +221,11 @@ position: 'topleft',
 //miniMap
 	var osm2 = new L.TileLayer(osmUrl, {minZoom: 0, maxZoom: 13, attribution: osmAttrib });
 	var miniMap = new L.Control.MiniMap(osm2, { toggleDisplay: true }).addTo(map);
-
+ //
+	L.DomUtil.get('changeColor').onclick = function () {
+		drawControl.setDrawingOptions({ rectangle: { shapeOptions: { color: '#004a80' } } });
+		};
+		//
 //=================================================
 
 /**

@@ -68,33 +68,26 @@ else
 }
 
 
-var lastID;
-function addPoint(){
-	function onMapClick(e) {
-		var marker = L.marker();
+var lastIDPoint;
+function addPoint(coord){
+
 		//var pointname= prompt("Please Enter Point Name: ","");
 		var pointname=" ";
-		window.open('pointinformation.html','mywindow',"width=400,height=500,left=200,top=100, resizable=no, titlebar=no, toolbar=no, menubar=no");
-		marker
-				.setLatLng(e.latlng,{draggable:'true'})
-				.setIcon(icon)				
-				.addTo(map)
-		marker.dragging.enable();
-		var container = $('<div />');
-		var coordinates = marker.toGeoJSON().geometry.coordinates;
-		var coord=coordinates.toString();
-	lastID=(lastID+1);
+		//window.open('pointinformation.html','mywindow',"width=400,height=500,left=200,top=100, resizable=no, titlebar=no, toolbar=no, menubar=no");
+
+		//var container = $('<div />');
+		var coordinates = coord;
+		
+		var coords=coordinates.toString();
+		lastIDPoint=(lastIDPoint+1);
 	
 		// 2 options to call the edit function, option 1: using prompt window ,, option 2 : using new form window .... option 1 is disactivated,, option 2 acitivated
 	//container.html('Coordination of Point Name: <br> ('+ coord+') <br>'+"<a href='#' font-size=30 > Website</a>"+ '&#09' +"<a href='#' font-size=30  onClick='confirmation()'> Delete</a>"+ '&#09' +"<a href='#' onClick=Editing() font-size=30 >  Edit</a>" );
-	container.html('Coordination of '+pointname +' is: <br> ('+ coord+') <br>'+"<a href='#' font-size=30 > Website</a>"+ '&#09' +"<button type='button' onclick='deleting("+lastID+''+")' style='align:left;'>Delete</button>"+ '&#09' +"<a href='#' onClick=window.open('pointinformation.html','mywindow','width=400,height=500,left=200,top=100') font-size=30 >  Edit</a>" );
+	//container.html('Coordination of '+pointname +' is: <br> ('+ coord+') <br>'+"<a href='#' font-size=30 > Website</a>"+ '&#09' +"<button type='button' onclick='deleting("+lastID+''+")' style='align:left;'>Delete</button>"+ '&#09' +"<a href='#' onClick=window.open('pointinformation.html','mywindow','width=400,height=500,left=200,top=100') font-size=30 >  Edit</a>" );
 	
-   marker.bindPopup(container[0]);
-   save(pointname,"Description","{Comment1,Comment2}",coordinates,1);
+  // marker.bindPopup(container[0]);
+   savePoint("test","Description","{Comment1,Comment2}",coordinates);
 			
-	map.off('click', onMapClick);				
-	}
-	map.on('click', onMapClick);	
 };
 
 var icon = L.icon({
@@ -102,7 +95,7 @@ var icon = L.icon({
     iconSize:     [20, 20], // size of the icon
 });
 
-function save(name,des,com,coordinates){
+function savePoint(name,des,com,coordinates){
 	$.post(
 		"database_insert.php?",
 		{	
@@ -111,7 +104,7 @@ function save(name,des,com,coordinates){
 		Comments:com,
 		Coordinates:coordinates
 		},
-		function(){callPoints()}	
+		function(){}	
 		);		
 }
 
@@ -160,6 +153,41 @@ xmlhttp.onreadystatechange=function()
 	xmlhttp.open("GET","database_select.php",true);
 	xmlhttp.send();
 }
+
+var lastIDLine;
+function addLine(coord){
+
+		//var pointname= prompt("Please Enter Point Name: ","");
+		var linename=" ";
+		//window.open('pointinformation.html','mywindow',"width=400,height=500,left=200,top=100, resizable=no, titlebar=no, toolbar=no, menubar=no");
+
+		//var container = $('<div />');
+		var coordinates = coord;
+		//var coords=coordinates.toString();
+		lastIDPoint=(lastIDPoint+1);
+	
+		// 2 options to call the edit function, option 1: using prompt window ,, option 2 : using new form window .... option 1 is disactivated,, option 2 acitivated
+	//container.html('Coordination of Point Name: <br> ('+ coord+') <br>'+"<a href='#' font-size=30 > Website</a>"+ '&#09' +"<a href='#' font-size=30  onClick='confirmation()'> Delete</a>"+ '&#09' +"<a href='#' onClick=Editing() font-size=30 >  Edit</a>" );
+	//container.html('Coordination of '+linename +' is: <br> ('+ coord+') <br>'+"<a href='#' font-size=30 > Website</a>"+ '&#09' +"<button type='button' onclick='deleting("+lastID+''+")' style='align:left;'>Delete</button>"+ '&#09' +"<a href='#' onClick=window.open('pointinformation.html','mywindow','width=400,height=500,left=200,top=100') font-size=30 >  Edit</a>" );
+	
+  // marker.bindPopup(container[0]);
+   saveLine("test","Description","{Comment1,Comment2}",coordinates);
+			
+};
+
+function saveLine(name,des,com,coordinates){
+	$.post(
+		"database_insertLines.php?",
+		{	
+		Coordinates:coordinates
+		},
+		function(data){alert(data)}	
+		);
+}
+
+
+
+
 
 
 function up(){
