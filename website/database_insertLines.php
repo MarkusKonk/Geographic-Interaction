@@ -6,6 +6,7 @@ $dbconn = pg_connect("host=giv-geointeraction.uni-muenster.de port=5432 dbname=f
 	//$Name = $_POST['Name'];
 	//$Name='';
 	//$Description='';
+	//
 	//$Description = $_POST['Description'];
 	//$Comments = $_POST['Comments'];
 	$LatLng = $_POST['Coordinates'];
