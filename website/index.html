@@ -198,6 +198,7 @@ position: 'topleft',
 			 
 			if (type === 'polyline') {
 				var geojsonFeature = layer.toGeoJSON();
+				alert(typeof geojsonFeature.geometry.coordinates);
 				addLine(geojsonFeature.geometry.coordinates);			
 			}
 				//save to db here , you can check the type is it marker or polygon ... then save it to db
