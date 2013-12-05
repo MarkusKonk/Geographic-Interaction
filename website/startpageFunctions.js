@@ -171,7 +171,13 @@ function addLine(coord){
 	//container.html('Coordination of '+linename +' is: <br> ('+ coord+') <br>'+"<a href='#' font-size=30 > Website</a>"+ '&#09' +"<button type='button' onclick='deleting("+lastID+''+")' style='align:left;'>Delete</button>"+ '&#09' +"<a href='#' onClick=window.open('pointinformation.html','mywindow','width=400,height=500,left=200,top=100') font-size=30 >  Edit</a>" );
 	
   // marker.bindPopup(container[0]);
-   saveLine("test","Description","{Comment1,Comment2}",coordinates);
+	var lineCoordinates = "(";
+	for (var i=0; i<coordinates.length; i=i+1){
+		lineCoordinates = lineCoordinates +coordinates[i]+",";
+	}
+	lineCoordinates = lineCoordinates.substr(0,lineCoordinates.length-1);
+	lineCoordinates = lineCoordinates+")";
+   saveLine("test","Description","{Comment1,Comment2}",lineCoordinates);
 			
 };
 
@@ -181,8 +187,64 @@ function saveLine(name,des,com,coordinates){
 		{	
 		Coordinates:coordinates
 		},
-		function(data){alert(data)}	
+		function(data){}	
 		);
+}
+
+function callLines(){
+var xmlhttp;
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xmlhttp.onreadystatechange=function()
+  {
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+	//document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+	var obj = jQuery.parseJSON(xmlhttp.responseText);
+    
+	for(var i in obj)
+	{
+		coordinates = obj[i].Coord.split(',');
+
+		linePointsTemp = new Array();
+		for (var j in coordinates){
+			tempPoint=coordinates[j].replace("(","");
+			tempPoint=tempPoint.replace(")","");
+			linePointsTemp.push(tempPoint);
+		}
+	
+		linePoints = new Array();
+		for (var k = 0; k<linePointsTemp.length;k=k+2){
+			linePoints.push(new L.LatLng(linePointsTemp[k+1], linePointsTemp[k]));
+		}
+	
+		var polyline = L.polyline(linePoints, {color: 'red'}).addTo(map);
+		
+;
+	   /*var polyline = L.polyline(new L.LatLng(parseFloat(coordinates[0]), parseFloat(coordinates[1])),options={"id":obj[i].ID});		
+		marker
+		
+			.setIcon(icon)				
+			.addTo(map)
+		var container = $('<div />');	
+	  		container.html('Coordination of '+obj[i].Name+' is: <br> '+obj[i].Coord+' <br>'+' Description: <br> '+obj[i].Description+' <br>'+"<a href='#' font-size=30 > Website</a>"+ '&#09' +"<button type='button' onclick='confirmation("+obj[i].ID+")' style='align:left;'>Delete</button>"+ '&#09' +"<a href='#' onClick=window.open('editform.html','mywindow','width=400,height=250,left=200,top=100') font-size=30 >  Edit</a>");
+			marker.bindPopup(container[0]);
+		lastID=parseInt(obj[i].ID);
+		
+	}*/
+	//document.getElementById("myDiv").innerHTML=obj;
+    }
+	}
+  }
+  //If data needs to be processed, "Post"
+	xmlhttp.open("GET","database_callLines.php",true);
+	xmlhttp.send();
 }
 
 

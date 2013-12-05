@@ -75,6 +75,7 @@
 
  <script>
  callPoints();
+ callLines();
 /**
 The map is created and some layers are added to the map.
 reference: http://leafletjs.com/examples/quick-start-example.html
@@ -198,7 +199,7 @@ position: 'topleft',
 			 
 			if (type === 'polyline') {
 				var geojsonFeature = layer.toGeoJSON();
-				alert(typeof geojsonFeature.geometry.coordinates);
+				
 				addLine(geojsonFeature.geometry.coordinates);			
 			}
 				//save to db here , you can check the type is it marker or polygon ... then save it to db
