@@ -73,19 +73,19 @@ function addPoint(coord){
 
 		//var pointname= prompt("Please Enter Point Name: ","");
 		var pointname=" ";
-		//window.open('pointinformation.html','mywindow',"width=400,height=500,left=200,top=100, resizable=no, titlebar=no, toolbar=no, menubar=no");
+		window.open('pointinformation.html','mywindow',"width=400,height=500,left=200,top=100, resizable=no, titlebar=no, toolbar=no, menubar=no");
 
-		//var container = $('<div />');
+		var container = $('<div />');
 		var coordinates = coord;
 		
 		var coords=coordinates.toString();
 		lastIDPoint=(lastIDPoint+1);
 	
-		// 2 options to call the edit function, option 1: using prompt window ,, option 2 : using new form window .... option 1 is disactivated,, option 2 acitivated
-	//container.html('Coordination of Point Name: <br> ('+ coord+') <br>'+"<a href='#' font-size=30 > Website</a>"+ '&#09' +"<a href='#' font-size=30  onClick='confirmation()'> Delete</a>"+ '&#09' +"<a href='#' onClick=Editing() font-size=30 >  Edit</a>" );
-	//container.html('Coordination of '+pointname +' is: <br> ('+ coord+') <br>'+"<a href='#' font-size=30 > Website</a>"+ '&#09' +"<button type='button' onclick='deleting("+lastID+''+")' style='align:left;'>Delete</button>"+ '&#09' +"<a href='#' onClick=window.open('pointinformation.html','mywindow','width=400,height=500,left=200,top=100') font-size=30 >  Edit</a>" );
+// 2 options to call the edit function, option 1: using prompt window ,, option 2 : using new form window .... option 1 is disactivated,, option 2 acitivated
+//container.html('Coordination of Point Name: <br> ('+ coord+') <br>'+"<a href='#' font-size=30 > Website</a>"+ '&#09' +"<a href='#' font-size=30  onClick='confirmation()'> Delete</a>"+ '&#09' +"<a href='#' onClick=Editing() font-size=30 >  Edit</a>" );
+//container.html('Coordination of '+pointname +' is: <br> ('+ coord+') <br>'+"<a href='#' font-size=30 > Website</a>"+ '&#09' +"<button type='button' onclick='deleting("+lastID+''+")' style='align:left;'>Delete</button>"+ '&#09' +"<a href='#' onClick=window.open('pointinformation.html','mywindow','width=400,height=500,left=200,top=100') font-size=30 >  Edit</a>" );
 	
-  // marker.bindPopup(container[0]);
+  marker.bindPopup(container[0]);
    savePoint("test","Description","{Comment1,Comment2}",coordinates);
 			
 };
@@ -129,7 +129,6 @@ xmlhttp.onreadystatechange=function()
   {
   if (xmlhttp.readyState==4 && xmlhttp.status==200)
     {
-	//document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
 	var obj = jQuery.parseJSON(xmlhttp.responseText);
     for(var i in obj)
 	{
@@ -146,7 +145,6 @@ xmlhttp.onreadystatechange=function()
 		lastID=parseInt(obj[i].ID);
 		
 	}
-	//document.getElementById("myDiv").innerHTML=obj;
     }
   }
   //If data needs to be processed, "Post"
@@ -177,17 +175,21 @@ function addLine(coord){
 	}
 	lineCoordinates = lineCoordinates.substr(0,lineCoordinates.length-1);
 	lineCoordinates = lineCoordinates+")";
-   saveLine("test","Description","{Comment1,Comment2}",lineCoordinates);
+   saveLine("test","Description","{Comment1,Comment2}",true,lineCoordinates);
 			
 };
 
-function saveLine(name,des,com,coordinates){
+function saveLine(name,des,com,roadtype,coordinates){
 	$.post(
 		"database_insertLines.php?",
-		{	
+		{
+		Name:name,
+		Description:des,
+		//Comments:com,
+		Roadtype:roadtype,	
 		Coordinates:coordinates
 		},
-		function(data){}	
+		function(){}	
 		);
 }
 
@@ -224,30 +226,36 @@ xmlhttp.onreadystatechange=function()
 			linePoints.push(new L.LatLng(linePointsTemp[k+1], linePointsTemp[k]));
 		}
 	
-		var polyline = L.polyline(linePoints, {color: 'red'}).addTo(map);
+	if (obj[i].MainRoad=="t"){
+		var polyline = L.polyline(linePoints, {color: 'red'},options={"id":obj[i].ID}).addTo(map);
+		var roadType="Main";
+		}
+	else{	
+		var polyline = L.polyline(linePoints, {color: 'blue'},options={"id":obj[i].ID}).addTo(map);
+		var roadType="Alternative";
+		}
 		
-;
-	   /*var polyline = L.polyline(new L.LatLng(parseFloat(coordinates[0]), parseFloat(coordinates[1])),options={"id":obj[i].ID});		
-		marker
-		
-			.setIcon(icon)				
-			.addTo(map)
 		var container = $('<div />');	
-	  		container.html('Coordination of '+obj[i].Name+' is: <br> '+obj[i].Coord+' <br>'+' Description: <br> '+obj[i].Description+' <br>'+"<a href='#' font-size=30 > Website</a>"+ '&#09' +"<button type='button' onclick='confirmation("+obj[i].ID+")' style='align:left;'>Delete</button>"+ '&#09' +"<a href='#' onClick=window.open('editform.html','mywindow','width=400,height=250,left=200,top=100') font-size=30 >  Edit</a>");
-			marker.bindPopup(container[0]);
+		container.html('Coordination of '+obj[i].ID+'obj[i].Name'+' is: <br> '+obj[i].Coord+' <br>'+' Description: <br> '+'obj[i].Description'+' <br>'+"Roadtype: " + roadType + ' <br>' +"<a href='#' font-size=30 > Website</a>"+ '&#09' +"<button type='button' onclick='deleteLine("+obj[i].ID+")' style='align:left;'>Delete</button>"+ '&#09' +"<a href='#' onClick=window.open('editform.html','mywindow','width=400,height=250,left=200,top=100') font-size=30 >  Edit</a>");
+		//	  		container.html('Coordination of '+obj[i].Name+' is: <br> '+obj[i].Coord+' <br>'+' Description: <br> '+obj[i].Description+' <br>'+"<a href='#' font-size=30 > Website</a>"+ '&#09' +"<button type='button' onclick='confirmation("+obj[i].ID+")' style='align:left;'>Delete</button>"+ '&#09' +"<a href='#' onClick=window.open('editform.html','mywindow','width=400,height=250,left=200,top=100') font-size=30 >  Edit</a>");
+		polyline.bindPopup(container[0]);
 		lastID=parseInt(obj[i].ID);
 		
-	}*/
-	//document.getElementById("myDiv").innerHTML=obj;
+	}
     }
 	}
-  }
+  
   //If data needs to be processed, "Post"
 	xmlhttp.open("GET","database_callLines.php",true);
 	xmlhttp.send();
 }
 
-
+function deleteLine(id){
+$.post("database_deleteLine.php?",
+		{ID: id},
+			function(){javascript:location.reload()}
+		);
+}
 
 
 

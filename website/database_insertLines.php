@@ -3,17 +3,14 @@ $dbconn = pg_connect("host=giv-geointeraction.uni-muenster.de port=5432 dbname=f
     or die('Verbindungsaufbau fehlgeschlagen: ' . pg_last_error());
 	
 	
-	//$Name = $_POST['Name'];
-	//$Name='';
-	//$Description='';
-	//
-	//$Description = $_POST['Description'];
+	$Name = $_POST['Name'];
+	$Description = $_POST['Description'];
 	//$Comments = $_POST['Comments'];
 	$LatLng = $_POST['Coordinates'];
-	//$splitLatLng = explode(',',$LatLng,2);
-	//$LatLng = $splitLatLng[1].','.$splitLatLng[0];
+	$Roadtype = $_POST['Roadtype'];
+	$Description = $_POST['Description'];
 
-	$query=pg_query($dbconn,"Insert into \"Lines\" values (DEFAULT,'".$LatLng."');");
+	$query=pg_query($dbconn,"Insert into \"Lines\" values (DEFAULT,'".$LatLng."','".$Roadtype."','".$Name."','".$Description."');");
 
 	
 ?>
