@@ -16,7 +16,7 @@ $dbconn = pg_connect("host=giv-geointeraction.uni-muenster.de port=5432 dbname=f
 	}
 	$JSON = "["; 
 	for ($i=0;$i<count($col_valueList);$i+=4){
-		$JSON=$JSON.'{"ID":"'.$col_valueList[$i].'",'.'"Line":"'.substr($col_valueList[$i+1],1,-1).'"},'; 
+		$JSON=$JSON.'{"ID":"'.$col_valueList[$i].'",'.'"Line":"'.$col_valueList[$i+1].'"},'; 		
 	}
 	$JSON = substr($JSON,0,-1);
 	$JSON = $JSON.']';
