@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="libraries/Measure/leaflet.measurecontrol.css" />
 	<link rel="stylesheet" href="libraries/MiniMap/fullscreen.css" />
 	<link rel="stylesheet" href="libraries/MiniMap/src/Control.MiniMap.css" />
+	<link rel="stylesheet" href="libraries/L.Control.Sidebar.css" />
+	
 	
 	<script src="libraries/leaflet-0.6.4/leaflet.js"></script>
 	 <script src="libraries/Leaflet.draw/dist/leaflet.draw.js" type="text/javascript"></script>
@@ -67,12 +69,18 @@
 	<div align="center">
 		<!--<input type='button' id='Btn2' value='Save' onclick='save()' class='btnStyle span3'style="align:center; position:absolute;top:68%;left:50%;" />
 	</div> -->
- 
- 
 
+ <div id="sidebar"></div>
+
+<script src="libraries/L.Control.Sidebar.js"></script>
  <script>
+
+
  callPoints();
  callLines();
+
+
+ 
 /**
 The map is created and some layers are added to the map.
 reference: http://leafletjs.com/examples/quick-start-example.html
@@ -82,6 +90,13 @@ reference: http://leafletjs.com/examples/quick-start-example.html
 //create map
 var map = L.map('map').setView([51.9604,7.6197], 14);
 
+ var sidebar = L.control.sidebar('sidebar', {
+    position: 'right'
+});
+
+map.addControl(sidebar);
+
+		
 //OSM maps one as overlay and one base layer 
 var osmUrl='http://a.tile.openstreetmap.org/{z}/{x}/{y}.png';
 var osmAttrib='Map data &copy; OpenStreetMap contributors';
@@ -184,14 +199,16 @@ position: 'topleft',
 				layer = e.layer;
 
 			if (type === 'marker') {
-				layer.bindPopup('A popup!');
+				layer.bindPopup("<br> Point Name: * <br> <input type='text' SIZE=30 name='id' required><br>");
 				
 				var coordinates = layer.toGeoJSON().geometry.coordinates;
 				var coord=coordinates.toString();
 				addPoint(coord);
 				
-				//alert(layer.getLatLng())
-				//addPoint(layer.getLatLngs());
+            sidebar.show();
+      
+				
+				
 			}
 			 
 			if (type === 'polyline') {
@@ -220,6 +237,7 @@ position: 'topleft',
 //miniMap
 	var osm2 = new L.TileLayer(osmUrl, {minZoom: 0, maxZoom: 13, attribution: osmAttrib });
 	var miniMap = new L.Control.MiniMap(osm2, { toggleDisplay: true }).addTo(map);
+       
 
 //=================================================
 
@@ -284,10 +302,7 @@ $("#sidebarItem"+i).css("min-height",parseInt(heightSidebar/6)+"px");
 }*/
 <!--map.on('click', onClickMap); (Used while testing. If one click on the map, the sidebar opens. -->
   
-  
-  
  </script>
- <div id="mydiv"></div>
 </body>
 </html>
 

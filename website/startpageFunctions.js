@@ -70,24 +70,26 @@ else
 
 var lastIDPoint;
 function addPoint(coord){
-
+		
+	var latlng = coord.split(',');
 		//var pointname= prompt("Please Enter Point Name: ","");
-		var pointname=" ";
-		window.open('pointinformation.html','mywindow',"width=400,height=500,left=200,top=100, resizable=no, titlebar=no, toolbar=no, menubar=no");
+		//var pointname=" ";
+		//window.open('pointinformation.html','mywindow',"width=400,height=500,left=200,top=100, resizable=no, titlebar=no, toolbar=no, menubar=no");
 
-		var container = $('<div />');
+		
 		var coordinates = coord;
 		
 		var coords=coordinates.toString();
 		lastIDPoint=(lastIDPoint+1);
-	
+
 // 2 options to call the edit function, option 1: using prompt window ,, option 2 : using new form window .... option 1 is disactivated,, option 2 acitivated
 //container.html('Coordination of Point Name: <br> ('+ coord+') <br>'+"<a href='#' font-size=30 > Website</a>"+ '&#09' +"<a href='#' font-size=30  onClick='confirmation()'> Delete</a>"+ '&#09' +"<a href='#' onClick=Editing() font-size=30 >  Edit</a>" );
-//container.html('Coordination of '+pointname +' is: <br> ('+ coord+') <br>'+"<a href='#' font-size=30 > Website</a>"+ '&#09' +"<button type='button' onclick='deleting("+lastID+''+")' style='align:left;'>Delete</button>"+ '&#09' +"<a href='#' onClick=window.open('pointinformation.html','mywindow','width=400,height=500,left=200,top=100') font-size=30 >  Edit</a>" );
-	
-  marker.bindPopup(container[0]);
-   savePoint("test","Description","{Comment1,Comment2}",coordinates);
-			
+
+	var container = $('<div />');
+	container.html("<br> Point Name: * <br> <input type='text' SIZE=30 name='id' required><br>");
+	//marker.bindPopup(container[0]);
+    savePoint("test","Description","{Comment1,Comment2}",coordinates);
+	sidebar.show();		
 };
 
 var icon = L.icon({
