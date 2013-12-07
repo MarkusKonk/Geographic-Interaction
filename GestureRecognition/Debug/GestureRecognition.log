@@ -1,32 +1,8 @@
-﻿Der Buildvorgang wurde am 07.11.2013 18:47:59 gestartet.
-     1>Projekt "C:\Users\sumsum\Desktop\GestureRecognition_test\GestureRecognition.vcxproj" auf Knoten "2", Build Ziel(e).
-     1>ClCompile:
-         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I"C:\Program Files\OpenNI2\Include\\" /I. /I"C:\Program Files\PrimeSense\NiTE2\Include\\" /ZI /nologo /W3 /WX- /MP /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp
-         main.cpp
-     1>c:\users\sumsum\desktop\gesturerecognition_test\main.cpp(100): warning C4244: 'Argument': Konvertierung von 'float' in 'int', möglicher Datenverlust
-     1>c:\users\sumsum\desktop\gesturerecognition_test\main.cpp(100): warning C4244: 'Argument': Konvertierung von 'float' in 'int', möglicher Datenverlust
-     1>c:\users\sumsum\desktop\gesturerecognition_test\main.cpp(126): warning C4244: 'Argument': Konvertierung von 'float' in 'int', möglicher Datenverlust
-     1>c:\users\sumsum\desktop\gesturerecognition_test\main.cpp(126): warning C4244: 'Argument': Konvertierung von 'float' in 'int', möglicher Datenverlust
-     1>c:\users\sumsum\desktop\gesturerecognition_test\main.cpp(136): warning C4244: 'Argument': Konvertierung von 'float' in 'int', möglicher Datenverlust
-     1>c:\users\sumsum\desktop\gesturerecognition_test\main.cpp(136): warning C4244: 'Argument': Konvertierung von 'float' in 'int', möglicher Datenverlust
-     1>c:\users\sumsum\desktop\gesturerecognition_test\main.cpp(156): warning C4244: 'Argument': Konvertierung von 'float' in 'int', möglicher Datenverlust
-     1>c:\users\sumsum\desktop\gesturerecognition_test\main.cpp(156): warning C4244: 'Argument': Konvertierung von 'float' in 'int', möglicher Datenverlust
-       Link:
-         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\sumsum\Desktop\GestureRecognition_test\Debug\GestureRecognition.exe" /NOLOGO /LIBPATH:C:\Users\sumsum\Desktop\GestureRecognition_test\Debug\ /LIBPATH:"C:\Program Files\PrimeSense\NiTE2\Lib\\" /LIBPATH:"C:\Program Files\OpenNI2\Lib\\" NiTE2.lib OpenNI2.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\GestureRecognition.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\sumsum\Desktop\GestureRecognition_test\Debug\GestureRecognition.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\sumsum\Desktop\GestureRecognition_test\Debug\GestureRecognition.lib" /MACHINE:X86 Debug\main.obj
-     1>main.obj : error LNK2019: Verweis auf nicht aufgelöstes externes Symbol "__imp__oniFrameRelease" in Funktion ""public: void __thiscall openni::VideoFrameRef::release(void)" (?release@VideoFrameRef@openni@@QAEXXZ)".
-     1>main.obj : error LNK2019: Verweis auf nicht aufgelöstes externes Symbol "__imp__niteHandTrackerFrameRelease" in Funktion ""public: void __thiscall nite::HandTrackerFrameRef::release(void)" (?release@HandTrackerFrameRef@nite@@QAEXXZ)".
-     1>main.obj : error LNK2019: Verweis auf nicht aufgelöstes externes Symbol "__imp__niteInitializeHandTrackerByDevice" in Funktion ""public: enum nite::Status __thiscall nite::HandTracker::create(class openni::Device *)" (?create@HandTracker@nite@@QAE?AW4Status@2@PAVDevice@openni@@@Z)".
-     1>main.obj : error LNK2019: Verweis auf nicht aufgelöstes externes Symbol "__imp__niteInitializeHandTracker" in Funktion ""public: enum nite::Status __thiscall nite::HandTracker::create(class openni::Device *)" (?create@HandTracker@nite@@QAE?AW4Status@2@PAVDevice@openni@@@Z)".
-     1>main.obj : error LNK2019: Verweis auf nicht aufgelöstes externes Symbol "__imp__niteShutdownHandTracker" in Funktion ""public: void __thiscall nite::HandTracker::destroy(void)" (?destroy@HandTracker@nite@@QAEXXZ)".
-     1>main.obj : error LNK2019: Verweis auf nicht aufgelöstes externes Symbol "__imp__niteReadHandTrackerFrame" in Funktion ""public: enum nite::Status __thiscall nite::HandTracker::readFrame(class nite::HandTrackerFrameRef *)" (?readFrame@HandTracker@nite@@QAE?AW4Status@2@PAVHandTrackerFrameRef@2@@Z)".
-     1>main.obj : error LNK2019: Verweis auf nicht aufgelöstes externes Symbol "__imp__oniFrameAddRef" in Funktion ""public: void __thiscall openni::VideoFrameRef::_setFrame(struct OniFrame *)" (?_setFrame@VideoFrameRef@openni@@QAEXPAUOniFrame@@@Z)".
-     1>main.obj : error LNK2019: Verweis auf nicht aufgelöstes externes Symbol "__imp__niteStartHandTracking" in Funktion ""public: enum nite::Status __thiscall nite::HandTracker::startHandTracking(class nite::Point3f const &,short *)" (?startHandTracking@HandTracker@nite@@QAE?AW4Status@2@ABVPoint3f@2@PAF@Z)".
-     1>main.obj : error LNK2019: Verweis auf nicht aufgelöstes externes Symbol "__imp__niteStartGestureDetection" in Funktion ""public: enum nite::Status __thiscall nite::HandTracker::startGestureDetection(enum nite::GestureType)" (?startGestureDetection@HandTracker@nite@@QAE?AW4Status@2@W4GestureType@2@@Z)".
-     1>main.obj : error LNK2019: Verweis auf nicht aufgelöstes externes Symbol "__imp__niteInitialize" in Funktion ""public: static enum nite::Status __cdecl nite::NiTE::initialize(void)" (?initialize@NiTE@nite@@SA?AW4Status@2@XZ)".
-     1>main.obj : error LNK2019: Verweis auf nicht aufgelöstes externes Symbol "__imp__niteShutdown" in Funktion ""public: static void __cdecl nite::NiTE::shutdown(void)" (?shutdown@NiTE@nite@@SAXXZ)".
-     1>C:\Users\sumsum\Desktop\GestureRecognition_test\Debug\GestureRecognition.exe : fatal error LNK1120: 11 nicht aufgelöste externe Verweise.
-     1>Die Erstellung des Projekts "C:\Users\sumsum\Desktop\GestureRecognition_test\GestureRecognition.vcxproj" ist abgeschlossen, Build Ziel(e) -- FEHLER.
+﻿Der Buildvorgang wurde am 21.11.2013 23:39:35 gestartet.
+     1>Projekt "C:\Users\sumsum\Documents\GitHub\Geographic-Interaction\GestureRecognition\GestureRecognition.vcxproj" auf Knoten "2", Rebuild Ziel(e).
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\Microsoft.BuildSteps.Targets(160,5): error MSB3061: Die Datei "Debug\GestureRecognition.lastbuildstate" kann nicht gelöscht werden. Der Prozess kann nicht auf die Datei "C:\Users\sumsum\Documents\GitHub\Geographic-Interaction\GestureRecognition\Debug\GestureRecognition.lastbuildstate" zugreifen, da sie von einem anderen Prozess verwendet wird.
+     1>Die Erstellung des Projekts "C:\Users\sumsum\Documents\GitHub\Geographic-Interaction\GestureRecognition\GestureRecognition.vcxproj" ist abgeschlossen, Rebuild Ziel(e) -- FEHLER.
 
 Fehler beim Buildvorgang.
 
-Verstrichene Zeit 00:00:02.45
+Verstrichene Zeit 00:00:00.00

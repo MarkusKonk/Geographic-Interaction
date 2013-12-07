@@ -1,22 +1,15 @@
-﻿Der Buildvorgang wurde am 07.11.2013 18:56:40 gestartet.
+﻿Der Buildvorgang wurde am 07.12.2013 13:10:54 gestartet.
      1>Projekt "C:\Users\sumsum\Documents\GitHub\Geographic-Interaction\GestureRecognition\GestureRecognition.vcxproj" auf Knoten "2", Build Ziel(e).
      1>ClCompile:
-         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\CL.exe /c /I"C:\Program Files\OpenNI2\Include\\" /I. /I"C:\Program Files\PrimeSense\NiTE2\Include\\" /Zi /nologo /W3 /WX- /MP /Od /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Debug\\" /Fd"x64\Debug\vc100.pdb" /Gd /TP /errorReport:prompt main.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\x86_amd64\CL.exe /c /I"C:\Program Files\OpenNI2\Include\\" /I. /I"C:\Program Files\PrimeSense\NiTE2\Include\\" /I"C:\Program Files\PrimeSense\NiTE2\Redist\\" /Zi /nologo /W3 /WX- /MP /Od /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Debug\\" /Fd"x64\Debug\vc110.pdb" /Gd /TP /errorReport:prompt main.cpp
          main.cpp
      1>main.cpp(101): warning C4244: 'Argument': Konvertierung von 'float' in 'int', möglicher Datenverlust
-     1>main.cpp(101): warning C4244: 'Argument': Konvertierung von 'float' in 'int', möglicher Datenverlust
-     1>main.cpp(127): warning C4244: 'Argument': Konvertierung von 'float' in 'int', möglicher Datenverlust
-     1>main.cpp(127): warning C4244: 'Argument': Konvertierung von 'float' in 'int', möglicher Datenverlust
-     1>main.cpp(137): warning C4244: 'Argument': Konvertierung von 'float' in 'int', möglicher Datenverlust
-     1>main.cpp(137): warning C4244: 'Argument': Konvertierung von 'float' in 'int', möglicher Datenverlust
-     1>main.cpp(157): warning C4244: 'Argument': Konvertierung von 'float' in 'int', möglicher Datenverlust
-     1>main.cpp(157): warning C4244: 'Argument': Konvertierung von 'float' in 'int', möglicher Datenverlust
+     1>main.cpp(119): warning C4244: 'Argument': Konvertierung von 'float' in 'int', möglicher Datenverlust
+     1>main.cpp(77): warning C4101: 'yposnew': Unreferenzierte lokale Variable
        Link:
-         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\sumsum\Documents\GitHub\Geographic-Interaction\GestureRecognition\x64\Debug\GestureRecognition.exe" /NOLOGO /LIBPATH:"C:\Users\sumsum\Documents\GitHub\Geographic-Interaction\GestureRecognition\x64\Debug\\" /LIBPATH:"C:\Program Files\PrimeSense\NiTE2\Lib\\" /LIBPATH:"C:\Program Files\OpenNI2\Lib\\" NiTE2.lib OpenNI2.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"x64\Debug\GestureRecognition.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\sumsum\Documents\GitHub\Geographic-Interaction\GestureRecognition\x64\Debug\GestureRecognition.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\sumsum\Documents\GitHub\Geographic-Interaction\GestureRecognition\x64\Debug\GestureRecognition.lib" /MACHINE:X64 x64\Debug\main.obj
-         LINK : C:\Users\sumsum\Documents\GitHub\Geographic-Interaction\GestureRecognition\x64\Debug\GestureRecognition.exe wurde nicht gefunden oder beim letzten inkrementellen Linkvorgang nicht erstellt; vollständiger Link wird durchgeführt.
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\sumsum\Documents\GitHub\Geographic-Interaction\GestureRecognition\x64\Debug\GestureRecognition.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Users\sumsum\Documents\GitHub\Geographic-Interaction\GestureRecognition\x64\Debug\\" /LIBPATH:"C:\Program Files\PrimeSense\NiTE2\Lib\\" /LIBPATH:"C:\Program Files\OpenNI2\Lib\\" NiTE2.lib OpenNI2.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\sumsum\Documents\GitHub\Geographic-Interaction\GestureRecognition\x64\Debug\GestureRecognition.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\sumsum\Documents\GitHub\Geographic-Interaction\GestureRecognition\x64\Debug\GestureRecognition.lib" /MACHINE:X64 x64\Debug\main.obj
+         x64\Debug\startpage.obj
          GestureRecognition.vcxproj -> C:\Users\sumsum\Documents\GitHub\Geographic-Interaction\GestureRecognition\x64\Debug\GestureRecognition.exe
-       Manifest:
-         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"C:\Users\sumsum\Documents\GitHub\Geographic-Interaction\GestureRecognition\x64\Debug\GestureRecognition.exe;#1" /manifest x64\Debug\GestureRecognition.exe.intermediate.manifest
        PostBuildEvent:
          xcopy /D /S /F /Y "C:\Program Files\OpenNI2\Redist\\*" "C:\Users\sumsum\Documents\GitHub\Geographic-Interaction\GestureRecognition\x64\Debug\"
          xcopy /D /S /F /Y "C:\Program Files\PrimeSense\NiTE2\Redist\\*" "C:\Users\sumsum\Documents\GitHub\Geographic-Interaction\GestureRecognition\x64\Debug\"
@@ -28,4 +21,4 @@
 
 Build erfolgreich.
 
-Verstrichene Zeit 00:00:02.87
+Verstrichene Zeit 00:00:02.21

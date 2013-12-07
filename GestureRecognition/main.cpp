@@ -1,13 +1,18 @@
 #include "NiTE.h"
+//#include "startpage.h"
+#include <stdio.h>
 
 #include <NiteSampleUtilities.h>
 #include <Windows.h>
 
 nite::Point3f start;
 float xnew, ynew, znew, xold, yold, zold, xcursorpos, ycursorpos;
+FILE *fgesture;
 
 int main(int argc, char** argv)
 {
+	//startpage();
+
 	nite::HandTracker handTracker;
 	nite::Status niteRc;
 
@@ -85,11 +90,50 @@ int main(int argc, char** argv)
 			//move up: coordinates become larger
 			
 			//detect movement
-			if ((xnew > xold) && (ynew<yold))		//move right and down (really down???)
+			fgesture = fopen("gesture.txt","w");
+
+			if (xnew > xold)		//move right 
 			{
 					xposnew = xcursorpos + (xnew - xold);
+					fprintf(fgesture,"right");
 
-				if (ynew<0)
+
+				SetCursorPos(xposnew, yold);
+			}
+			else				//else1		
+			{
+				if (xnew < xold)  //move left
+				{
+
+				
+				if (xnew < 0)
+				{
+					xposnew = xcursorpos - (xold + (xnew*(-1)));
+				}
+				else
+				{
+					xposnew = xcursorpos - (xold - xnew);
+				}		//end check movement of x
+
+				fprintf(fgesture, "left");
+				SetCursorPos(xposnew, yold);
+				}//end if left and down
+			}//end else1
+
+
+			xold = xnew;
+			yold = ynew;
+			zold = znew;
+
+			fclose(fgesture);
+
+			/*
+			if ((xnew > xold) && (ynew < yold))		//move right and down 
+			{
+				xposnew = xcursorpos + (xnew - xold);
+				fprintf(fgesture, "right");
+
+				if (ynew < 0)
 				{
 					yposnew = ycursorpos + (ynew*(-1) + yold);
 				}
@@ -105,34 +149,34 @@ int main(int argc, char** argv)
 				if ((xnew < xold) && (ynew < yold)) //move left and down
 				{
 
-				
-				if (xnew < 0)
-				{
-					xposnew = xcursorpos - (xold + (xnew*(-1)));
-				}
-				else
-				{
-					xposnew = xcursorpos - (xold - xnew);
-				}		//end check movement of x
 
-				if (ynew < 0)
-				{
-					yposnew = ycursorpos + (ynew*(-1) + yold);
-				}
-				else
-				{
-					yposnew = ycursorpos + (ynew + yold);
-				}	//end check movement of y
+					if (xnew < 0)
+					{
+						xposnew = xcursorpos - (xold + (xnew*(-1)));
+					}
+					else
+					{
+						xposnew = xcursorpos - (xold - xnew);
+					}		//end check movement of x
 
-				SetCursorPos(xposnew, yposnew);
+					if (ynew < 0)
+					{
+						yposnew = ycursorpos + (ynew*(-1) + yold);
+					}
+					else
+					{
+						yposnew = ycursorpos + (ynew + yold);
+					}	//end check movement of y
+
+					SetCursorPos(xposnew, yposnew);
 				}//end if left and down
 				else		//else2
 				{
 					if ((xnew > xold) && (ynew > yold))		//move right and up
 					{
-							xposnew = xcursorpos + (xnew - xold);
+						xposnew = xcursorpos + (xnew - xold);
 
-							yposnew = ycursorpos - (ynew - yold);
+						yposnew = ycursorpos - (ynew - yold);
 
 						SetCursorPos(xposnew, yposnew);
 					}//end move right and up
@@ -151,7 +195,7 @@ int main(int argc, char** argv)
 							}		//end check movement of x
 
 
-								yposnew = ycursorpos - (ynew - yold);
+							yposnew = ycursorpos - (ynew - yold);
 
 
 							SetCursorPos(xposnew, yposnew);
@@ -165,6 +209,7 @@ int main(int argc, char** argv)
 			yold = ynew;
 			zold = znew;
 
+			fclose(fgesture);*/
 		}
 	}
 
