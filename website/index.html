@@ -70,11 +70,43 @@
 		<!--<input type='button' id='Btn2' value='Save' onclick='save()' class='btnStyle span3'style="align:center; position:absolute;top:68%;left:50%;" />
 	</div> -->
 
- <div id="sidebar"></div>
+ <div id="sidebar"> 
+	<br> Name:  
+	<input id="name" type="text" SIZE=30 name="name" required><br>
+	
+	<br>Description :<br> <input id="des" style="width: 300px; height: 150px;" name="description"><br><br><br> 
+
+	<button type="button" onclick="ap()">Submit</button>
+	<input TYPE="RESET" VALUE="Clear">
+</div>
+
+ <div id="sidebarLine"> 
+	<br> Name:  
+	<input id="name" type="text" SIZE=30 name="name" required><br>	
+	<br>Description :<br> <input id="des" style="width: 300px; height: 150px;" name="description"><br><br><br> 
+	<input id="main" type="radio" name="Zahlmethode" value="Main"> Main road<br>
+    <input id="alternative" type="radio" name="Zahlmethode" value="Alternative"> Alternative road<br>  
+	<button type="button" onclick="al()">Submit</button>
+	<input TYPE="RESET" VALUE="Clear">
+</div>
 
 <script src="libraries/L.Control.Sidebar.js"></script>
  <script>
+function ap(){
+	name=document.getElementById('name').value;
+	des =document.getElementById('des').value;
+	addPointAttributes(name,des);
+}
 
+function al(){
+	name=document.getElementById('name').value;
+	des =document.getElementById('des').value;
+	if (document.getElementById('main').checked)
+		type = true;
+	if (document.getElementById('alternative').checked)
+		type = false;
+	addPointAttributes(name,des,type);
+}
 
  callPoints();
  callLines();
@@ -93,8 +125,12 @@ var map = L.map('map').setView([51.9604,7.6197], 14);
  var sidebar = L.control.sidebar('sidebar', {
     position: 'right'
 });
+ var sidebarLine = L.control.sidebar('sidebarLine', {
+    position: 'right'
+});
 
 map.addControl(sidebar);
+map.addControl(sidebarLine);
 
 		
 //OSM maps one as overlay and one base layer 
@@ -205,16 +241,14 @@ position: 'topleft',
 				var coord=coordinates.toString();
 				addPoint(coord);
 				
-            sidebar.show();
-      
-				
-				
+            sidebar.show();		
 			}
 			 
 			if (type === 'polyline') {
 				var geojsonFeature = layer.toGeoJSON();
 				
-				addLine(geojsonFeature.geometry.coordinates);			
+				addLine(geojsonFeature.geometry.coordinates);
+				sidebarLine.show();				
 			}
 				//save to db here , you can check the type is it marker or polygon ... then save it to db
 			drawnItems.addLayer(layer);

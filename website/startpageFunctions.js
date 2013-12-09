@@ -69,7 +69,9 @@ else
 
 
 var lastIDPoint;
-function addPoint(coord){
+var lastIDLine;
+
+function addPoint(coord,name,des){
 		
 	var latlng = coord.split(',');
 		//var pointname= prompt("Please Enter Point Name: ","");
@@ -88,7 +90,7 @@ function addPoint(coord){
 	var container = $('<div />');
 	container.html("<br> Point Name: * <br> <input type='text' SIZE=30 name='id' required><br>");
 	//marker.bindPopup(container[0]);
-    savePoint("test","Description","{Comment1,Comment2}",coordinates);
+    savePoint(name,des,"{Comment1,Comment2}",coordinates);
 	sidebar.show();		
 };
 
@@ -101,9 +103,6 @@ function savePoint(name,des,com,coordinates){
 	$.post(
 		"database_insert.php?",
 		{	
-		Name:name,
-		Description:des,
-		Comments:com,
 		Coordinates:coordinates
 		},
 		function(){}	
@@ -144,7 +143,7 @@ xmlhttp.onreadystatechange=function()
 		var container = $('<div />');	
 	  		container.html('Coordination of '+obj[i].Name+' is: <br> '+obj[i].Coord+' <br>'+' Description: <br> '+obj[i].Description+' <br>'+"<a href='#' font-size=30 > Website</a>"+ '&#09' +"<button type='button' onclick='confirmation("+obj[i].ID+")' style='align:left;'>Delete</button>"+ '&#09' +"<a href='#' onClick=window.open('editform.html','mywindow','width=400,height=250,left=200,top=100') font-size=30 >  Edit</a>");
 			marker.bindPopup(container[0]);
-		lastID=parseInt(obj[i].ID);
+		lastIDPoint=parseInt(obj[i].ID);
 		
 	}
     }
@@ -154,7 +153,7 @@ xmlhttp.onreadystatechange=function()
 	xmlhttp.send();
 }
 
-var lastIDLine;
+
 function addLine(coord){
 
 		//var pointname= prompt("Please Enter Point Name: ","");
@@ -164,7 +163,7 @@ function addLine(coord){
 		//var container = $('<div />');
 		var coordinates = coord;
 		//var coords=coordinates.toString();
-		lastIDPoint=(lastIDPoint+1);
+		lastIDLine=(lastIDLine+1);
 	
 		// 2 options to call the edit function, option 1: using prompt window ,, option 2 : using new form window .... option 1 is disactivated,, option 2 acitivated
 	//container.html('Coordination of Point Name: <br> ('+ coord+') <br>'+"<a href='#' font-size=30 > Website</a>"+ '&#09' +"<a href='#' font-size=30  onClick='confirmation()'> Delete</a>"+ '&#09' +"<a href='#' onClick=Editing() font-size=30 >  Edit</a>" );
@@ -184,11 +183,7 @@ function addLine(coord){
 function saveLine(name,des,com,roadtype,coordinates){
 	$.post(
 		"database_insertLines.php?",
-		{
-		Name:name,
-		Description:des,
-		//Comments:com,
-		Roadtype:roadtype,	
+		{	
 		Coordinates:coordinates
 		},
 		function(){}	
@@ -238,10 +233,11 @@ xmlhttp.onreadystatechange=function()
 		}
 		
 		var container = $('<div />');	
-		container.html('Coordination of '+obj[i].Name+' is: <br> '+obj[i].Coord+' <br>'+' Description: <br> '+obj[i].Description+' <br>'+"Roadtype: " + roadType + ' <br>' +"<a href='#' font-size=30 > Website</a>"+ '&#09' +"<button type='button' onclick='deleteLine("+obj[i].ID+")' style='align:left;'>Delete</button>"+ '&#09' +"<a href='#' onClick=window.open('editform.html','mywindow','width=400,height=250,left=200,top=100') font-size=30 >  Edit</a>");
+		container.html('Name: '+obj[i].Name+' Description: <br> '+obj[i].Description+' <br>'+"Roadtype: " + roadType + ' <br>' +"<a href='#' font-size=30 > Website</a>"+ '&#09' +"<button type='button' onclick='deleteLine("+obj[i].ID+")' style='align:left;'>Delete</button>"+ '&#09' +"<a href='#' onClick=window.open('editform.html','mywindow','width=400,height=250,left=200,top=100') font-size=30 >  Edit</a>");
 		//	  		container.html('Coordination of '+obj[i].Name+' is: <br> '+obj[i].Coord+' <br>'+' Description: <br> '+obj[i].Description+' <br>'+"<a href='#' font-size=30 > Website</a>"+ '&#09' +"<button type='button' onclick='confirmation("+obj[i].ID+")' style='align:left;'>Delete</button>"+ '&#09' +"<a href='#' onClick=window.open('editform.html','mywindow','width=400,height=250,left=200,top=100') font-size=30 >  Edit</a>");
 		polyline.bindPopup(container[0]);
-		lastID=parseInt(obj[i].ID);
+		lastIDLine=parseInt(obj[i].ID);
+
 		
 	}
     }
@@ -258,9 +254,6 @@ $.post("database_deleteLine.php?",
 			function(){javascript:location.reload()}
 		);
 }
-
-
-
 
 function up(){
 var latln=marker.getLatLng();
@@ -296,3 +289,27 @@ function mapright(){
 map.panBy([50, 0]);
 }
 
+function addPointAttributes(name,des){
+	$.post(
+		"database_addPointAttributes.php?",
+		{	
+		Name:name,
+		Description:des,		
+		ID:lastIDPoint
+		},
+		function(){javascript:location.reload()}	
+		);		
+}
+
+function addLineAttributes(name,des,type){
+	$.post(
+		"database_addLineAttributes.php?",
+		{	
+		Name:name,
+		Description:des,
+		Type:type,
+		ID:lastIDLine
+		},
+		function(){javascript:location.reload()}	
+		);		
+}
