@@ -186,7 +186,7 @@ function saveLine(name,des,com,roadtype,coordinates){
 		{	
 		Coordinates:coordinates
 		},
-		function(){}	
+		function(data){lastIDLine=data;}	
 		);
 }
 
@@ -226,10 +226,12 @@ xmlhttp.onreadystatechange=function()
 	if (obj[i].MainRoad=="t"){
 		var polyline = L.polyline(linePoints, {color: 'red'},options={"id":obj[i].ID}).addTo(map);
 		var roadType="Main";
+		
 		}
 	else{	
 		var polyline = L.polyline(linePoints, {color: 'blue'},options={"id":obj[i].ID}).addTo(map);
 		var roadType="Alternative";
+		
 		}
 		
 		var container = $('<div />');	
@@ -310,6 +312,6 @@ function addLineAttributes(name,des,type){
 		Type:type,
 		ID:lastIDLine
 		},
-		function(){javascript:location.reload()}	
+		function(data){javascript:location.reload()}	
 		);		
 }

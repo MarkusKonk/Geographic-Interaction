@@ -14,4 +14,5 @@ $dbconn = pg_connect("host=giv-geointeraction.uni-muenster.de port=5432 dbname=f
 	$query=pg_query($dbconn,"UPDATE \"Lines\" SET \"Description\"='".$Description."' where \"ID\"=".$ID.";");
 	$query=pg_query($dbconn,"UPDATE \"Lines\" SET \"IsMainRoad\"='".$type."' where \"ID\"=".$ID.";");
 	
+	echo $type;
 ?>

@@ -5,21 +5,22 @@
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-<link rel="stylesheet" href="libraries/leaflet-0.6.4/leaflet.css" ></link>
+<link rel="stylesheet" type="text/css" href="http://cdn.leafletjs.com/leaflet-0.7/leaflet.css">
     <link rel="stylesheet" href="libraries/Leaflet.draw/dist/leaflet.draw.css" />
     <link rel="stylesheet" href="libraries/Measure/leaflet.measurecontrol.css" />
 	<link rel="stylesheet" href="libraries/MiniMap/fullscreen.css" />
 	<link rel="stylesheet" href="libraries/MiniMap/src/Control.MiniMap.css" />
 	<link rel="stylesheet" href="libraries/L.Control.Sidebar.css" />
 	
-	
-	<script src="libraries/leaflet-0.6.4/leaflet.js"></script>
-	 <script src="libraries/Leaflet.draw/dist/leaflet.draw.js" type="text/javascript"></script>
+	<script src="http://cdn.leafletjs.com/leaflet-0.7/leaflet.js"></script>
+	<script src="libraries/Leaflet.draw/dist/leaflet.draw.js" type="text/javascript"></script>
     <script src="libraries/Measure/leaflet.measurecontrol.js" type="text/javascript"></script>
 	<script src="libraries/MiniMap/src/Control.MiniMap.js" type="text/javascript"></script>
-<script src="libraries/jQuery.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
-</script>
+	
+	<script type='text/javascript' src="libraries/GeometryUtil/dist/leaflet.geometryutil.js"></script>
+	<script type='text/javascript' src="libraries/leaflet.almostover.js"></script>
+	<script src="libraries/jQuery.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <!-- created style sheets and scripts-->
 <link href="libraries/bootstrap/css/bootstrap.css" rel="stylesheet">
 <link rel="stylesheet" href="startpage.css"></link>
@@ -101,15 +102,16 @@ function ap(){
 function al(){
 	name=document.getElementById('name').value;
 	des =document.getElementById('des').value;
-	if (document.getElementById('main').checked)
+	
+	/*if (document.getElementById('main').checked)
 		type = true;
 	if (document.getElementById('alternative').checked)
-		type = false;
-	addLineAttributes(name,des,type);
+		type = false;*/
+	addLineAttributes(name,des,document.getElementById('main').checked);
 }
 
- callPoints();
- callLines();
+callPoints();
+callLines();
 
 
  
@@ -272,7 +274,6 @@ position: 'topleft',
 	var osm2 = new L.TileLayer(osmUrl, {minZoom: 0, maxZoom: 13, attribution: osmAttrib });
 	var miniMap = new L.Control.MiniMap(osm2, { toggleDisplay: true }).addTo(map);
        
-
 //=================================================
 
 /**
@@ -335,6 +336,26 @@ $("#sidebarItem"+i).css("max-width",parseInt((sidebar.getContainer().offsetWidth
 $("#sidebarItem"+i).css("min-height",parseInt(heightSidebar/6)+"px");
 }*/
 <!--map.on('click', onClickMap); (Used while testing. If one click on the map, the sidebar opens. -->
+  
+       var circle = L.circleMarker([0, 0], {radius: 5, fillColor: 'white', fillOpacity: 1});
+
+      map.on('almost:over', function (e) {
+        map.addLayer(circle);
+        e.layer.setStyle({color: 'red'});
+      });
+
+      map.on('almost:move', function (e) {
+        circle.setLatLng(e.latlng);
+      });
+
+      map.on('almost:out', function (e) {
+        map.removeLayer(circle);
+        e.layer.setStyle({weight: 5, color: '#03f'});
+      });
+
+      map.on('almost:click', function (e) {
+        e.layer.setStyle({weight: 10});
+      });  
   
  </script>
 </body>
