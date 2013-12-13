@@ -45,6 +45,10 @@ $("#sidebarContent").hide();
 };
 */
 
+		//var pointname= prompt("Please Enter Point Name: ","");
+		//var pointname=" ";
+		//window.open('pointinformation.html','mywindow',"width=400,height=500,left=200,top=100, resizable=no, titlebar=no, toolbar=no, menubar=no");
+
 function Editing()
 {
 // to add
@@ -74,10 +78,6 @@ var lastIDLine;
 function addPoint(coord,name,des){
 		
 	var latlng = coord.split(',');
-		//var pointname= prompt("Please Enter Point Name: ","");
-		//var pointname=" ";
-		//window.open('pointinformation.html','mywindow',"width=400,height=500,left=200,top=100, resizable=no, titlebar=no, toolbar=no, menubar=no");
-
 		
 		var coordinates = coord;
 		
@@ -105,7 +105,7 @@ function savePoint(name,des,com,coordinates){
 		{	
 		Coordinates:coordinates
 		},
-		function(){}	
+		function(data){lastIDPoint=data;}	
 		);		
 }
 
@@ -141,9 +141,9 @@ xmlhttp.onreadystatechange=function()
 			.setIcon(icon)				
 			.addTo(map)
 		var container = $('<div />');	
-	  		container.html('Coordination of '+obj[i].Name+' is: <br> '+obj[i].Coord+' <br>'+' Description: <br> '+obj[i].Description+' <br>'+"<a href='#' font-size=30 > Website</a>"+ '&#09' +"<button type='button' onclick='confirmation("+obj[i].ID+")' style='align:left;'>Delete</button>"+ '&#09' +"<a href='#' onClick=window.open('editform.html','mywindow','width=400,height=250,left=200,top=100') font-size=30 >  Edit</a>");
+	  		container.html(obj[i].Name+'<br>'+' Description: <br> '+obj[i].Description+' <br>' +"<button type='button' onclick='confirmation("+obj[i].ID+")' style='align:left;'>Delete</button>"+ '&#09');
 			marker.bindPopup(container[0]);
-		lastIDPoint=parseInt(obj[i].ID);
+			lastIDPoint=parseInt(obj[i].ID);
 		
 	}
     }
@@ -257,6 +257,33 @@ $.post("database_deleteLine.php?",
 		);
 }
 
+
+function addPointAttributes(name,des){
+	$.post(
+		"database_addPointAttributes.php?",
+		{	
+		Name:name,
+		Description:des,		
+		ID:lastIDPoint
+		},
+		function(data){alert(name);javascript:location.reload()}	
+		);		
+}
+
+function addLineAttributes(name,des,type){
+	$.post(
+		"database_addLineAttributes.php?",
+		{	
+		Name:name,
+		Description:des,
+		Type:type,
+		ID:lastIDLine
+		},
+		function(data){javascript:location.reload()}	
+		);		
+}
+
+
 function up(){
 var latln=marker.getLatLng();
 var hoeher=latln.lat+0.001;
@@ -289,29 +316,4 @@ map.panBy([-50, 0]);
 function mapright(){
 //map.panTo([51.95,7.6197]);
 map.panBy([50, 0]);
-}
-
-function addPointAttributes(name,des){
-	$.post(
-		"database_addPointAttributes.php?",
-		{	
-		Name:name,
-		Description:des,		
-		ID:lastIDPoint
-		},
-		function(){javascript:location.reload()}	
-		);		
-}
-
-function addLineAttributes(name,des,type){
-	$.post(
-		"database_addLineAttributes.php?",
-		{	
-		Name:name,
-		Description:des,
-		Type:type,
-		ID:lastIDLine
-		},
-		function(data){javascript:location.reload()}	
-		);		
 }
