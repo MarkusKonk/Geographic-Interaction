@@ -95,6 +95,7 @@ xmlhttp.onreadystatechange=function()
 	  		container.html(obj[i].Name+'<br>'+' Description: <br> '+obj[i].Description+' <br>' +"<button type='button' onclick='confirmation("+obj[i].ID+")' style='align:left;'>Delete</button>"+ '&#09');
 			marker.bindPopup(container[0]);
 			lastIDPoint=parseInt(obj[i].ID);
+			map.almostOver.addLayer(marker);
 		
 	}
     }
@@ -188,7 +189,7 @@ xmlhttp.onreadystatechange=function()
 		}
 		
 		var container = $('<div />');	
-		container.html('Name: '+obj[i].Name+' Description: <br> '+obj[i].Description+' <br>'+"Roadtype: " + roadType + ' <br>' +"<a href='#' font-size=30 > Website</a>"+ '&#09' +"<button type='button' onclick='deleteLine("+obj[i].ID+")' style='align:left;'>Delete</button>"+ '&#09' +"<a href='#' onClick=window.open('editform.html','mywindow','width=400,height=250,left=200,top=100') font-size=30 >  Edit</a>");
+		container.html('Name: '+obj[i].Name+' Description: <br> '+obj[i].Description+' <br>'+"Roadtype: " + roadType + ' <br>' +"<a href='#' font-size=30 ></a>"+ '&#09' +"<button type='button' onclick='deleteLine("+obj[i].ID+")' style='align:left;'>Delete</button>");
 		//	  		container.html('Coordination of '+obj[i].Name+' is: <br> '+obj[i].Coord+' <br>'+' Description: <br> '+obj[i].Description+' <br>'+"<a href='#' font-size=30 > Website</a>"+ '&#09' +"<button type='button' onclick='confirmation("+obj[i].ID+")' style='align:left;'>Delete</button>"+ '&#09' +"<a href='#' onClick=window.open('editform.html','mywindow','width=400,height=250,left=200,top=100') font-size=30 >  Edit</a>");
 		polyline.bindPopup(container[0]);
 		lastIDLine=parseInt(obj[i].ID);
@@ -273,7 +274,6 @@ map.panBy([50, 0]);
 }
 
 function showProjects(){
-alert(projects.length);
 for (var i=projects.length-1;i>projects.length-2;i--){
 var coordinate = projects[i].Coord.split(',');
 var longitude = coordinate[0].substr(1,coordinate[0].length-1);
