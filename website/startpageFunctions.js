@@ -224,12 +224,12 @@ xmlhttp.onreadystatechange=function()
 		}
 	
 	if (obj[i].MainRoad=="t"){
-		var polyline = L.polyline(linePoints, {color: 'red'},options={"id":obj[i].ID}).addTo(map);
+		var polyline = L.polyline(linePoints, {color: 'green'},options={"id":obj[i].ID}).addTo(map);
 		var roadType="Main";
 		
 		}
 	else{	
-		var polyline = L.polyline(linePoints, {color: 'blue'},options={"id":obj[i].ID}).addTo(map);
+		var polyline = L.polyline(linePoints, {color: 'red'},options={"id":obj[i].ID}).addTo(map);
 		var roadType="Alternative";
 		
 		}
@@ -239,6 +239,7 @@ xmlhttp.onreadystatechange=function()
 		//	  		container.html('Coordination of '+obj[i].Name+' is: <br> '+obj[i].Coord+' <br>'+' Description: <br> '+obj[i].Description+' <br>'+"<a href='#' font-size=30 > Website</a>"+ '&#09' +"<button type='button' onclick='confirmation("+obj[i].ID+")' style='align:left;'>Delete</button>"+ '&#09' +"<a href='#' onClick=window.open('editform.html','mywindow','width=400,height=250,left=200,top=100') font-size=30 >  Edit</a>");
 		polyline.bindPopup(container[0]);
 		lastIDLine=parseInt(obj[i].ID);
+		map.almostOver.addLayer(polyline);
 
 		
 	}
