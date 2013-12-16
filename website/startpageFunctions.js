@@ -1,50 +1,3 @@
-/**
-When the mouse enters the sidebar, the map control actions are disabled.
-
-function mouseEnterSidebar(){
-map.dragging.disable();
-}
-function mouseLeaveSidebar(){
-map.dragging.enable();
-}
-/**
-Function to open and close the sidebar. First checks, if the sidebar is open or closed,
-then if it is open changes the text, hides the elements in the sidebar and removes the border.
-Otherwise the objects will be shown and a new border will be created.
-
-function onClickSidebarBorder(){
-if($("#sideBar").width()!=parseInt(map.getSize().x/4)){
-$("#sideBar").css("width",map.getSize().x/4);
-$("#sidebarBorder").text(">>");
-$("#sidebarBorder").css("border-right","solid");
-$("#sidebarBorder").css("border-right-Width","2px");
-$("#sidebarBorder").css("border-right-color","rgb(180,180,180)");
-$("#sidebarTitle").show();
-$("#sidebarContent").show();
-}
-else{
-$("#sideBar").css("width",map.getSize().x/40);
-$("#sidebarBorder").text("<<");
-$("#sidebarBorder").css("border-right","none");
-$("#sidebarTitle").hide();
-$("#sidebarContent").hide();
-}
-};
-/**
-Function to test opening and closing the sidebar. Quite the same code like the paragraph before.
-If one click on the map, the sidebar will be closed.
-
-function onClickMap(e){
-if(e.containerPoint.x<(map.getSize().x-(sidebar.getContainer().offsetWidth))){
-$("#sideBar").css("width",map.getSize().x/40);
-$("#sidebarBorder").text("<<");
-$("#sidebarBorder").css("border-right","none");
-$("#sidebarTitle").text("");
-$("#sidebarContent").hide();
-}
-};
-*/
-
 		//var pointname= prompt("Please Enter Point Name: ","");
 		//var pointname=" ";
 		//window.open('pointinformation.html','mywindow',"width=400,height=500,left=200,top=100, resizable=no, titlebar=no, toolbar=no, menubar=no");
@@ -71,7 +24,6 @@ else
 //document.getElementById("demo").innerHTML=x;
 }
 
-
 var lastIDPoint;
 var lastIDLine;
 
@@ -91,7 +43,6 @@ function addPoint(coord,name,des){
 	container.html("<br> Point Name: * <br> <input type='text' SIZE=30 name='id' required><br>");
 	//marker.bindPopup(container[0]);
     savePoint(name,des,"{Comment1,Comment2}",coordinates);
-	sidebar.show();		
 };
 
 var icon = L.icon({
@@ -190,6 +141,7 @@ function saveLine(name,des,com,roadtype,coordinates){
 		);
 }
 
+var projects = new Array();
 function callLines(){
 var xmlhttp;
 if (window.XMLHttpRequest)
@@ -226,6 +178,7 @@ xmlhttp.onreadystatechange=function()
 	if (obj[i].MainRoad=="t"){
 		var polyline = L.polyline(linePoints, {color: 'green'},options={"id":obj[i].ID}).addTo(map);
 		var roadType="Main";
+		projects.push(obj[i]);
 		
 		}
 	else{	
@@ -317,4 +270,17 @@ map.panBy([-50, 0]);
 function mapright(){
 //map.panTo([51.95,7.6197]);
 map.panBy([50, 0]);
+}
+
+function showProjects(){
+alert(projects.length);
+for (var i=projects.length-1;i>projects.length-2;i--){
+var coordinate = projects[i].Coord.split(',');
+var longitude = coordinate[0].substr(1,coordinate[0].length-1);
+var latitude = coordinate[1].substr(0,coordinate[1].length-1);
+document.getElementById("button1").onclick=function(){map.setView([latitude,longitude],16);};
+document.getElementById("name1").innerHTML=projects[i].Name;
+document.getElementById("des1").innerHTML=projects[i].Description;
+}
+sidebarProjects.show();
 }

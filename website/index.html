@@ -39,6 +39,7 @@
     </style>
 </head>
 <body>
+ 
 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
@@ -48,6 +49,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
+		  <div style="position:absolute;left:30%;top:20%;"><button type="button" onclick="showProjects()">Projects</button></div>
           <a class="navbar-brand" href="index.html">IGI Gesture</a>
         </div>
         <div class="collapse navbar-collapse">
@@ -59,6 +61,7 @@
       </div>
     </div>
  <div id="map" style="position:absolute;top:51px; width: 100%; height: 92%;">
+
  </div>  
 
 
@@ -82,6 +85,14 @@
 	<input TYPE="RESET" VALUE="Clear">
 </div>
 
+ <div id="sidebarProjects"> 
+	<b>Recent Projects</b></br></br>
+	Name:<p id="name1"></p></br>
+	
+	Description:<p id="des1"></p></br>
+	<button id="button1" type="button">Move to</button>
+</div>
+
 <script src="libraries/L.Control.Sidebar.js"></script>
  <script>
 var map = L.map('map').setView([51.9604,7.6197], 14);
@@ -93,8 +104,13 @@ var map = L.map('map').setView([51.9604,7.6197], 14);
     position: 'right'
 });
 
+ var sidebarProjects = L.control.sidebar('sidebarProjects', {
+    position: 'right'
+});
+
 map.addControl(sidebar);
 map.addControl(sidebarLine); 
+map.addControl(sidebarProjects); 
  
 function ap(){
 	name=document.getElementById('pointname').value;
@@ -268,67 +284,6 @@ position: 'topleft',
 	var miniMap = new L.Control.MiniMap(osm2, { toggleDisplay: true }).addTo(map);
        
 //=================================================
-
-/**
-The sidebar is created. The function onAdd() creates a html object 
-for the sidebar and specifies the id of the html element.
-Moreover some attributes for design depending on other objects are defined.
-The listeners are added.
-
-
-var sidebar=L.control();
-sidebar.onAdd=function(map){
- this._div = L.DomUtil.create('div', 'sidebar');
- this._div.id="sideBar";
- return this._div;
-};
-sidebar.addTo(map);
-
-var heightSidebar=map.getSize().y-(parseInt($(".leaflet-control-attribution").height()));
-$("#sideBar").css("height",heightSidebar);
-$("#sideBar").css("width",map.getSize().x/4);
-$("#sideBar").mouseenter(mouseEnterSidebar);
-$("#sideBar").mouseleave(mouseLeaveSidebar);
-
-/**
-The left border of the sidebar is created.
-Moreover some attributes for design depending on other objects are defined 
-and listeners are added.
-
-$("#sideBar").append("<div id='sidebarBorder'class='SidebarBorder' style='height:"+heightSidebar+"'>>></div>");
-$("#sidebarBorder").css("width",map.getSize().x/40);
-$("#sidebarBorder").css("height",heightSidebar);
-$("#sidebarBorder").css("padding-top",heightSidebar/2);
-$("#sidebarBorder").click(onClickSidebarBorder);
-
-/**
-This paragraph adds the title to the sidebar.
-Moreover the margin-left has to be defined so the title component doesn't overlaps with the sidebar border. 
-
-$("#sideBar").append("<div id='sidebarTitle'class='SidebarTitle' style='height:"+parseInt(heightSidebar/20)+"px'>More Information</div>");
-//$("#sideBar").append("<input type='button' id='Btn1' value='Add Point' onclick='addPoint()' class='btnStyle span3' />");
-//$("#sideBar").append("<input type='button' id='Btn1' value='Save' onclick='' class='btnStyle span3' />");
-$("#sidebarTitle").css("margin-left",$("#sidebarBorder").width());
-
-The element 'sidebarContent' contains the different information boxes.
-Moreover some attributes for design depending on other objects are defined.
-
-$("#sideBar").append("<div id='sidebarContent'class='SidebarContent'></div>");
-
-$("#sidebarContent").css("max-width",parseInt(sidebar.getContainer().offsetWidth-parseInt($("#sidebarBorder").width()))+"px");
-$("#sidebarContent").css("margin-left",$("#sidebarBorder").width());
-$("#sidebarContent").css("height",parseInt(heightSidebar-(heightSidebar/20)-30)+"px");
-
-
-Here some information boxes are created. The id for each element is defined.
-Moreover the minimum height for the boxes will be defined depending on the height of the sidebar.
-
-for(var i=0;i<8;i++){
-$("#sidebarContent").append("<div id='sidebarItem"+i+"'class='SidebarItem'>hello</div>");
-$("#sidebarItem"+i).css("max-width",parseInt((sidebar.getContainer().offsetWidth)-parseInt($("#sidebarBorder").width()))+"px");
-$("#sidebarItem"+i).css("min-height",parseInt(heightSidebar/6)+"px");
-}*/
-<!--map.on('click', onClickMap); (Used while testing. If one click on the map, the sidebar opens. -->
   
        var circle = L.circleMarker([0, 0], {radius: 5, fillColor: 'white', fillOpacity: 1});
 	   var previousColor;	
@@ -364,7 +319,8 @@ $("#sidebarItem"+i).css("min-height",parseInt(heightSidebar/6)+"px");
 	<div align="center">
 		<!--<input type='button' id='Btn2' value='Save' onclick='save()' class='btnStyle span3'style="align:center; position:absolute;top:68%;left:50%;" />
 	</div> -->
-</body>
+		
+	</body>
 </html>
 
 
