@@ -85,6 +85,17 @@
 	<input TYPE="RESET" VALUE="Clear">
 </div>
 
+ <div id="sidebarComments"> 
+ 	  
+	<input type="hidden" name="featureid" id = "featureid" size="40" length="40" value=""><BR>
+	<BR>User Name: <input type="text" id = "featuretype" name="featuretype" size="40" length="40" value=""><BR>	
+	<br> User Comment :<br> <input id="usercomment" style="width: 300px; height: 150px;" name="description"><br> 
+	
+	<button type="button" onclick="sendUserComments()">Submit Comments</button>
+	<input TYPE="RESET" VALUE="Clear">
+
+</div>
+
  <div id="sidebarProjects"> 
 	<b>Recent Projects</b></br></br>
 	Name:<p id="name1"></p></br>
@@ -108,9 +119,15 @@ var map = L.map('map').setView([51.9604,7.6197], 14);
     position: 'right'
 });
 
+ var sidebarComments = L.control.sidebar('sidebarComments', {
+    position: 'right'
+});
+
+
 map.addControl(sidebar);
 map.addControl(sidebarLine); 
-map.addControl(sidebarProjects); 
+map.addControl(sidebarProjects);
+map.addControl(sidebarComments); 
  
 function ap(){
 	name=document.getElementById('pointname').value;
@@ -128,7 +145,12 @@ function al(){
 		type = false;*/
 	addLineAttributes(name,des,document.getElementById('main').checked);
 }
-
+function sendUserComments(){
+	Fid=document.getElementById('featureid').value;
+	Ftype =document.getElementById('featuretype').value;
+	UComment =document.getElementById('usercomment').value;
+	addUserComments(Fid,Ftype,UComment);
+}
 callPoints();
 callLines();
 
