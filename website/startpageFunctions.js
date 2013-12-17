@@ -178,7 +178,7 @@ xmlhttp.onreadystatechange=function()
 	
 	if (obj[i].MainRoad=="t"){
 		var polyline = L.polyline(linePoints, {color: 'green'},options={"id":obj[i].ID}).addTo(map);
-		var roadType="Main";
+		var roadType="Planned";
 		projects.push(obj[i]);
 		
 		}
@@ -189,7 +189,7 @@ xmlhttp.onreadystatechange=function()
 		}
 		
 		var container = $('<div />');	
-		container.html('Name: '+obj[i].Name+' Description: <br> '+obj[i].Description+' <br>'+"Roadtype: " + roadType + ' <br>' +"<a href='#' font-size=30 > Website</a>"+ '&#09' +"<button type='button' onclick='deleteLine("+obj[i].ID+")' style='align:left;'>Delete</button>"+ '&#09' +"<a href='#' onclick='AddComment("+obj[i].ID+")' font-size=30 >  Add Comment </a>");
+		container.html('Name: '+obj[i].Name+' Description: <br> '+obj[i].Description+' <br>'+"Roadtype: " + roadType + ' <br>' +"<a href='#' font-size=30 ></a>"+ '&#09' +"<button type='button' onclick='deleteLine("+obj[i].ID+")' style='align:left;'>Delete</button>"+ '&#09' +"<a href='#' onclick='AddComment("+obj[i].ID+")' font-size=30 >  Add Comment </a>");
 		//container.html('Name: '+obj[i].Name+' Description: <br> '+obj[i].Description+' <br>'+"Roadtype: " + roadType + ' <br>' +"<a href='#' font-size=30 ></a>"+ '&#09' +"<button type='button' onclick='deleteLine("+obj[i].ID+")' style='align:left;'>Delete</button>");
 		//	  		container.html('Coordination of '+obj[i].Name+' is: <br> '+obj[i].Coord+' <br>'+' Description: <br> '+obj[i].Description+' <br>'+"<a href='#' font-size=30 > Website</a>"+ '&#09' +"<button type='button' onclick='confirmation("+obj[i].ID+")' style='align:left;'>Delete</button>"+ '&#09' +"<a href='#' onClick=window.open('editform.html','mywindow','width=400,height=250,left=200,top=100') font-size=30 >  Edit</a>");
 		polyline.bindPopup(container[0]);
