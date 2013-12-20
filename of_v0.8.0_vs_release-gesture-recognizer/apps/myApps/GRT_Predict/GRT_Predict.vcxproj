@@ -1,0 +1,308 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{7FD42DF7-442E-479A-BA76-D0022F99702A}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>GRT_Predict</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksRelease.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksDebug.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>bin\</OutDir>
+    <IntDir>obj\$(Configuration)\</IntDir>
+    <TargetName>$(ProjectName)_debug</TargetName>
+    <LinkIncremental>true</LinkIncremental>
+    <GenerateManifest>true</GenerateManifest>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>bin\</OutDir>
+    <IntDir>obj\$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <AdditionalIncludeDirectories>.\grab_redist\Common;.\grab_redist\Win32;%(AdditionalIncludeDirectories);$(OPENNI2_INCLUDE);.;$(NITE2_INCLUDE)</AdditionalIncludeDirectories>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <BrowseInformation>true</BrowseInformation>
+      <AdditionalUsingDirectories>
+      </AdditionalUsingDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <AdditionalDependencies>NiTE2.lib;OpenNI2.lib;glut32.lib;GrabDetector.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>.\grab_redist\Win32;%(AdditionalLibraryDirectories);$(NITE2_LIB);$(OPENNI2_LIB)</AdditionalLibraryDirectories>
+    </Link>
+    <Bscmake>
+      <PreserveSbr>true</PreserveSbr>
+    </Bscmake>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAs>CompileAsCpp</CompileAs>
+    </ClCompile>
+    <Link>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="GRT\ClassificationModules\AdaBoost\AdaBoost.cpp" />
+    <ClCompile Include="GRT\ClassificationModules\AdaBoost\WeakClassifiers\DecisionStump.cpp" />
+    <ClCompile Include="GRT\ClassificationModules\AdaBoost\WeakClassifiers\RadialBasisFunction.cpp" />
+    <ClCompile Include="GRT\ClassificationModules\AdaBoost\WeakClassifiers\WeakClassifier.cpp" />
+    <ClCompile Include="GRT\ClassificationModules\ANBC\ANBC.cpp" />
+    <ClCompile Include="GRT\ClassificationModules\ANBC\ANBC_Model.cpp" />
+    <ClCompile Include="GRT\ClassificationModules\BAG\BAG.cpp" />
+    <ClCompile Include="GRT\ClassificationModules\DTW\DTW.cpp" />
+    <ClCompile Include="GRT\ClassificationModules\GMM\GMM.cpp" />
+    <ClCompile Include="GRT\ClassificationModules\HMM\HiddenMarkovModel.cpp" />
+    <ClCompile Include="GRT\ClassificationModules\HMM\HMM.cpp" />
+    <ClCompile Include="GRT\ClassificationModules\KNN\KNN.cpp" />
+    <ClCompile Include="GRT\ClassificationModules\LDA\LDA.cpp" />
+    <ClCompile Include="GRT\ClassificationModules\MinDist\MinDist.cpp" />
+    <ClCompile Include="GRT\ClassificationModules\MinDist\MinDistModel.cpp" />
+    <ClCompile Include="GRT\ClassificationModules\Softmax\Softmax.cpp" />
+    <ClCompile Include="GRT\ClassificationModules\SVM\LIBSVM\libsvm.cpp" />
+    <ClCompile Include="GRT\ClassificationModules\SVM\SVM.cpp" />
+    <ClCompile Include="GRT\ClusteringModules\GaussianMixtureModels\GaussianMixtureModels.cpp" />
+    <ClCompile Include="GRT\ClusteringModules\KMeans\KMeans.cpp" />
+    <ClCompile Include="GRT\ContextModules\Gate.cpp" />
+    <ClCompile Include="GRT\DataStructures\LabelledClassificationData.cpp" />
+    <ClCompile Include="GRT\DataStructures\LabelledClassificationSample.cpp" />
+    <ClCompile Include="GRT\DataStructures\LabelledContinuousTimeSeriesClassificationData.cpp" />
+    <ClCompile Include="GRT\DataStructures\LabelledRegressionData.cpp" />
+    <ClCompile Include="GRT\DataStructures\LabelledRegressionSample.cpp" />
+    <ClCompile Include="GRT\DataStructures\LabelledTimeSeriesClassificationData.cpp" />
+    <ClCompile Include="GRT\DataStructures\LabelledTimeSeriesClassificationSample.cpp" />
+    <ClCompile Include="GRT\DataStructures\UnlabelledClassificationData.cpp" />
+    <ClCompile Include="GRT\FeatureExtractionModules\FFT\FastFourierTransform.cpp" />
+    <ClCompile Include="GRT\FeatureExtractionModules\FFT\FFT.cpp" />
+    <ClCompile Include="GRT\FeatureExtractionModules\FFT\FFTFeatures.cpp" />
+    <ClCompile Include="GRT\FeatureExtractionModules\KMeansQuantizer\KMeansQuantizer.cpp" />
+    <ClCompile Include="GRT\FeatureExtractionModules\MovementIndex\MovementIndex.cpp" />
+    <ClCompile Include="GRT\FeatureExtractionModules\MovementTrajectoryFeatures\MovementTrajectoryFeatures.cpp" />
+    <ClCompile Include="GRT\FeatureExtractionModules\PCA\PrincipalComponentAnalysis.cpp" />
+    <ClCompile Include="GRT\FeatureExtractionModules\PeakDetection.cpp" />
+    <ClCompile Include="GRT\FeatureExtractionModules\TimeDomainFeatures\TimeDomainFeatures.cpp" />
+    <ClCompile Include="GRT\FeatureExtractionModules\TimeseriesBuffer\TimeseriesBuffer.cpp" />
+    <ClCompile Include="GRT\FeatureExtractionModules\ZeroCrossingCounter\ZeroCrossingCounter.cpp" />
+    <ClCompile Include="GRT\GestureRecognitionPipeline\Classifier.cpp" />
+    <ClCompile Include="GRT\GestureRecognitionPipeline\Context.cpp" />
+    <ClCompile Include="GRT\GestureRecognitionPipeline\FeatureExtraction.cpp" />
+    <ClCompile Include="GRT\GestureRecognitionPipeline\GestureRecognitionPipeline.cpp" />
+    <ClCompile Include="GRT\GestureRecognitionPipeline\GRTBase.cpp" />
+    <ClCompile Include="GRT\GestureRecognitionPipeline\PostProcessing.cpp" />
+    <ClCompile Include="GRT\GestureRecognitionPipeline\PreProcessing.cpp" />
+    <ClCompile Include="GRT\GestureRecognitionPipeline\Regressifier.cpp" />
+    <ClCompile Include="GRT\PostProcessingModules\ClassLabelChangeFilter.cpp" />
+    <ClCompile Include="GRT\PostProcessingModules\ClassLabelFilter.cpp" />
+    <ClCompile Include="GRT\PostProcessingModules\ClassLabelTimeoutFilter.cpp" />
+    <ClCompile Include="GRT\PreProcessingModules\DeadZone.cpp" />
+    <ClCompile Include="GRT\PreProcessingModules\Derivative.cpp" />
+    <ClCompile Include="GRT\PreProcessingModules\DoubleMovingAverageFilter.cpp" />
+    <ClCompile Include="GRT\PreProcessingModules\HighPassFilter.cpp" />
+    <ClCompile Include="GRT\PreProcessingModules\LowPassFilter.cpp" />
+    <ClCompile Include="GRT\PreProcessingModules\MovingAverageFilter.cpp" />
+    <ClCompile Include="GRT\PreProcessingModules\SavitzkyGolayFilter.cpp" />
+    <ClCompile Include="GRT\RegressionModules\ArtificialNeuralNetworks\MLP\MLP.cpp" />
+    <ClCompile Include="GRT\RegressionModules\ArtificialNeuralNetworks\MLP\Neuron.cpp" />
+    <ClCompile Include="GRT\RegressionModules\LinearRegression\LinearRegression.cpp" />
+    <ClCompile Include="GRT\RegressionModules\LogisticRegression\LogisticRegression.cpp" />
+    <ClCompile Include="GRT\Util\Cholesky.cpp" />
+    <ClCompile Include="GRT\Util\DebugLog.cpp" />
+    <ClCompile Include="GRT\Util\EigenvalueDecomposition.cpp" />
+    <ClCompile Include="GRT\Util\ErrorLog.cpp" />
+    <ClCompile Include="GRT\Util\LabelledTimeSeriesClassificationSampleTrimmer.cpp" />
+    <ClCompile Include="GRT\Util\LUDecomposition.cpp" />
+    <ClCompile Include="GRT\Util\MatrixDouble.cpp" />
+    <ClCompile Include="GRT\Util\RangeTracker.cpp" />
+    <ClCompile Include="GRT\Util\SVD.cpp" />
+    <ClCompile Include="GRT\Util\TestingLog.cpp" />
+    <ClCompile Include="GRT\Util\TrainingDataRecordingTimer.cpp" />
+    <ClCompile Include="GRT\Util\TrainingLog.cpp" />
+    <ClCompile Include="GRT\Util\Util.cpp" />
+    <ClCompile Include="GRT\Util\WarningLog.cpp" />
+    <ClCompile Include="src\GrabProxie.cpp" />
+    <ClCompile Include="src\GRT_Recognizer.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\MouseControl.cpp" />
+    <ClCompile Include="src\Nite_HandTracker.cpp" />
+    <ClCompile Include="src\openniProxie.cpp" />
+    <ClCompile Include="src\Static_Recognizer.cpp" />
+    <ClCompile Include="src\testApp.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GRT\ClassificationModules\AdaBoost\AdaBoost.h" />
+    <ClInclude Include="GRT\ClassificationModules\AdaBoost\AdaBoostClassModel.h" />
+    <ClInclude Include="GRT\ClassificationModules\AdaBoost\WeakClassifiers\DecisionStump.h" />
+    <ClInclude Include="GRT\ClassificationModules\AdaBoost\WeakClassifiers\RadialBasisFunction.h" />
+    <ClInclude Include="GRT\ClassificationModules\AdaBoost\WeakClassifiers\WeakClassifier.h" />
+    <ClInclude Include="GRT\ClassificationModules\ANBC\ANBC.h" />
+    <ClInclude Include="GRT\ClassificationModules\ANBC\ANBC_Model.h" />
+    <ClInclude Include="GRT\ClassificationModules\BAG\BAG.h" />
+    <ClInclude Include="GRT\ClassificationModules\DTW\DTW.h" />
+    <ClInclude Include="GRT\ClassificationModules\GMM\GMM.h" />
+    <ClInclude Include="GRT\ClassificationModules\GMM\MixtureModel.h" />
+    <ClInclude Include="GRT\ClassificationModules\HMM\HiddenMarkovModel.h" />
+    <ClInclude Include="GRT\ClassificationModules\HMM\HMM.h" />
+    <ClInclude Include="GRT\ClassificationModules\KNN\KNN.h" />
+    <ClInclude Include="GRT\ClassificationModules\LDA\LDA.h" />
+    <ClInclude Include="GRT\ClassificationModules\MinDist\MinDist.h" />
+    <ClInclude Include="GRT\ClassificationModules\MinDist\MinDistModel.h" />
+    <ClInclude Include="GRT\ClassificationModules\Softmax\Softmax.h" />
+    <ClInclude Include="GRT\ClassificationModules\Softmax\SoftmaxModel.h" />
+    <ClInclude Include="GRT\ClassificationModules\SVM\LIBSVM\libsvm.h" />
+    <ClInclude Include="GRT\ClassificationModules\SVM\SVM.h" />
+    <ClInclude Include="GRT\ClusteringModules\GaussianMixtureModels\GaussianMixtureModels.h" />
+    <ClInclude Include="GRT\ClusteringModules\KMeans\KMeans.h" />
+    <ClInclude Include="GRT\ContextModules\Gate.h" />
+    <ClInclude Include="GRT\DataStructures\LabelledClassificationData.h" />
+    <ClInclude Include="GRT\DataStructures\LabelledClassificationSample.h" />
+    <ClInclude Include="GRT\DataStructures\LabelledContinuousTimeSeriesClassificationData.h" />
+    <ClInclude Include="GRT\DataStructures\LabelledRegressionData.h" />
+    <ClInclude Include="GRT\DataStructures\LabelledRegressionSample.h" />
+    <ClInclude Include="GRT\DataStructures\LabelledTimeSeriesClassificationData.h" />
+    <ClInclude Include="GRT\DataStructures\LabelledTimeSeriesClassificationSample.h" />
+    <ClInclude Include="GRT\DataStructures\TimeSeriesPositionTracker.h" />
+    <ClInclude Include="GRT\DataStructures\UnlabelledClassificationData.h" />
+    <ClInclude Include="GRT\FeatureExtractionModules\FFT\FastFourierTransform.h" />
+    <ClInclude Include="GRT\FeatureExtractionModules\FFT\FFT.h" />
+    <ClInclude Include="GRT\FeatureExtractionModules\FFT\FFTFeatures.h" />
+    <ClInclude Include="GRT\FeatureExtractionModules\KMeansQuantizer\KMeansQuantizer.h" />
+    <ClInclude Include="GRT\FeatureExtractionModules\MovementIndex\MovementIndex.h" />
+    <ClInclude Include="GRT\FeatureExtractionModules\MovementTrajectoryFeatures\MovementTrajectoryFeatures.h" />
+    <ClInclude Include="GRT\FeatureExtractionModules\PCA\PrincipalComponentAnalysis.h" />
+    <ClInclude Include="GRT\FeatureExtractionModules\PeakDetection.h" />
+    <ClInclude Include="GRT\FeatureExtractionModules\TimeDomainFeatures\TimeDomainFeatures.h" />
+    <ClInclude Include="GRT\FeatureExtractionModules\TimeseriesBuffer\TimeseriesBuffer.h" />
+    <ClInclude Include="GRT\FeatureExtractionModules\ZeroCrossingCounter\ZeroCrossingCounter.h" />
+    <ClInclude Include="GRT\GestureRecognitionPipeline\Classifier.h" />
+    <ClInclude Include="GRT\GestureRecognitionPipeline\Context.h" />
+    <ClInclude Include="GRT\GestureRecognitionPipeline\FeatureExtraction.h" />
+    <ClInclude Include="GRT\GestureRecognitionPipeline\GestureRecognitionPipeline.h" />
+    <ClInclude Include="GRT\GestureRecognitionPipeline\GRTBase.h" />
+    <ClInclude Include="GRT\GestureRecognitionPipeline\MLBase.h" />
+    <ClInclude Include="GRT\GestureRecognitionPipeline\PostProcessing.h" />
+    <ClInclude Include="GRT\GestureRecognitionPipeline\PreProcessing.h" />
+    <ClInclude Include="GRT\GestureRecognitionPipeline\Regressifier.h" />
+    <ClInclude Include="GRT\GRT.h" />
+    <ClInclude Include="GRT\PostProcessingModules\ClassLabelChangeFilter.h" />
+    <ClInclude Include="GRT\PostProcessingModules\ClassLabelFilter.h" />
+    <ClInclude Include="GRT\PostProcessingModules\ClassLabelTimeoutFilter.h" />
+    <ClInclude Include="GRT\PreProcessingModules\DeadZone.h" />
+    <ClInclude Include="GRT\PreProcessingModules\Derivative.h" />
+    <ClInclude Include="GRT\PreProcessingModules\DoubleMovingAverageFilter.h" />
+    <ClInclude Include="GRT\PreProcessingModules\HighPassFilter.h" />
+    <ClInclude Include="GRT\PreProcessingModules\LowPassFilter.h" />
+    <ClInclude Include="GRT\PreProcessingModules\MovingAverageFilter.h" />
+    <ClInclude Include="GRT\PreProcessingModules\SavitzkyGolayFilter.h" />
+    <ClInclude Include="GRT\RegressionModules\ArtificialNeuralNetworks\MLP\MLP.h" />
+    <ClInclude Include="GRT\RegressionModules\ArtificialNeuralNetworks\MLP\Neuron.h" />
+    <ClInclude Include="GRT\RegressionModules\LinearRegression\LinearRegression.h" />
+    <ClInclude Include="GRT\RegressionModules\LogisticRegression\LogisticRegression.h" />
+    <ClInclude Include="GRT\Util\Cholesky.h" />
+    <ClInclude Include="GRT\Util\CircularBuffer.h" />
+    <ClInclude Include="GRT\Util\ClassificationResult.h" />
+    <ClInclude Include="GRT\Util\ClassTracker.h" />
+    <ClInclude Include="GRT\Util\DebugLog.h" />
+    <ClInclude Include="GRT\Util\EigenvalueDecomposition.h" />
+    <ClInclude Include="GRT\Util\ErrorLog.h" />
+    <ClInclude Include="GRT\Util\FileParser.h" />
+    <ClInclude Include="GRT\Util\GRTCommon.h" />
+    <ClInclude Include="GRT\Util\GRTTypedefs.h" />
+    <ClInclude Include="GRT\Util\GRTVersionInfo.h" />
+    <ClInclude Include="GRT\Util\IndexedDouble.h" />
+    <ClInclude Include="GRT\Util\LabelledTimeSeriesClassificationSampleTrimmer.h" />
+    <ClInclude Include="GRT\Util\Log.h" />
+    <ClInclude Include="GRT\Util\LUDecomposition.h" />
+    <ClInclude Include="GRT\Util\Matrix.h" />
+    <ClInclude Include="GRT\Util\MatrixDouble.h" />
+    <ClInclude Include="GRT\Util\MinMax.h" />
+    <ClInclude Include="GRT\Util\Observer.h" />
+    <ClInclude Include="GRT\Util\ObserverManager.h" />
+    <ClInclude Include="GRT\Util\Random.h" />
+    <ClInclude Include="GRT\Util\RangeTracker.h" />
+    <ClInclude Include="GRT\Util\SVD.h" />
+    <ClInclude Include="GRT\Util\TestingLog.h" />
+    <ClInclude Include="GRT\Util\TestResult.h" />
+    <ClInclude Include="GRT\Util\Timer.h" />
+    <ClInclude Include="GRT\Util\TrainingDataRecordingTimer.h" />
+    <ClInclude Include="GRT\Util\TrainingLog.h" />
+    <ClInclude Include="GRT\Util\TrainingResult.h" />
+    <ClInclude Include="GRT\Util\Util.h" />
+    <ClInclude Include="GRT\Util\WarningLog.h" />
+    <ClInclude Include="src\GrabProxie.h" />
+    <ClInclude Include="src\GRT_Recognizer.h" />
+    <ClInclude Include="src\MouseControl.h" />
+    <ClInclude Include="src\NiteSampleUtilities.h" />
+    <ClInclude Include="src\Nite_HandTracker.h" />
+    <ClInclude Include="src\openniProxie.h" />
+    <ClInclude Include="src\Static_Recognizer.h" />
+    <ClInclude Include="src\testApp.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\libs\openFrameworksCompiled\project\vs\openframeworksLib.vcxproj">
+      <Project>{5837595d-aca9-485c-8e76-729040ce4b0b}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="icon.rc">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">/D_DEBUG %(AdditionalOptions)</AdditionalOptions>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+</Project>

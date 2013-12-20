@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<ItemGroup>
+		<ClCompile Include="src\testApp.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="src\main.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxSvg\src\ofxSvg.cpp">
+			<Filter>addons\ofxSvg\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxSvg\libs\svgTiny\src\svgtiny.cpp">
+			<Filter>addons\ofxSvg\libs\svgTiny\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxSvg\libs\svgTiny\src\svgtiny_gradient.cpp">
+			<Filter>addons\ofxSvg\libs\svgTiny\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxSvg\libs\svgTiny\src\svgtiny_list.cpp">
+			<Filter>addons\ofxSvg\libs\svgTiny\src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxSvg\libs\svgTiny\src\src_colors.cpp">
+			<Filter>addons\ofxSvg\libs\svgTiny\src</Filter>
+		</ClCompile>
+	</ItemGroup>
+	<ItemGroup>
+		<Filter Include="src">
+			<UniqueIdentifier>{d8376475-7454-4a24-b08a-aac121d3ad6f}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons">
+			<UniqueIdentifier>{71834f65-f3a9-211e-73b8-dc85}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxSvg">
+			<UniqueIdentifier>{3dd76815-827c-5f89-582d-2cf4}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxSvg\src">
+			<UniqueIdentifier>{6a00b88f-1adb-bb17-8276-ed19}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxSvg\libs">
+			<UniqueIdentifier>{c226e9c6-88c9-1f12-d422-3da3}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxSvg\libs\svgTiny">
+			<UniqueIdentifier>{0a0e4783-de3f-eb55-7775-3205}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxSvg\libs\svgTiny\src">
+			<UniqueIdentifier>{668f2528-598b-d351-b74f-9e6f}</UniqueIdentifier>
+		</Filter>
+	</ItemGroup>
+	<ItemGroup>
+		<ClInclude Include="src\testApp.h">
+			<Filter>src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxSvg\src\ofxSvg.h">
+			<Filter>addons\ofxSvg\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxSvg\libs\svgTiny\src\svgtiny.h">
+			<Filter>addons\ofxSvg\libs\svgTiny\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxSvg\libs\svgTiny\src\svgtiny_internal.h">
+			<Filter>addons\ofxSvg\libs\svgTiny\src</Filter>
+		</ClInclude>
+	</ItemGroup>
+	<ItemGroup>
+		<ResourceCompile Include="icon.rc" />
+	</ItemGroup>
+</Project>

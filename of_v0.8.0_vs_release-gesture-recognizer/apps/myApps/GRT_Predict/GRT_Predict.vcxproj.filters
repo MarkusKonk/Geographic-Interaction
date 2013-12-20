@@ -1,0 +1,594 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="GRT\ClassificationModules\AdaBoost\AdaBoost.cpp">
+      <Filter>GRT</Filter>
+    </ClCompile>
+    <ClCompile Include="GRT\ClassificationModules\AdaBoost\WeakClassifiers\DecisionStump.cpp">
+      <Filter>GRT</Filter>
+    </ClCompile>
+    <ClCompile Include="GRT\ClassificationModules\AdaBoost\WeakClassifiers\RadialBasisFunction.cpp">
+      <Filter>GRT</Filter>
+    </ClCompile>
+    <ClCompile Include="GRT\ClassificationModules\AdaBoost\WeakClassifiers\WeakClassifier.cpp">
+      <Filter>GRT</Filter>
+    </ClCompile>
+    <ClCompile Include="GRT\ClassificationModules\ANBC\ANBC.cpp">
+      <Filter>GRT</Filter>
+    </ClCompile>
+    <ClCompile Include="GRT\ClassificationModules\ANBC\ANBC_Model.cpp">
+      <Filter>GRT</Filter>
+    </ClCompile>
+    <ClCompile Include="GRT\ClassificationModules\BAG\BAG.cpp">
+      <Filter>GRT</Filter>
+    </ClCompile>
+    <ClCompile Include="GRT\ClassificationModules\DTW\DTW.cpp">
+      <Filter>GRT</Filter>
+    </ClCompile>
+    <ClCompile Include="GRT\ClassificationModules\GMM\GMM.cpp">
+      <Filter>GRT</Filter>
+    </ClCompile>
+    <ClCompile Include="GRT\ClassificationModules\HMM\HiddenMarkovModel.cpp">
+      <Filter>GRT</Filter>
+    </ClCompile>
+    <ClCompile Include="GRT\ClassificationModules\HMM\HMM.cpp">
+      <Filter>GRT</Filter>
+    </ClCompile>
+    <ClCompile Include="GRT\ClassificationModules\KNN\KNN.cpp">
+      <Filter>GRT</Filter>
+    </ClCompile>
+    <ClCompile Include="GRT\ClassificationModules\LDA\LDA.cpp">
+      <Filter>GRT</Filter>
+    </ClCompile>
+    <ClCompile Include="GRT\ClassificationModules\MinDist\MinDist.cpp">
+      <Filter>GRT</Filter>
+    </ClCompile>
+    <ClCompile Include="GRT\ClassificationModules\MinDist\MinDistModel.cpp">
+      <Filter>GRT</Filter>
+    </ClCompile>
+    <ClCompile Include="GRT\ClassificationModules\Softmax\Softmax.cpp">
+      <Filter>GRT</Filter>
+    </ClCompile>
+    <ClCompile Include="GRT\ClassificationModules\SVM\LIBSVM\libsvm.cpp">
+      <Filter>GRT</Filter>
+    </ClCompile>
+    <ClCompile Include="GRT\ClassificationModules\SVM\SVM.cpp">
+      <Filter>GRT</Filter>
+    </ClCompile>
+    <ClCompile Include="GRT\ClusteringModules\GaussianMixtureModels\GaussianMixtureModels.cpp">
+      <Filter>GRT</Filter>
+    </ClCompile>
+    <ClCompile Include="GRT\ClusteringModules\KMeans\KMeans.cpp">
+      <Filter>GRT</Filter>
+    </ClCompile>
+    <ClCompile Include="GRT\ContextModules\Gate.cpp">
+      <Filter>GRT</Filter>
+    </ClCompile>
+    <ClCompile Include="GRT\DataStructures\LabelledClassificationData.cpp">
+      <Filter>GRT</Filter>
+    </ClCompile>
+    <ClCompile Include="GRT\DataStructures\LabelledClassificationSample.cpp">
+      <Filter>GRT</Filter>
+    </ClCompile>
+    <ClCompile Include="GRT\DataStructures\LabelledContinuousTimeSeriesClassificationData.cpp">
+      <Filter>GRT</Filter>
+    </ClCompile>
+    <ClCompile Include="GRT\DataStructures\LabelledRegressionData.cpp">
+      <Filter>GRT</Filter>
+    </ClCompile>
+    <ClCompile Include="GRT\DataStructures\LabelledRegressionSample.cpp">
+      <Filter>GRT</Filter>
+    </ClCompile>
+    <ClCompile Include="GRT\DataStructures\LabelledTimeSeriesClassificationData.cpp">
+      <Filter>GRT</Filter>
+    </ClCompile>
+    <ClCompile Include="GRT\DataStructures\LabelledTimeSeriesClassificationSample.cpp">
+      <Filter>GRT</Filter>
+    </ClCompile>
+    <ClCompile Include="GRT\DataStructures\UnlabelledClassificationData.cpp">
+      <Filter>GRT</Filter>
+    </ClCompile>
+    <ClCompile Include="GRT\FeatureExtractionModules\FFT\FastFourierTransform.cpp">
+      <Filter>GRT</Filter>
+    </ClCompile>
+    <ClCompile Include="GRT\FeatureExtractionModules\FFT\FFT.cpp">
+      <Filter>GRT</Filter>
+    </ClCompile>
+    <ClCompile Include="GRT\FeatureExtractionModules\FFT\FFTFeatures.cpp">
+      <Filter>GRT</Filter>
+    </ClCompile>
+    <ClCompile Include="GRT\FeatureExtractionModules\KMeansQuantizer\KMeansQuantizer.cpp">
+      <Filter>GRT</Filter>
+    </ClCompile>
+    <ClCompile Include="GRT\FeatureExtractionModules\MovementIndex\MovementIndex.cpp">
+      <Filter>GRT</Filter>
+    </ClCompile>
+    <ClCompile Include="GRT\FeatureExtractionModules\MovementTrajectoryFeatures\MovementTrajectoryFeatures.cpp">
+      <Filter>GRT</Filter>
+    </ClCompile>
+    <ClCompile Include="GRT\FeatureExtractionModules\PCA\PrincipalComponentAnalysis.cpp">
+      <Filter>GRT</Filter>
+    </ClCompile>
+    <ClCompile Include="GRT\FeatureExtractionModules\PeakDetection.cpp">
+      <Filter>GRT</Filter>
+    </ClCompile>
+    <ClCompile Include="GRT\FeatureExtractionModules\TimeDomainFeatures\TimeDomainFeatures.cpp">
+      <Filter>GRT</Filter>
+    </ClCompile>
+    <ClCompile Include="GRT\FeatureExtractionModules\TimeseriesBuffer\TimeseriesBuffer.cpp">
+      <Filter>GRT</Filter>
+    </ClCompile>
+    <ClCompile Include="GRT\FeatureExtractionModules\ZeroCrossingCounter\ZeroCrossingCounter.cpp">
+      <Filter>GRT</Filter>
+    </ClCompile>
+    <ClCompile Include="GRT\GestureRecognitionPipeline\Classifier.cpp">
+      <Filter>GRT</Filter>
+    </ClCompile>
+    <ClCompile Include="GRT\GestureRecognitionPipeline\Context.cpp">
+      <Filter>GRT</Filter>
+    </ClCompile>
+    <ClCompile Include="GRT\GestureRecognitionPipeline\FeatureExtraction.cpp">
+      <Filter>GRT</Filter>
+    </ClCompile>
+    <ClCompile Include="GRT\GestureRecognitionPipeline\GestureRecognitionPipeline.cpp">
+      <Filter>GRT</Filter>
+    </ClCompile>
+    <ClCompile Include="GRT\GestureRecognitionPipeline\GRTBase.cpp">
+      <Filter>GRT</Filter>
+    </ClCompile>
+    <ClCompile Include="GRT\GestureRecognitionPipeline\PostProcessing.cpp">
+      <Filter>GRT</Filter>
+    </ClCompile>
+    <ClCompile Include="GRT\GestureRecognitionPipeline\PreProcessing.cpp">
+      <Filter>GRT</Filter>
+    </ClCompile>
+    <ClCompile Include="GRT\GestureRecognitionPipeline\Regressifier.cpp">
+      <Filter>GRT</Filter>
+    </ClCompile>
+    <ClCompile Include="GRT\PostProcessingModules\ClassLabelChangeFilter.cpp">
+      <Filter>GRT</Filter>
+    </ClCompile>
+    <ClCompile Include="GRT\PostProcessingModules\ClassLabelFilter.cpp">
+      <Filter>GRT</Filter>
+    </ClCompile>
+    <ClCompile Include="GRT\PostProcessingModules\ClassLabelTimeoutFilter.cpp">
+      <Filter>GRT</Filter>
+    </ClCompile>
+    <ClCompile Include="GRT\PreProcessingModules\DeadZone.cpp">
+      <Filter>GRT</Filter>
+    </ClCompile>
+    <ClCompile Include="GRT\PreProcessingModules\Derivative.cpp">
+      <Filter>GRT</Filter>
+    </ClCompile>
+    <ClCompile Include="GRT\PreProcessingModules\DoubleMovingAverageFilter.cpp">
+      <Filter>GRT</Filter>
+    </ClCompile>
+    <ClCompile Include="GRT\PreProcessingModules\HighPassFilter.cpp">
+      <Filter>GRT</Filter>
+    </ClCompile>
+    <ClCompile Include="GRT\PreProcessingModules\LowPassFilter.cpp">
+      <Filter>GRT</Filter>
+    </ClCompile>
+    <ClCompile Include="GRT\PreProcessingModules\MovingAverageFilter.cpp">
+      <Filter>GRT</Filter>
+    </ClCompile>
+    <ClCompile Include="GRT\PreProcessingModules\SavitzkyGolayFilter.cpp">
+      <Filter>GRT</Filter>
+    </ClCompile>
+    <ClCompile Include="GRT\RegressionModules\ArtificialNeuralNetworks\MLP\MLP.cpp">
+      <Filter>GRT</Filter>
+    </ClCompile>
+    <ClCompile Include="GRT\RegressionModules\ArtificialNeuralNetworks\MLP\Neuron.cpp">
+      <Filter>GRT</Filter>
+    </ClCompile>
+    <ClCompile Include="GRT\RegressionModules\LinearRegression\LinearRegression.cpp">
+      <Filter>GRT</Filter>
+    </ClCompile>
+    <ClCompile Include="GRT\RegressionModules\LogisticRegression\LogisticRegression.cpp">
+      <Filter>GRT</Filter>
+    </ClCompile>
+    <ClCompile Include="GRT\Util\Cholesky.cpp">
+      <Filter>GRT</Filter>
+    </ClCompile>
+    <ClCompile Include="GRT\Util\DebugLog.cpp">
+      <Filter>GRT</Filter>
+    </ClCompile>
+    <ClCompile Include="GRT\Util\EigenvalueDecomposition.cpp">
+      <Filter>GRT</Filter>
+    </ClCompile>
+    <ClCompile Include="GRT\Util\ErrorLog.cpp">
+      <Filter>GRT</Filter>
+    </ClCompile>
+    <ClCompile Include="GRT\Util\LabelledTimeSeriesClassificationSampleTrimmer.cpp">
+      <Filter>GRT</Filter>
+    </ClCompile>
+    <ClCompile Include="GRT\Util\LUDecomposition.cpp">
+      <Filter>GRT</Filter>
+    </ClCompile>
+    <ClCompile Include="GRT\Util\MatrixDouble.cpp">
+      <Filter>GRT</Filter>
+    </ClCompile>
+    <ClCompile Include="GRT\Util\RangeTracker.cpp">
+      <Filter>GRT</Filter>
+    </ClCompile>
+    <ClCompile Include="GRT\Util\SVD.cpp">
+      <Filter>GRT</Filter>
+    </ClCompile>
+    <ClCompile Include="GRT\Util\TestingLog.cpp">
+      <Filter>GRT</Filter>
+    </ClCompile>
+    <ClCompile Include="GRT\Util\TrainingDataRecordingTimer.cpp">
+      <Filter>GRT</Filter>
+    </ClCompile>
+    <ClCompile Include="GRT\Util\TrainingLog.cpp">
+      <Filter>GRT</Filter>
+    </ClCompile>
+    <ClCompile Include="GRT\Util\Util.cpp">
+      <Filter>GRT</Filter>
+    </ClCompile>
+    <ClCompile Include="GRT\Util\WarningLog.cpp">
+      <Filter>GRT</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GrabProxie.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GRT_Recognizer.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\MouseControl.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nite_HandTracker.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\openniProxie.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Static_Recognizer.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\testApp.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{d8376475-7454-4a24-b08a-aac121d3ad6f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GRT">
+      <UniqueIdentifier>{ac686527-0bfa-44ed-b7c5-de7a7ae777eb}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GRT\ClassificationModules\AdaBoost\AdaBoost.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\ClassificationModules\AdaBoost\AdaBoostClassModel.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\ClassificationModules\AdaBoost\WeakClassifiers\DecisionStump.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\ClassificationModules\AdaBoost\WeakClassifiers\RadialBasisFunction.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\ClassificationModules\AdaBoost\WeakClassifiers\WeakClassifier.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\ClassificationModules\ANBC\ANBC.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\ClassificationModules\ANBC\ANBC_Model.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\ClassificationModules\BAG\BAG.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\ClassificationModules\DTW\DTW.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\ClassificationModules\GMM\GMM.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\ClassificationModules\GMM\MixtureModel.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\ClassificationModules\HMM\HiddenMarkovModel.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\ClassificationModules\HMM\HMM.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\ClassificationModules\KNN\KNN.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\ClassificationModules\LDA\LDA.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\ClassificationModules\MinDist\MinDist.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\ClassificationModules\MinDist\MinDistModel.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\ClassificationModules\Softmax\Softmax.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\ClassificationModules\Softmax\SoftmaxModel.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\ClassificationModules\SVM\LIBSVM\libsvm.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\ClassificationModules\SVM\SVM.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\ClusteringModules\GaussianMixtureModels\GaussianMixtureModels.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\ClusteringModules\KMeans\KMeans.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\ContextModules\Gate.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\DataStructures\LabelledClassificationData.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\DataStructures\LabelledClassificationSample.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\DataStructures\LabelledContinuousTimeSeriesClassificationData.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\DataStructures\LabelledRegressionData.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\DataStructures\LabelledRegressionSample.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\DataStructures\LabelledTimeSeriesClassificationData.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\DataStructures\LabelledTimeSeriesClassificationSample.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\DataStructures\TimeSeriesPositionTracker.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\DataStructures\UnlabelledClassificationData.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\FeatureExtractionModules\FFT\FastFourierTransform.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\FeatureExtractionModules\FFT\FFT.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\FeatureExtractionModules\FFT\FFTFeatures.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\FeatureExtractionModules\KMeansQuantizer\KMeansQuantizer.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\FeatureExtractionModules\MovementIndex\MovementIndex.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\FeatureExtractionModules\MovementTrajectoryFeatures\MovementTrajectoryFeatures.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\FeatureExtractionModules\PCA\PrincipalComponentAnalysis.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\FeatureExtractionModules\PeakDetection.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\FeatureExtractionModules\TimeDomainFeatures\TimeDomainFeatures.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\FeatureExtractionModules\TimeseriesBuffer\TimeseriesBuffer.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\FeatureExtractionModules\ZeroCrossingCounter\ZeroCrossingCounter.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\GestureRecognitionPipeline\Classifier.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\GestureRecognitionPipeline\Context.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\GestureRecognitionPipeline\FeatureExtraction.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\GestureRecognitionPipeline\GestureRecognitionPipeline.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\GestureRecognitionPipeline\GRTBase.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\GestureRecognitionPipeline\MLBase.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\GestureRecognitionPipeline\PostProcessing.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\GestureRecognitionPipeline\PreProcessing.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\GestureRecognitionPipeline\Regressifier.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\GRT.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\PostProcessingModules\ClassLabelChangeFilter.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\PostProcessingModules\ClassLabelFilter.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\PostProcessingModules\ClassLabelTimeoutFilter.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\PreProcessingModules\DeadZone.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\PreProcessingModules\Derivative.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\PreProcessingModules\DoubleMovingAverageFilter.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\PreProcessingModules\HighPassFilter.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\PreProcessingModules\LowPassFilter.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\PreProcessingModules\MovingAverageFilter.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\PreProcessingModules\SavitzkyGolayFilter.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\RegressionModules\ArtificialNeuralNetworks\MLP\MLP.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\RegressionModules\ArtificialNeuralNetworks\MLP\Neuron.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\RegressionModules\LinearRegression\LinearRegression.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\RegressionModules\LogisticRegression\LogisticRegression.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\Util\Cholesky.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\Util\CircularBuffer.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\Util\ClassificationResult.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\Util\ClassTracker.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\Util\DebugLog.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\Util\EigenvalueDecomposition.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\Util\ErrorLog.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\Util\FileParser.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\Util\GRTCommon.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\Util\GRTTypedefs.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\Util\GRTVersionInfo.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\Util\IndexedDouble.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\Util\LabelledTimeSeriesClassificationSampleTrimmer.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\Util\Log.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\Util\LUDecomposition.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\Util\Matrix.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\Util\MatrixDouble.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\Util\MinMax.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\Util\Observer.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\Util\ObserverManager.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\Util\Random.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\Util\RangeTracker.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\Util\SVD.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\Util\TestingLog.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\Util\TestResult.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\Util\Timer.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\Util\TrainingDataRecordingTimer.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\Util\TrainingLog.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\Util\TrainingResult.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\Util\Util.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="GRT\Util\WarningLog.h">
+      <Filter>GRT</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GrabProxie.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GRT_Recognizer.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\MouseControl.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nite_HandTracker.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\NiteSampleUtilities.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\openniProxie.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Static_Recognizer.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\testApp.h">
+      <Filter>src</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="icon.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
+  </ItemGroup>
+</Project>
