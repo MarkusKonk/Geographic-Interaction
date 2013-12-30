@@ -330,6 +330,32 @@ position: 'topleft',
 		e.layer.setStyle({});
 		
       });  
+	  
+	var isCtrl = false;
+	$(document).keyup(function (e) {
+	if(e.which == 17) 
+		isCtrl=false;
+	}).keydown(function (e) {
+    if(e.which == 17) 
+		isCtrl=true;
+    if(e.which == 81 && isCtrl == true) {
+        alert('One possible shortcut');
+ 	return false;
+ }
+});
+
+	var isCtrl = false;
+	$(document).keyup(function (e) {
+	if(e.which == 17) 
+		isCtrl=false;
+	}).keydown(function (e) {
+    if(e.which == 17) 
+		isCtrl=true;
+    if(e.which == 83 && isCtrl == true) {
+        alert('Another possible shortcut');
+ 	return false;
+ }
+});
   
  </script>
  	<!--<div align="center">
