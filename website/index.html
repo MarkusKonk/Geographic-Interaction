@@ -238,6 +238,28 @@ map.addLayer(drawnItems);
 // Set the title to show on the polygon button
 L.drawLocal.draw.toolbar.buttons.polygon = 'Draw a polygon!';
 
+
+	var isCtrl = false;
+	var isShift=false
+	$(document).keyup(function (e) {
+	if(e.which == 17) 
+		isCtrl=false;
+	}).keyup(function (e) {
+	if(e.which == 16) 
+		isCtrl=false;
+	})
+	.keydown(function (e) {
+    if(e.which == 17) 
+		isCtrl=true;
+	if(e.which == 16) 
+		isShift=true;	
+    if(e.which == 81 && isCtrl == true && isShift == true) {
+        new L.Draw.Marker(map, drawControl.options.marker).enable( )// to invoke draw Marker command 
+ 	return false;
+ }
+});
+
+
 var drawControl = new L.Control.Draw({
 position: 'topleft',
 	draw: {
@@ -336,18 +358,7 @@ position: 'topleft',
 		
       });  
 	  
-	var isCtrl = false;
-	$(document).keyup(function (e) {
-	if(e.which == 17) 
-		isCtrl=false;
-	}).keydown(function (e) {
-    if(e.which == 17) 
-		isCtrl=true;
-    if(e.which == 81 && isCtrl == true) {
-        alert('One possible shortcut');
- 	return false;
- }
-});
+
 
 	var isCtrl = false;
 	$(document).keyup(function (e) {

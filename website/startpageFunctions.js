@@ -306,3 +306,5 @@ document.getElementById("des1").innerHTML=projects[i].Description;
 }
 sidebarProjects.show();
 }
+
+
