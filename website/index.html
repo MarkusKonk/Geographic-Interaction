@@ -97,7 +97,7 @@
 	</div>
 	
 	<button type="button" onclick="sendUserComments()">Submit Comments</button>
-	<input TYPE="RESET" VALUE="Clear">
+	<button type="button" onclick="clearForm()">Clear</button>
 	
 	<div id="sidebarCommentsTable"></div>
 
@@ -157,6 +157,12 @@ function sendUserComments(){
 	UComment =document.getElementById('usercomment').value;
 	addUserComments(Fid,Ftype,UComment);
 }
+
+function clearForm(){
+	document.getElementById('featuretype').value = '';
+	document.getElementById('usercomment').value = '';
+}
+
 callPoints();
 callLines();
 
