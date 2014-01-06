@@ -1,0 +1,31 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+</head>
+<body>
+ 
+<div id="dialog" title="Point Information">
+<div>
+<form action="point_data.php" method="get">
+<br> Point Name: * <br> <input type="text" SIZE=30 name="id" required><br>
+ <br> Website URL: <INPUT type="url" SIZE=30 NAME="url"><br>
+  <br>Notes : <input style="width: 300px; height: 150px;" name="note"><br><br><br> 
+  
+  <input type="submit" VALUE="   Submit    ">
+  <INPUT TYPE="RESET" VALUE="   Clear    ">
+
+</form>
+</div>
+    
+    
+</div>
+ 
+<script>
+$( "#dialog" ).dialog({ autoOpen: true , width: 350 });
+</script>
+ 
+</body>
+</html>

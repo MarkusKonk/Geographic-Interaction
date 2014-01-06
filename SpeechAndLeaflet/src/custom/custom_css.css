@@ -1,0 +1,290 @@
+/* Header, Footer------------------------- */
+    
+#header {
+    position: static !important;
+    margin-bottom: 50;
+}
+
+footer {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+/* Bootstrap------------------------- */
+
+/*  Off Canvas* --------------------------------------------------*/
+@media screen and(max-width: 768px) {
+    .row-offcanvas {
+        position: relative;
+        -webkit-transition: all 0.25s ease-out;
+        -moz-transition: all 0.25s ease-out;
+        transition: all 0.25s ease-out;
+    }
+
+    .row-offcanvas-right .sidebar-offcanvas {
+        right: -50%;
+                /* 6 columns */;
+    }
+
+    .row-offcanvas-left .sidebar-offcanvas {
+        left: -50%;
+                /* 6 columns */;
+    }
+
+    .row-offcanvas-right.active {
+        right: 50%;
+                /* 6 columns */;
+    }
+
+    .row-offcanvas-left.active {
+        left: 50%;
+                /* 6 columns */;
+    }
+
+    .sidebar-offcanvas {
+        position: absolute;
+        top: 0;
+        width: 50%;
+                /* 6 columns */;
+    };
+}
+        
+        
+        
+        
+/* Map and Map controls------------------------- */
+       
+#vertical {
+    height: 100%;
+    border-left: 2px solid blue;
+    position: absolute;
+    left: 50%;
+    z-index: 50;
+}
+
+#horizontal {
+    width: 100%;
+    border-top: 2px solid blue;
+    position: absolute;
+    top: 50%;
+    z-index: 50;
+}
+
+#map {
+    height: calc(100% - 50px);
+    position: absolute;
+    top:50;
+    left: 0;
+    right: 0;
+    bottom:0;
+}
+
+
+#description {
+    font-style: italic;
+    color: #AAA;
+    margin-bottom: 30px;
+}
+
+#map.leaflet-fullscreen {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.leaflet-control-layers {
+    box-shadow: 0 1px 7px rgba(0,0,0,0.4);
+    background: #f8f8f9;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    overflow: overlay;
+    max-height: 200px;
+}
+
+.leaflet-control-zoomslider-body {
+    position: relative;
+    left: 0px;
+    width: 20px;
+    border: solid #fff;
+    border-width: 0px 9px 0px 9px;
+    background-color: black;
+    margin: 0 auto;
+}
+
+.leaflet-control-zoomslider {
+    position: relative;
+    left: 0px;
+}
+
+.leaflet-control-fullscreen {
+    background-image: url(../leaflet.zoomfs/icon-fullscreen.png);
+    left: 2px;
+}
+
+.leaflet-control-zoom {
+    left: 2px;
+}
+
+.leaflet-control-zoom-in {
+    visibility: hidden;
+}
+
+.leaflet-control-zoom-out {
+    visibility: hidden;
+}
+
+.leaflet-control-zoom {
+    height: 26px;
+    width: 28px;
+}
+
+.leaflet-control-measure a {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    width: 26px;
+    height: 26px;
+    display: block;
+    text-align: center;
+    color: #ccc;
+    text-decoration: none;
+    font: bold 25px/25px Arial,Helvetica,sans-serif;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+}
+        
+.leaflet-control.enabled a {
+    background-color: yellow;
+}        
+        
+/*uncomment this to hide the zoom in/out part of slider widget
+/*
+.leaflet-control-zoomslider-in {
+    visibility: hidden;
+}
+        
+.leaflet-control-zoomslider-out {
+    visibility: hidden;
+}
+*/
+
+
+
+/* Buttons------------------------- */
+        
+        
+#sidebar_button {
+    position: fixed;
+    bottom: 210px;
+    left: 60px;
+    height: 25px;
+    width: 150px;
+    background-color: GreenYellow;
+}
+
+#sidebar_button_speech {
+    position: fixed;
+    bottom: 240px;
+    left: 60px;
+    height: 25px;
+    width: 150px;
+    background-color: GreenYellow;
+}
+
+#projects_button {
+    position: fixed;
+    bottom: 270px;
+    left: 60px;
+    height: 25px;
+    width: 150px;
+    background-color: GreenYellow;
+}
+
+#start_button {
+    float: left;
+    margin-bottom: 0px;
+}
+
+#LayerOnStreet {
+    float: left;
+    margin-bottom: 10px;
+}
+
+#LayerOffStreet {
+    float: left;
+    margin-bottom: 10px;
+}
+
+#LayerOnPopStructure {
+    float: left;
+    margin-bottom: 10px;
+}
+
+#LayerOffPopStructure {
+    float: left;
+    margin-bottom: 10px;
+    #text {
+                float: left;
+}
+        }
+
+#command_animation {
+    position: absolute;
+    z-index: 20;
+    text-align: center;
+    top: 50%;
+    left: 45%;
+    font-family: Georgia, serif;
+    font-style: italic;
+}
+
+hr {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border: 0;
+    border-top: 1px solid #eee;
+}
+
+.sidebar {
+    text-align: center;
+    font: 14px/16px Arial, Helvetica, sans-serif;
+    background: white;
+    background: rgba(255,255,255,0.85);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-radius: 5px;
+}
+
+.SidebarBorder {
+    position: absolute;
+    text-align: center;
+    color: gray;
+    font-size: large;
+    font-weight: bold;
+    border-right: solid;
+    border-right-color: rgb(180,180,180);
+    border-right-Width: 2px;
+}
+
+.SidebarTitle {
+    font: 16px/18px Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    margin-top: 6%;
+    margin-bottom: 7px;
+}
+
+.SidebarContent {
+    overflow-y: auto;
+}
+
+.SidebarItem {
+    border: solid;
+    border-width: 1px;
+    margin: 4px;
+    margin: 4px;
+}    
