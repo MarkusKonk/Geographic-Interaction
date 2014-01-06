@@ -156,6 +156,8 @@ function sendUserComments(){
 	Ftype =document.getElementById('featuretype').value;
 	UComment =document.getElementById('usercomment').value;
 	addUserComments(Fid,Ftype,UComment);
+	document.getElementById('featuretype').value = '';
+	document.getElementById('usercomment').value = '';
 }
 
 function clearForm(){

@@ -189,7 +189,7 @@ xmlhttp.onreadystatechange=function()
 		}
 		
 		var container = $('<div />');	
-		container.html('Name: '+obj[i].Name+' Description: <br> '+obj[i].Description+' <br>'+"Roadtype: " + roadType + ' <br>' +"<a href='#' font-size=30 ></a>"+ '&#09' +"<button type='button' onclick='deleteLine("+obj[i].ID+")' style='align:left;'>Delete</button>"+ '&#09' +"<a href='#' onclick='AddComment("+obj[i].ID+")' font-size=30 >  Add Comment </a>");
+		container.html('Name: '+obj[i].Name+' Description: <br> '+obj[i].Description+' <br>'+"Roadtype: " + roadType + ' <br>' +"<a href='#' font-size=30 ></a>"+ '&#09' +"<button type='button' onclick='deleteLine("+obj[i].ID+")' style='align:left;'>Delete</button>"+ '&#09' +"<button type='button' onclick='AddComment("+obj[i].ID+")' font-size=30 > Comments </button>");
 		//container.html('Name: '+obj[i].Name+' Description: <br> '+obj[i].Description+' <br>'+"Roadtype: " + roadType + ' <br>' +"<a href='#' font-size=30 ></a>"+ '&#09' +"<button type='button' onclick='deleteLine("+obj[i].ID+")' style='align:left;'>Delete</button>");
 		//	  		container.html('Coordination of '+obj[i].Name+' is: <br> '+obj[i].Coord+' <br>'+' Description: <br> '+obj[i].Description+' <br>'+"<a href='#' font-size=30 > Website</a>"+ '&#09' +"<button type='button' onclick='confirmation("+obj[i].ID+")' style='align:left;'>Delete</button>"+ '&#09' +"<a href='#' onClick=window.open('editform.html','mywindow','width=400,height=250,left=200,top=100') font-size=30 >  Edit</a>");
 		polyline.bindPopup(container[0]);
@@ -257,7 +257,7 @@ function addUserComments(FID,FType,UComment){
 		UComment:UComment
 		}
 		);		
-		alert("Thank you , We have Received your comments !!") ;
+		alert("Thank you, we have received your comment!") ;
 		sidebarComments.hide();
 }
 
