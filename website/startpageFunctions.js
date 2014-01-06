@@ -212,9 +212,14 @@ $.post("database_deleteLine.php?",
 			function(){javascript:location.reload()}
 		);
 }
+
+var currentID;
 function AddComment(id){
-document.getElementById('featureid').value = id;
-sidebarComments.show();
+	currentID = id;
+	sidebarComments.show();
+	$.get( "AddandDisplayComments.php?fid="+id, function( data ) {
+		document.getElementById('sidebarCommentsTable').innerHTML = data;
+	});
 }
 
 function addPointAttributes(name,des){

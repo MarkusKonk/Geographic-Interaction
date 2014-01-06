@@ -88,13 +88,18 @@
 </div>
 
  <div id="sidebarComments"> 
- 	  
-	<input type="hidden" name="featureid" id = "featureid" size="40" length="40" value=""><BR>
-	<BR>User Name: <input type="text" id = "featuretype" name="featuretype" size="40" length="40" value=""><BR>	
-	<br> User Comment :<br> <input id="usercomment" style="width: 300px; height: 150px;" name="description"><br> 
+	
+	<b><font color="#0080C0">Add new comment</font></b>
+	<div id="AddComment" style="border: 1px solid #75C0BF; margin = 4"> 
+	<input type="hidden" name="featureid" id = "featureid" size="40" length="40" value="">
+	<br> Citizen Name: <input type="text" id = "featuretype" name="featuretype" size="40" value=""><BR>	
+	<br> User Comment :<br> <textarea id="usercomment" style="width: 300px; height: 150px;" name="description"></textarea><br> 
+	</div>
 	
 	<button type="button" onclick="sendUserComments()">Submit Comments</button>
 	<input TYPE="RESET" VALUE="Clear">
+	
+	<div id="sidebarCommentsTable"></div>
 
 </div>
 
@@ -147,7 +152,7 @@ function al(){
 	addLineAttributes(name,des,document.getElementById('main').checked);
 }
 function sendUserComments(){
-	Fid=document.getElementById('featureid').value;
+	Fid=currentID;
 	Ftype =document.getElementById('featuretype').value;
 	UComment =document.getElementById('usercomment').value;
 	addUserComments(Fid,Ftype,UComment);
