@@ -232,14 +232,15 @@ layerOSM.addTo(map);
 
 //Map control: Layer switcher
 var baseMaps={ "OSM": layerOSM,
-               "arial view": layerOrtho,
-			   "DTK10":layerDTK10
+               "arial view": layerOrtho
+			   //"DTK10":layerDTK10
                };
 var overlapMaps={"OSM":layerOSMtransparent,
-                  "DVG":layerDVG,
-				  "DTK10_pan":layerDTK10_pan,
-				  "DGK5":layerDGK5};
-var control=L.control.layers(baseMaps,overlapMaps,{position:'bottomleft'}).addTo(map);
+                  "DVG":layerDVG
+				  //"DTK10_pan":layerDTK10_pan,
+				  //"DGK5":layerDGK5
+				  };
+var control=L.control.layers(baseMaps,overlapMaps,{position:'bottomleft',collapsed:false}).addTo(map);
 //----------- Adding drawing , editing and measurement tools in addition to mini Map  --------------------
 var drawnItems = new L.FeatureGroup();
 map.addLayer(drawnItems);
