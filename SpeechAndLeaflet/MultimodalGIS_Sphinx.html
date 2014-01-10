@@ -68,22 +68,24 @@
     </div>
     <div id="command_animation"></div>
 	
-	<div id="sidebar"> 
+	<div id="sidebarPoint"> 
 		<br> Name:  
-		<input id="pointname" type="text" SIZE=30 name="name" required><br>
-		<br>Description :<br> <input id="pointdes" style="width: 300px; height: 150px;" name="description"><br><br><br> 
+		<input id="pointname" type="text" SIZE=30 name="pointname" required><br>
+		<br>Description :<br> <input id="pointdes" style="width: 300px; height: 150px;" name="pointdescription"><br><br><br> 
 		<button type="button" onclick="ap()">Submit</button>
-		<input TYPE="RESET" VALUE="Clear">
+		<!--<input TYPE="RESET" VALUE="Clear">-->
+		<button type="button" onclick="clearForm()">Clear</button>
 	</div>
 
 	<div id="sidebarLine"> 
 		<br> Name:  
-		<input id="name" type="text" SIZE=30 name="name" required><br>	
-		<br>Description :<br> <input id="des" style="width: 300px; height: 150px;" name="description"><br><br><br> 
-		<input id="main" type="radio" name="Zahlmethode" value="Main"> Planned road<br>
-		<input id="alternative" type="radio" name="Zahlmethode" value="Alternative"> Alternative road<br>  
+		<input id="linename" type="text" SIZE=30 name="linename" required><br>	
+		<br>Description :<br> <input id="linedes" style="width: 300px; height: 150px;" name="linedescription"><br><br><br> 
+		<input id="main" type="radio" name="Linetype" value="Main"> Planned road<br>
+		<input id="alternative" type="radio" name="Linetype" value="Alternative"> Alternative road<br>  
 		<button type="button" onclick="al()">Submit</button>
-		<input TYPE="RESET" VALUE="Clear">
+		<!--<input TYPE="RESET" VALUE="Clear">-->
+		<button type="button" onclick="clearForm()">Clear</button>
 	</div>
 
 	<div id="sidebarComments"> 
@@ -308,8 +310,46 @@
                         Click to restore Overview Minimap
                     </button>
                 </div>
+		
+		<hr>
 
-		<hr>	
+		<!--Layer Controls  -->
+                <div id="text" style="margin-top: 10px;>
+                    <button id="minimizeMinimap" class="btn btn-primary" onclick="controlArialMaps._expand();" class="btn danger">
+                        Click to Enable the LayerControl ArialMaps
+                    </button>
+                </div>	
+                
+                <div id="text" style="margin-top: 10px;>
+                    <button id="resoreMinimap" class="btn btn-primary" onclick="controlArialMaps._collapse();" class="btn danger">
+                        Click to Disable the LayerControl ArialMaps
+                    </button>
+                </div>
+
+				<div id="text" style="margin-top: 10px;>
+                    <button id="minimizeMinimap" class="btn btn-primary" onclick="controlBasemaps._expand();" class="btn danger">
+                        Click to Enable the LayerControl Basemaps
+                    </button>
+                </div>	
+
+                <div id="text" style="margin-top: 10px;>
+                    <button id="resoreMinimap" class="btn btn-primary" onclick="controlBasemaps._collapse();" class="btn danger">
+                        Click to Disable the LayerControl Basemaps
+                    </button>
+                </div>
+				
+				<div id="text" style="margin-top: 10px;>
+                    <button id="minimizeMinimap" class="btn btn-primary" onclick="controlOverlaylayers._expand();" class="btn danger">
+                        Click to Enable the LayerControl Overlaylayers
+                    </button>
+                </div>	
+                
+                <div id="text" style="margin-top: 10px;>
+                    <button id="resoreMinimap" class="btn btn-primary" onclick="controlOverlaylayers._collapse();" class="btn danger">
+                        Click to Disable the LayerControl Overlaylayers
+                    </button>
+                </div>
+		<hr>		
 			
 		<!--Home Extend -->
                 <div id="text" style="margin-top: 10px;>
@@ -328,14 +368,15 @@
 				https://github.com/Leaflet/Leaflet.draw/issues/179 -->
                 <div id="text" style="margin-top: 10px;>
                     <button id="markerdraw" class="btn btn-primary" onclick="new L.Draw.Marker(map).enable();" class="btn danger">
-                        Click to place a Marker on the map
+					<!-- or this way: L.Draw.Marker(map, drawControl.options.marker).enable();    https://github.com/Leaflet/Leaflet.draw/issues/179#issuecomment-26500042 -->
+                        Click to place a point project
                     </button>
                 </div>
 				
 			<!--Drawing Tool - Line -->
                 <div id="text" style="margin-top: 10px;>
                     <button id="linedraw" class="btn btn-primary" onclick="new L.Draw.Polyline(map).enable();" class="btn danger">
-                        Click to start drawing a line
+                        Click place a street project
                     </button>
                 </div>
 				
@@ -363,7 +404,7 @@
 			
 		<hr>
 		<p></p>
-		<h3>Layer Controll</h3>
+		<h3>Layer Control</h3>
 		<p></p>		
 			
 			<!--Layer Controll -->
@@ -388,13 +429,13 @@
 	</div>
 									
 									
-    <div id="text">
+    <div id="Togggle_Speech_Sidebar">
         <button id="sidebar_button_speech" onclick="sidebarSpeech.toggle();">
             Speech/Layer
         </button>
     </div>
 
-    <div id="text">
+    <div id="Togggle_Input_Sidebar">
         <button id="sidebar_button" onclick="sidebar.toggle();">
             Input Sidebar
         </button>
@@ -454,36 +495,54 @@
     <script src="src/Leaflet.measureControl/leaflet.measurecontrol.js"></script>
     <!--https://github.com/makinacorpus/Leaflet.MeasureControl-->
 	<script src="src/Leaflet.geometryUtil/dist/leaflet.geometryutil.js"></script>
-	<!--https://github.com/makinacorpus/Leaflet.GeometryUtil-->
-	<script src="src/Leaflet.almostover/leaflet.almostover.js"></script>
-	<!--https://github.com/makinacorpus/Leaflet.AlmostOver-->
+    <!--https://github.com/makinacorpus/Leaflet.GeometryUtil-->
+    <script src="src/Leaflet.almostover/leaflet.almostover.js"></script>
+    <!--https://github.com/makinacorpus/Leaflet.AlmostOver-->
 	
 	<script src="src/custom/customFunctions.js"></script>
 	<script src="src/speech/sphinx/sphinx_commands.js"></script>
 	<!--cutom ones-->
 	
 	
+	<script>
+	
+	/*Adding Words:
+	var recognizer = new Module.Recognizer();
+	var words = new Module.VectorWords();
+	words.push_back(["LEFT", "L EH F T"]);
+
+	if (recognizer.addWords(words) != Module.ReturnType.SUCCESS)
+		// Probably bad format used for pronunciation
+		alert("Error while adding words");
+		words.delete()
+	*/
 	
 	
 	
-    <script>
+    	
+	
+    
+	
+	
 		
-		var sidebar = L.control.sidebar('sidebar', {
+		 var sidebarPoint = L.control.sidebar('sidebarPoint', {
 			position: 'right'
 		});
 		
-		var sidebarLine = L.control.sidebar('sidebarLine', {
+		 var sidebarLine = L.control.sidebar('sidebarLine', {
 			position: 'right'
 		});
 
-		var sidebarProjects = L.control.sidebar('sidebarProjects', {
+		 var sidebarProjects = L.control.sidebar('sidebarProjects', {
 			position: 'right'
 		});
 
-		var sidebarComments = L.control.sidebar('sidebarComments', {
+		 var sidebarComments = L.control.sidebar('sidebarComments', {
 			position: 'right'
 		});
-				
+		
+
+		
 	
 		//four functions to handle operations in context menue
         function showCoordinates (e) {
@@ -557,7 +616,7 @@
 			});
 		
 		
-		map.addControl(sidebar);
+		map.addControl(sidebarPoint);
 		map.addControl(sidebarLine); 
 		map.addControl(sidebarProjects);
 		map.addControl(sidebarComments)
@@ -568,23 +627,26 @@
 		});
 		map.addControl(sidebarSpeech);
 		
-		
+		//add points
 		function ap(){
-			name=document.getElementById('pointname').value;
-			des =document.getElementById('pointdes').value;
-			addPointAttributes(name,des);
+			pointname=document.getElementById('pointname').value;
+			pointdes =document.getElementById('pointdes').value;
+			addPointAttributes(pointname,pointdes);
 		}
-
+		
+		//add lines
 		function al(){
-			name=document.getElementById('name').value;
-			des =document.getElementById('des').value;
+			linename=document.getElementById('linename').value;
+			linedes =document.getElementById('linedes').value;
 			
 			/*if (document.getElementById('main').checked)
 				type = true;
 			if (document.getElementById('alternative').checked)
 				type = false;*/
-			addLineAttributes(name,des,document.getElementById('main').checked);
+			addLineAttributes(linename,linedes,document.getElementById('main').checked);
 		}
+		
+		//send comments
 		function sendUserComments(){
 			Fid=currentID;
 			Ftype =document.getElementById('featuretype').value;
@@ -594,9 +656,14 @@
 			document.getElementById('usercomment').value = '';
 		}
 		
+		//clear input fields
 		function clearForm(){
 			document.getElementById('featuretype').value = '';
 			document.getElementById('usercomment').value = '';
+			document.getElementById('pointname').value = '';
+			document.getElementById('pointdes').value = '';
+			document.getElementById('linename').value = '';
+			document.getElementById('linedes').value = '';
 		}
 		
 		callPoints();
@@ -793,7 +860,7 @@
 				var coord=coordinates.toString();
 				addPoint(coord);
 				
-            sidebar.show();		
+            sidebarPoint.show();		
 			}
 			 
 			if (type === 'polyline') {
@@ -818,7 +885,6 @@
 	
 		// Add Draw control 
 		map.addControl(drawControl);	
-		
   
 		var circle = L.circleMarker([0, 0], {radius: 5, fillColor: 'white', fillOpacity: 1});
 		var previousColor;	
@@ -932,7 +998,7 @@
 		*/
          // init ViewCenter plugin
         var viewCenter = new L.Control.ViewCenter({
-        }).addTo(map);
+        }).addTo(map);;
 
 		
 		

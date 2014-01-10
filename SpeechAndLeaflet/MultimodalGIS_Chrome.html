@@ -21,9 +21,9 @@
     <link rel="stylesheet" href="src/Leaflet.contextmenu/leaflet.contextmenu.css" />
     <link rel="stylesheet" href="src/Leaflet.draw/leaflet.draw.css" />
     <link rel="stylesheet" href="src/Leaflet.measureControl/leaflet.measurecontrol.css" />
-	
-	<link rel="stylesheet" href="src/custom/custom_css.css"/>
-	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+    
+    <link rel="stylesheet" href="src/custom/custom_css.css"/>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
 	
 	
     
@@ -68,22 +68,24 @@
     </div>
 	<div id="command_animation"></div>
 	
-	<div id="sidebar"> 
+	<div id="sidebarPoint"> 
 		<br> Name:  
-		<input id="pointname" type="text" SIZE=30 name="name" required><br>
-		<br>Description :<br> <input id="pointdes" style="width: 300px; height: 150px;" name="description"><br><br><br> 
+		<input id="pointname" type="text" SIZE=30 name="pointname" required><br>
+		<br>Description :<br> <input id="pointdes" style="width: 300px; height: 150px;" name="pointdescription"><br><br><br> 
 		<button type="button" onclick="ap()">Submit</button>
-		<input TYPE="RESET" VALUE="Clear">
+		<!--<input TYPE="RESET" VALUE="Clear">-->
+		<button type="button" onclick="clearForm()">Clear</button>
 	</div>
 
 	<div id="sidebarLine"> 
 		<br> Name:  
-		<input id="name" type="text" SIZE=30 name="name" required><br>	
-		<br>Description :<br> <input id="des" style="width: 300px; height: 150px;" name="description"><br><br><br> 
-		<input id="main" type="radio" name="Zahlmethode" value="Main"> Planned road<br>
-		<input id="alternative" type="radio" name="Zahlmethode" value="Alternative"> Alternative road<br>  
+		<input id="linename" type="text" SIZE=30 name="linename" required><br>	
+		<br>Description :<br> <input id="linedes" style="width: 300px; height: 150px;" name="linedescription"><br><br><br> 
+		<input id="main" type="radio" name="Linetype" value="Main"> Planned road<br>
+		<input id="alternative" type="radio" name="Linetype" value="Alternative"> Alternative road<br>  
 		<button type="button" onclick="al()">Submit</button>
-		<input TYPE="RESET" VALUE="Clear">
+		<!--<input TYPE="RESET" VALUE="Clear">-->
+		<button type="button" onclick="clearForm()">Clear</button>
 	</div>
 
 	<div id="sidebarComments"> 
@@ -309,6 +311,44 @@
                     </button>
                 </div>
 
+		<hr>
+
+		<!--Layer Controls  -->
+                <div id="text" style="margin-top: 10px;>
+                    <button id="minimizeMinimap" class="btn btn-primary" onclick="controlArialMaps._expand();" class="btn danger">
+                        Click to Enable the LayerControl ArialMaps
+                    </button>
+                </div>	
+                
+                <div id="text" style="margin-top: 10px;>
+                    <button id="resoreMinimap" class="btn btn-primary" onclick="controlArialMaps._collapse();" class="btn danger">
+                        Click to Disable the LayerControl ArialMaps
+                    </button>
+                </div>
+
+				<div id="text" style="margin-top: 10px;>
+                    <button id="minimizeMinimap" class="btn btn-primary" onclick="controlBasemaps._expand();" class="btn danger">
+                        Click to Enable the LayerControl Basemaps
+                    </button>
+                </div>	
+
+                <div id="text" style="margin-top: 10px;>
+                    <button id="resoreMinimap" class="btn btn-primary" onclick="controlBasemaps._collapse();" class="btn danger">
+                        Click to Disable the LayerControl Basemaps
+                    </button>
+                </div>
+				
+				<div id="text" style="margin-top: 10px;>
+                    <button id="minimizeMinimap" class="btn btn-primary" onclick="controlOverlaylayers._expand();" class="btn danger">
+                        Click to Enable the LayerControl Overlaylayers
+                    </button>
+                </div>	
+                
+                <div id="text" style="margin-top: 10px;>
+                    <button id="resoreMinimap" class="btn btn-primary" onclick="controlOverlaylayers._collapse();" class="btn danger">
+                        Click to Disable the LayerControl Overlaylayers
+                    </button>
+                </div>
 		<hr>	
 			
 		<!--Home Extend -->
@@ -453,32 +493,22 @@
     <!--https://github.com/Leaflet/Leaflet.draw -->
     <script src="src/Leaflet.measureControl/leaflet.measurecontrol.js"></script>
     <!--https://github.com/makinacorpus/Leaflet.MeasureControl-->
-	<script src="src/Leaflet.geometryUtil/dist/leaflet.geometryutil.js"></script>
-	<!--https://github.com/makinacorpus/Leaflet.GeometryUtil-->
-	<script src="src/Leaflet.almostover/leaflet.almostover.js"></script>
-	<!--https://github.com/makinacorpus/Leaflet.AlmostOver-->
-	
-	<script src="src/custom/customFunctions.js"></script>
-	<script src="src/speech/webspeech/webspeech_commands.js"></script>
-	<!--cutom ones-->
-	
-	
-    <script>
-	
-	/*Adding Words:
-	var recognizer = new Module.Recognizer();
-	var words = new Module.VectorWords();
-	words.push_back(["LEFT", "L EH F T"]);
-
-	if (recognizer.addWords(words) != Module.ReturnType.SUCCESS)
-		// Probably bad format used for pronunciation
-		alert("Error while adding words");
-		words.delete()
-	*/
+    <script src="src/Leaflet.geometryUtil/dist/leaflet.geometryutil.js"></script>
+    <!--https://github.com/makinacorpus/Leaflet.GeometryUtil-->
+    <script src="src/Leaflet.almostover/leaflet.almostover.js"></script>
+    <!--https://github.com/makinacorpus/Leaflet.AlmostOver-->
+    
+    <script src="src/custom/customFunctions.js"></script>
+    <script src="src/speech/webspeech/webspeech_commands.js"></script>
+    <!--cutom ones-->
 	
 	
+    
+	
+	
+	<script>
 		
-		 var sidebar = L.control.sidebar('sidebar', {
+		 var sidebarPoint = L.control.sidebar('sidebarPoint', {
 			position: 'right'
 		});
 		
@@ -569,7 +599,7 @@
 			});
 		
 		
-		map.addControl(sidebar);
+		map.addControl(sidebarPoint);
 		map.addControl(sidebarLine); 
 		map.addControl(sidebarProjects);
 		map.addControl(sidebarComments)
@@ -580,23 +610,26 @@
 		});
 		map.addControl(sidebarSpeech);
 		
-		
+		//add points
 		function ap(){
-			name=document.getElementById('pointname').value;
-			des =document.getElementById('pointdes').value;
-			addPointAttributes(name,des);
+			pointname=document.getElementById('pointname').value;
+			pointdes =document.getElementById('pointdes').value;
+			addPointAttributes(pointname,pointdes);
 		}
-
+		
+		//add lines
 		function al(){
-			name=document.getElementById('name').value;
-			des =document.getElementById('des').value;
+			linename=document.getElementById('linename').value;
+			linedes =document.getElementById('linedes').value;
 			
 			/*if (document.getElementById('main').checked)
 				type = true;
 			if (document.getElementById('alternative').checked)
 				type = false;*/
-			addLineAttributes(name,des,document.getElementById('main').checked);
+			addLineAttributes(linename,linedes,document.getElementById('main').checked);
 		}
+		
+		//send comments
 		function sendUserComments(){
 			Fid=currentID;
 			Ftype =document.getElementById('featuretype').value;
@@ -606,9 +639,14 @@
 			document.getElementById('usercomment').value = '';
 		}
 		
+		//clear input fields
 		function clearForm(){
 			document.getElementById('featuretype').value = '';
 			document.getElementById('usercomment').value = '';
+			document.getElementById('pointname').value = '';
+			document.getElementById('pointdes').value = '';
+			document.getElementById('linename').value = '';
+			document.getElementById('linedes').value = '';
 		}
 		
 		callPoints();
@@ -805,7 +843,7 @@
 				var coord=coordinates.toString();
 				addPoint(coord);
 				
-            sidebar.show();		
+            sidebarPoint.show();		
 			}
 			 
 			if (type === 'polyline') {

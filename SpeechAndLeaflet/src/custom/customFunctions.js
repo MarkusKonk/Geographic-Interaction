@@ -27,6 +27,7 @@ else
 var lastIDPoint;
 var lastIDLine;
 
+//add points
 function addPoint(coord,name,des){
 		
 	var latlng = coord.split(',');
@@ -45,11 +46,13 @@ function addPoint(coord,name,des){
     savePoint(name,des,"{Comment1,Comment2}",coordinates);
 };
 
+
 var icon = L.icon({
     iconUrl: 'punkt.png',
     iconSize:     [20, 20], // size of the icon
 });
 
+//save points
 function savePoint(name,des,com,coordinates){
 	$.post(
 		"database_insert.php?",
@@ -60,6 +63,8 @@ function savePoint(name,des,com,coordinates){
 		);		
 }
 
+
+//deleting points
 function deleting(id){
 $.post("database_delete.php?",
 		{ID: id},
@@ -67,6 +72,7 @@ $.post("database_delete.php?",
 		);
 }
 
+//call points
 function callPoints(){
 var xmlhttp;
 if (window.XMLHttpRequest)
@@ -91,8 +97,8 @@ xmlhttp.onreadystatechange=function()
 		
 			.setIcon(icon)				
 			.addTo(map)
-		var container = $('<div />');	
-	  		container.html(obj[i].Name+'<br>'+' Description: <br> '+obj[i].Description+' <br>' +"<button type='button' onclick='confirmation("+obj[i].ID+")' style='align:left;'>Delete</button>"+ '&#09');
+		var container = $('<div />');
+			container.html('<b>Name:</b> '+obj[i].Name+'<br> <b>Description:</b> '+obj[i].Description+' <br>'+"<a href='#' font-size=30 ></a>"+ '&#09' +"<button type='button' onclick='deleting("+obj[i].ID+")' style='align:left;'>Delete</button>"+ '&#09' +"<button type='button' onclick='AddComment("+obj[i].ID+")' font-size=30 > Comments </button>");
 			marker.bindPopup(container[0]);
 			lastIDPoint=parseInt(obj[i].ID);
 			map.almostOver.addLayer(marker);
@@ -105,7 +111,7 @@ xmlhttp.onreadystatechange=function()
 	xmlhttp.send();
 }
 
-
+//add line
 function addLine(coord){
 
 		//var pointname= prompt("Please Enter Point Name: ","");
@@ -132,6 +138,7 @@ function addLine(coord){
 			
 };
 
+//save line
 function saveLine(name,des,com,roadtype,coordinates){
 	$.post(
 		"database_insertLines.php?",
@@ -142,6 +149,7 @@ function saveLine(name,des,com,roadtype,coordinates){
 		);
 }
 
+//for projects
 var projects = new Array();
 function callLines(){
 var xmlhttp;
@@ -189,7 +197,7 @@ xmlhttp.onreadystatechange=function()
 		}
 		
 		var container = $('<div />');	
-		container.html('Name: '+obj[i].Name+' Description: <br> '+obj[i].Description+' <br>'+"Roadtype: " + roadType + ' <br>' +"<a href='#' font-size=30 ></a>"+ '&#09' +"<button type='button' onclick='deleteLine("+obj[i].ID+")' style='align:left;'>Delete</button>"+ '&#09' +"<button type='button' onclick='AddComment("+obj[i].ID+")' font-size=30 > Comments </button>");
+		container.html('<b>Name:</b> '+obj[i].Name+'<br> <b>Description:</b> '+obj[i].Description+' <br>'+"<b>Roadtype:</b> " + roadType + ' <br>' +"<a href='#' font-size=30 ></a>"+ '&#09' +"<button type='button' onclick='deleteLine("+obj[i].ID+")' style='align:left;'>Delete</button>"+ '&#09' +"<button type='button' onclick='AddComment("+obj[i].ID+")' font-size=30 > Comments </button>");
 		//container.html('Name: '+obj[i].Name+' Description: <br> '+obj[i].Description+' <br>'+"Roadtype: " + roadType + ' <br>' +"<a href='#' font-size=30 ></a>"+ '&#09' +"<button type='button' onclick='deleteLine("+obj[i].ID+")' style='align:left;'>Delete</button>");
 		//	  		container.html('Coordination of '+obj[i].Name+' is: <br> '+obj[i].Coord+' <br>'+' Description: <br> '+obj[i].Description+' <br>'+"<a href='#' font-size=30 > Website</a>"+ '&#09' +"<button type='button' onclick='confirmation("+obj[i].ID+")' style='align:left;'>Delete</button>"+ '&#09' +"<a href='#' onClick=window.open('editform.html','mywindow','width=400,height=250,left=200,top=100') font-size=30 >  Edit</a>");
 		polyline.bindPopup(container[0]);
@@ -206,6 +214,7 @@ xmlhttp.onreadystatechange=function()
 	xmlhttp.send();
 }
 
+//delte lines
 function deleteLine(id){
 $.post("database_deleteLine.php?",
 		{ID: id},
@@ -214,6 +223,7 @@ $.post("database_deleteLine.php?",
 }
 
 var currentID;
+//add comments
 function AddComment(id){
 	currentID = id;
 	sidebarComments.show();
@@ -222,6 +232,7 @@ function AddComment(id){
 	});
 }
 
+//add point attributes (name and description)
 function addPointAttributes(name,des){
 	$.post(
 		"database_addPointAttributes.php?",
@@ -230,10 +241,11 @@ function addPointAttributes(name,des){
 		Description:des,		
 		ID:lastIDPoint
 		},
-		function(data){alert(name);javascript:location.reload()}	
+		function(data){alert("Thank you, we've received your (point)-project!");javascript:location.reload()}	
 		);		
 }
 
+//add line attributes (name and description)
 function addLineAttributes(name,des,type){
 	$.post(
 		"database_addLineAttributes.php?",
@@ -243,10 +255,11 @@ function addLineAttributes(name,des,type){
 		Type:type,
 		ID:lastIDLine
 		},
-		function(data){javascript:location.reload()}	
+		function(data){alert("Thank you, we've received your (line)-project!");javascript:location.reload()}	
 		);		
 }
 
+//add user comments 
 function addUserComments(FID,FType,UComment){
 
 	$.post(
