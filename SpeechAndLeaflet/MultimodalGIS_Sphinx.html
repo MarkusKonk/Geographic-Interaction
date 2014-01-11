@@ -806,7 +806,91 @@
             }
         }).addTo(map);
 		
-		
+//Following codeblocks are shortcuts for the functions on the map
+
+//add a marker: ctrl + shift +q
+	var isCtrl = false;
+	var isShift=false
+	$(document).keyup(function (e) {
+	if(e.which == 17) 
+		isCtrl=false;
+	}).keyup(function (e) {
+	if(e.which == 16) 
+		isCtrl=false;
+	})
+	.keydown(function (e) {
+    if(e.which == 17) 
+		isCtrl=true;
+	if(e.which == 16) 
+		isShift=true;	
+    if(e.which == 81 && isCtrl == true && isShift == true) {
+        new L.Draw.Marker(map, drawControl.options.marker).enable()
+ 	return false;
+ }
+});
+
+//add a Line: ctrl + shift + e
+	var isCtrl = false;
+	var isShift=false
+	$(document).keyup(function (e) {
+	if(e.which == 17) 
+		isCtrl=false;
+	}).keyup(function (e) {
+	if(e.which == 16) 
+		isCtrl=false;
+	})
+	.keydown(function (e) {
+    if(e.which == 17) 
+		isCtrl=true;
+	if(e.which == 16) 
+		isShift=true;	
+    if(e.which == 69 && isCtrl == true && isShift == true) {
+       new L.Draw.Polyline(map, drawControl.options.polyline).enable() 
+ 	return false;
+ }
+});
+
+//show projects: ctrl + shift + t
+	var isCtrl = false;
+	var isShift=false
+	$(document).keyup(function (e) {
+	if(e.which == 17) 
+		isCtrl=false;
+	}).keyup(function (e) {
+	if(e.which == 16) 
+		isCtrl=false;
+	})
+	.keydown(function (e) {
+    if(e.which == 17) 
+		isCtrl=true;
+	if(e.which == 16) 
+		isShift=true;	
+    if(e.which == 84 && isCtrl == true && isShift == true) {
+       showProjects(); 
+ 	return false;
+ }
+});
+
+//measure tool: ctrl+shift+m
+	var isCtrl = false;
+	var isShift=false
+	$(document).keyup(function (e) {
+	if(e.which == 17) 
+		isCtrl=false;
+	}).keyup(function (e) {
+	if(e.which == 16) 
+		isCtrl=false;
+	})
+	.keydown(function (e) {
+    if(e.which == 17) 
+		isCtrl=true;
+	if(e.which == 16) 
+		isShift=true;	
+    if(e.which == 77 && isCtrl == true && isShift == true) {
+        L.Control.MeasureControl.toggle();
+ 	return false;
+ }
+});	
 		
 		
 		
@@ -908,32 +992,7 @@
 			e.layer.setStyle({});	
 		});  
 		  
-		var isCtrl = false;
-		$(document).keyup(function (e) {
-		if(e.which == 17) 
-			isCtrl=false;
-		}).keydown(function (e) {
-		if(e.which == 17) 
-			isCtrl=true;
-		if(e.which == 81 && isCtrl == true) {
-			alert('One possible shortcut');
-		return false;
-		}
-		});
 
-		var isCtrl = false;
-		$(document).keyup(function (e) {
-		if(e.which == 17) 
-			isCtrl=false;
-		}).keydown(function (e) {
-		if(e.which == 17) 
-			isCtrl=true;
-		if(e.which == 83 && isCtrl == true) {
-			alert('Another possible shortcut');
-		return false;
-		}
-		});
-		
 	
 							
 
