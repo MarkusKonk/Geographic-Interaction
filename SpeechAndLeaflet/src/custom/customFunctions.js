@@ -310,7 +310,10 @@ map.panBy([50, 0]);
 
 function showProjects(){
 var tag=document.getElementById("sidebarProjectsContent");
-for (var i=projects.length-1;i>projects.length-7;i--){
+var i = projects.length-1;
+//for (var i=projects.length-1;i>projects.length-7;i--)
+while (i>projects.length-10 && projects[i]!=null)
+{
 /*
 	var coordinate = projects[i].Coord.split(',');
 	var longitude = coordinate[0].substr(1,coordinate[0].length-1);
@@ -357,7 +360,9 @@ for (var i=projects.length-1;i>projects.length-7;i--){
 			
 	sidebarContent.appendChild(newProject);	
 	sidebarContent.appendChild(space);
-	tag.appendChild(sidebarContent);	
+	tag.appendChild(sidebarContent);
+
+	i--;	
 	}
 	var closeButton = document.createElement("button");
 		closeButton.onclick=function(){clearSidebar();};
