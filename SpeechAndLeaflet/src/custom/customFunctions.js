@@ -309,6 +309,7 @@ map.panBy([50, 0]);
 }
 
 function showProjects(){
+var tag=document.getElementById("sidebarProjectsContent");
 for (var i=projects.length-1;i>projects.length-7;i--){
 /*
 	var coordinate = projects[i].Coord.split(',');
@@ -318,10 +319,10 @@ for (var i=projects.length-1;i>projects.length-7;i--){
 	document.getElementById("name1").innerHTML=projects[i].Name;
 	document.getElementById("des1").innerHTML=projects[i].Description;
 */
-var tag=document.getElementById("sidebarProjects");
-		var newProject = document.createElement("div");
-		
-		newProject.setAttribute("id","myModal2"+i);
+		var sidebarContent = document.createElement("div");
+		sidebarContent.setAttribute("id","sidebarContent");	
+		var newProject = document.createElement("div");		
+		newProject.setAttribute("id","newProject"+i);
 				var newProjectName = document.createElement("div");
 					var nameText = document.createTextNode("Name: ");							
 					var name = document.createTextNode(projects[i].Name);
@@ -354,8 +355,22 @@ var tag=document.getElementById("sidebarProjects");
 			newProject.appendChild(newProjectButton);
 			newProject.appendChild(space);
 			
-	tag.appendChild(newProject);	
-	tag.appendChild(space);
+	sidebarContent.appendChild(newProject);	
+	sidebarContent.appendChild(space);
+	tag.appendChild(sidebarContent);	
 	}
+	var closeButton = document.createElement("button");
+		closeButton.onclick=function(){clearSidebar();};
+		var buttonContent = document.createTextNode("Close");
+		closeButton.appendChild(buttonContent);
+	tag.appendChild(closeButton);
 sidebarProjects.show();
+}
+
+function clearSidebar(){
+	var list=document.getElementById("sidebarProjectsContent");
+	while (list.firstChild) {
+		list.removeChild(list.firstChild);
+	}
+	sidebarProjects.hide();
 }
