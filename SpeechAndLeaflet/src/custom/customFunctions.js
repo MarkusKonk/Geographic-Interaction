@@ -309,13 +309,53 @@ map.panBy([50, 0]);
 }
 
 function showProjects(){
-for (var i=projects.length-1;i>projects.length-2;i--){
-var coordinate = projects[i].Coord.split(',');
-var longitude = coordinate[0].substr(1,coordinate[0].length-1);
-var latitude = coordinate[1].substr(0,coordinate[1].length-1);
-document.getElementById("button1").onclick=function(){map.setView([latitude,longitude],16);};
-document.getElementById("name1").innerHTML=projects[i].Name;
-document.getElementById("des1").innerHTML=projects[i].Description;
-}
+for (var i=projects.length-1;i>projects.length-7;i--){
+/*
+	var coordinate = projects[i].Coord.split(',');
+	var longitude = coordinate[0].substr(1,coordinate[0].length-1);
+	var latitude = coordinate[1].substr(0,coordinate[1].length-1);
+	document.getElementById("button1").onclick=function(){map.setView([latitude,longitude],16);};
+	document.getElementById("name1").innerHTML=projects[i].Name;
+	document.getElementById("des1").innerHTML=projects[i].Description;
+*/
+var tag=document.getElementById("sidebarProjects");
+		var newProject = document.createElement("div");
+		
+		newProject.setAttribute("id","myModal2"+i);
+				var newProjectName = document.createElement("div");
+					var nameText = document.createTextNode("Name: ");							
+					var name = document.createTextNode(projects[i].Name);
+					newProjectName.appendChild(nameText);
+					newProjectName.appendChild(name);
+				var newProjectDescription = document.createElement("div");
+					var descriptionText = document.createTextNode("Description: ");
+					var description = document.createTextNode(projects[i].Description);
+					newProjectDescription.appendChild(descriptionText);
+					newProjectDescription.appendChild(description);
+				var newProjectButton = 	document.createElement("button");
+				    newProjectButton.setAttribute("id",i);
+					var buttonContent = document.createTextNode("Move to Project");
+							//var coordinate = projects[i].Coord.split(',');
+							//var longitude = coordinate[0].substr(1,coordinate[0].length-1);
+							//var latitude = coordinate[1].substr(0,coordinate[1].length-1);
+					//newProjectButton.onclick=function(){map.setView([latitude,longitude],14);};
+					newProjectButton.onclick=function(){
+						var temp = projects[projects.length-(6-this.id)].Coord.split(',');; 
+					    var longitude = temp[0].substr(1,temp[0].length-1);
+					    var latitude = temp[1].substr(0,temp[1].length-1);	
+						map.setView([latitude,longitude],14);};
+					newProjectButton.appendChild(buttonContent);
+		
+			newProject.appendChild(newProjectName);
+			var space=document.createElement("br");
+			newProject.appendChild(space);
+			newProject.appendChild(newProjectDescription);
+			newProject.appendChild(space);
+			newProject.appendChild(newProjectButton);
+			newProject.appendChild(space);
+			
+	tag.appendChild(newProject);	
+	tag.appendChild(space);
+	}
 sidebarProjects.show();
 }

@@ -4,7 +4,7 @@ $dbconn = pg_connect("host=giv-geointeraction.uni-muenster.de port=5432 dbname=f
 	
 	$col_valueList = array();
 //	$query=pg_query($dbconn,'select "ID","Line","Name","Description" FROM "Feature";');
-	$query=pg_query($dbconn,'select "ID","Line","IsMainRoad","Name","Description" FROM "Lines";');
+	$query=pg_query($dbconn,'select "ID","Line","IsMainRoad","Name","Description" FROM "Lines" ORDER BY "ID" ASC;');
 	
 	while ($line = pg_fetch_array($query, null, PGSQL_ASSOC)) {
     foreach ($line as $col_value) {
