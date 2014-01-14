@@ -248,6 +248,7 @@ function addPointAttributes(name,des){
                     }, 1100,
                     function () {
                         $("#command_animation").html("").css('left', '45%');
+						javascript:location.reload()
                     });
 		}	
 		);		
@@ -264,12 +265,13 @@ function addLineAttributes(name,des,type){
 		ID:lastIDLine
 		},
 		function(data){
-				sidebarProjects.hide();
+				
 				$("#command_animation").html("added line ").css('fontSize', '10em').animate({
 					'left': '-500px'
 				}, 1100,
 				function () {
 					$("#command_animation").html("").css('left', '45%');
+					javascript:location.reload()
 				});}	
 		);		
 }
@@ -365,7 +367,7 @@ while (i>projects.length-10 && projects[i]!=null)
 							//var latitude = coordinate[1].substr(0,coordinate[1].length-1);
 					//newProjectButton.onclick=function(){map.setView([latitude,longitude],14);};
 					newProjectButton.onclick=function(){
-						var temp = projects[projects.length-(6-this.id)].Coord.split(',');; 
+						var temp = projects[projects.length-(projects.length-this.id)].Coord.split(',');; 
 					    var longitude = temp[0].substr(1,temp[0].length-1);
 					    var latitude = temp[1].substr(0,temp[1].length-1);	
 						map.setView([latitude,longitude],14);};
@@ -398,4 +400,6 @@ function clearSidebar(){
 	while (list.firstChild) {
 		list.removeChild(list.firstChild);
 	}
+	sidebarProjects.hide();
+	
 }
