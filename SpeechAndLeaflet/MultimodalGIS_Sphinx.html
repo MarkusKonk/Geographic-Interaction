@@ -894,7 +894,58 @@
  	return false;
  }
 });	
-		
+
+//Hand lost: ctrl + shift + l
+	var isCtrl = false;
+	var isShift=false
+	$(document).keyup(function (e) {
+	if(e.which == 17) 
+		isCtrl=false;
+	}).keyup(function (e) {
+	if(e.which == 16) 
+		isCtrl=false;
+	})
+	.keydown(function (e) {
+    if(e.which == 17) 
+		isCtrl=true;
+	if(e.which == 16) 
+		isShift=true;	
+    if(e.which == 76 && isCtrl == true && isShift == true) {
+        	        $("#command_animation").html("lost hand ").css('fontSize', '10em').animate({
+                        'left': '-500px'
+                    }, 1100,
+                    function () {
+                        $("#command_animation").html("").css('left', '45%');
+                    });
+ 	return false;
+ }
+});
+
+//Hand lost: ctrl + shift + k
+	var isCtrl = false;
+	var isShift=false
+	$(document).keyup(function (e) {
+	if(e.which == 17) 
+		isCtrl=false;
+	}).keyup(function (e) {
+	if(e.which == 16) 
+		isCtrl=false;
+	})
+	.keydown(function (e) {
+    if(e.which == 17) 
+		isCtrl=true;
+	if(e.which == 16) 
+		isShift=true;	
+    if(e.which == 75 && isCtrl == true && isShift == true) {
+        	        $("#command_animation").html("found hand ").css('fontSize', '10em').animate({
+                        'left': '-500px'
+                    }, 1100,
+                    function () {
+                        $("#command_animation").html("").css('left', '45%');
+                    });
+ 	return false;
+ }
+});
 		
 		
 		//----------- Adding drawing , editing and measurement tools in addition to mini Map  --------------------

@@ -241,7 +241,15 @@ function addPointAttributes(name,des){
 		Description:des,		
 		ID:lastIDPoint
 		},
-		function(data){alert("Thank you, we've received your (point)-project!");javascript:location.reload()}	
+		function(data){
+			sidebarProjects.hide();
+	                $("#command_animation").html("added point ").css('fontSize', '10em').animate({
+                        'left': '-500px'
+                    }, 1100,
+                    function () {
+                        $("#command_animation").html("").css('left', '45%');
+                    });
+		}	
 		);		
 }
 
@@ -255,7 +263,14 @@ function addLineAttributes(name,des,type){
 		Type:type,
 		ID:lastIDLine
 		},
-		function(data){alert("Thank you, we've received your (line)-project!");javascript:location.reload()}	
+		function(data){
+				sidebarProjects.hide();
+				$("#command_animation").html("added line ").css('fontSize', '10em').animate({
+					'left': '-500px'
+				}, 1100,
+				function () {
+					$("#command_animation").html("").css('left', '45%');
+				});}	
 		);		
 }
 
@@ -270,7 +285,13 @@ function addUserComments(FID,FType,UComment){
 		UComment:UComment
 		}
 		);		
-		alert("Thank you, we have received your comment!");
+		sidebarProjects.hide();
+		$("#command_animation").html("Commend added").css('fontSize', '10em').animate({
+			'left': '-500px'
+		}, 1100,
+		function () {
+			$("#command_animation").html("").css('left', '30%');
+                    });
 		sidebarComments.hide();
 }
 
@@ -377,5 +398,4 @@ function clearSidebar(){
 	while (list.firstChild) {
 		list.removeChild(list.firstChild);
 	}
-	sidebarProjects.hide();
 }
