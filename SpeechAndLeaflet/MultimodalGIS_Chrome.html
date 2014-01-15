@@ -703,8 +703,9 @@
 		});
 		
 
-		var baseMaps={"arial view": layerOrtho,
-					   "DTK10":layerDTK10
+		var baseMaps={"Open StreetMap":osm,
+						"arial view": layerOrtho
+					   //,"DTK10":layerDTK10
 					   };
 					   
 		var overlapMaps={"DVG":layerDVG,
@@ -767,13 +768,13 @@
 		
 		//Map control: Layer switcher
 								  
-		var controlArialMaps=L.control.layers(baseMaps,overlapMaps,{position:'topright'});
+		var controlArialMaps=L.control.layers(baseMaps,overlapMaps,{position:'topright',collapsed:false});
 		var controlBasemaps=L.control.layers(baseLayers,null,{position:'topright'});
 		var controlOverlaylayers=L.control.layers(null,overlayLayers,{position:'topright'});
 		
 		controlArialMaps.addTo(map);
-		controlBasemaps.addTo(map);
-		controlOverlaylayers.addTo(map);
+		//controlBasemaps.addTo(map);
+		//controlOverlaylayers.addTo(map);
 	
 
 		

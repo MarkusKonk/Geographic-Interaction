@@ -720,15 +720,15 @@
 		});
 		
 
-		var baseMaps={"arial view": layerOrtho,
-					   "DTK10":layerDTK10
+		var baseMaps={"Open StreetMap":osm,
+						"arial view": layerOrtho
+					   //,"DTK10":layerDTK10
 					   };
 					   
 		var overlapMaps={"DVG":layerDVG,
 						  "DTK10_pan":layerDTK10_pan,
 						  "DGK5":layerDGK5
 						};	
-		
 		
 		//Nokia, Mapbox and Cloudmate need specific registration data for defined layers. To provide these, you have to edit the leaflet-providers.js source 
 		//More information here: https://github.com/leaflet-extras/leaflet-providers
@@ -784,13 +784,13 @@
 		
 		//Map control: Layer switcher
 								  
-		var controlArialMaps=L.control.layers(baseMaps,overlapMaps,{position:'topright'});
+		var controlArialMaps=L.control.layers(baseMaps,overlapMaps,{position:'topright',collapsed:false});
 		var controlBasemaps=L.control.layers(baseLayers,null,{position:'topright'});
 		var controlOverlaylayers=L.control.layers(null,overlayLayers,{position:'topright'});
 		
 		controlArialMaps.addTo(map);
-		controlBasemaps.addTo(map);
-		controlOverlaylayers.addTo(map);
+		//controlBasemaps.addTo(map);
+		//controlOverlaylayers.addTo(map);
 	
 
 		
