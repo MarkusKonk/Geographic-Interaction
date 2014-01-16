@@ -566,7 +566,7 @@
             trackResize: true,
             worldCopyJump: false,
             closePopupOnClick: true,
-            zoomsliderControl: true,
+           // zoomsliderControl: true,
 			measureControl: true,
             loadingControl: true,
 			panControl: false,
@@ -709,8 +709,8 @@
 					   };
 					   
 		var overlapMaps={"DVG":layerDVG,
-						  "DTK10_pan":layerDTK10_pan,
-						  "DGK5":layerDGK5
+						  "DTK10_pan":layerDTK10_pan
+						//  ,	"DGK5":layerDGK5
 						};	
 		
 		
@@ -768,7 +768,7 @@
 		
 		//Map control: Layer switcher
 								  
-		var controlArialMaps=L.control.layers(baseMaps,overlapMaps,{position:'topright',collapsed:false});
+		var controlArialMaps=L.control.layers(baseMaps,overlapMaps,{position:'bottomleft',collapsed:false});
 		var controlBasemaps=L.control.layers(baseLayers,null,{position:'topright'});
 		var controlOverlaylayers=L.control.layers(null,overlayLayers,{position:'topright'});
 		
