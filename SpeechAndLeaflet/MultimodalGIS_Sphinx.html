@@ -52,6 +52,24 @@
                         <li>
                             <a href="Help&About.html">Help&amp;About</a>
                         </li>
+						<li style="position:relative; top:15; left:50%">
+							<div ><p style="color:white;">Left hand</p></div>						 
+						</li>
+						<li style="position:relative; left:55%">
+							<div><img id="lefthand" src="traffic_red.png" alt=""></div>
+						</li>
+						<li style="position:relative; top:15; left:60%">
+							<div ><p style="color:white;">Right hand</p></div>						 
+						</li>
+						<li style="position:relative; left:65%">
+							<div><img id="righthand" src="traffic_red.png" alt=""></div>
+						</li>
+						<li style="position:relative; top:15; left:70%">
+							<div ><p style="color:white;">Speech</p></div>						 
+						</li>
+						<li style="position:relative; left:75%">
+							<div><img id="speech" src="traffic_red.png" alt=""></div>
+						</li>
                     </ul>
                 </div>
             </div>
@@ -943,6 +961,7 @@
                     function () {
                         $("#command_animation").html("").css('left', '45%');
                     });
+					document.getElementById("lefthand").src="traffic_green.png";
  	return false;
  }
 });

@@ -52,6 +52,24 @@
                         <li>
                             <a href="Help&About.html">Help&amp;About</a>
                         </li>
+						<li style="position:relative; top:15; left:30%">
+							<div ><p style="color:white;">Left hand</p></div>						 
+						</li>
+						<li style="position:relative; left:35%">
+							<div><img id="lefthand" src="traffic_red.png" alt=""></div>
+						</li>
+						<li style="position:relative; top:15; left:40%">
+							<div ><p style="color:white;">Right hand</p></div>						 
+						</li>
+						<li style="position:relative; left:45%">
+							<div><img id="righthand" src="traffic_red.png" alt=""></div>
+						</li>
+						<li style="position:relative; top:15; left:50%">
+							<div ><p style="color:white;">Speech</p></div>						 
+						</li>
+						<li style="position:relative; left:55%">
+							<div><img id="speech" src="traffic_red.png" alt=""></div>
+						</li>
                     </ul>
                 </div>
             </div>
@@ -895,12 +913,13 @@
 	if(e.which == 16) 
 		isShift=true;	
     if(e.which == 76 && isCtrl == true && isShift == true) {
-        	        $("#command_animation").html("lost hand ").css('fontSize', '10em').animate({
+        	        $("#command_animation").html("lost left hand ").css('fontSize', '10em').animate({
                         'left': '-500px'
                     }, 1100,
                     function () {
                         $("#command_animation").html("").css('left', '45%');
                     });
+					document.getElementById("lefthand").src="traffic_red.png";
  	return false;
  }
 });
@@ -921,12 +940,67 @@
 	if(e.which == 16) 
 		isShift=true;	
     if(e.which == 75 && isCtrl == true && isShift == true) {
-        	        $("#command_animation").html("found hand ").css('fontSize', '10em').animate({
+        	        $("#command_animation").html("found left hand").css('fontSize', '10em').animate({
                         'left': '-500px'
                     }, 1100,
                     function () {
                         $("#command_animation").html("").css('left', '45%');
                     });
+					document.getElementById("lefthand").src="traffic_green.png";
+ 	return false;
+ }
+});
+
+//Hand lost: ctrl + shift + ,
+	var isCtrl = false;
+	var isShift=false
+	$(document).keyup(function (e) {
+	if(e.which == 17) 
+		isCtrl=false;
+	}).keyup(function (e) {
+	if(e.which == 16) 
+		isCtrl=false;
+	})
+	.keydown(function (e) {
+    if(e.which == 17) 
+		isCtrl=true;
+	if(e.which == 16) 
+		isShift=true;	
+    if(e.which == 188 && isCtrl == true && isShift == true) {
+        	        $("#command_animation").html("lost right hand ").css('fontSize', '10em').animate({
+                        'left': '-500px'
+                    }, 1100,
+                    function () {
+                        $("#command_animation").html("").css('left', '45%');
+                    });
+					document.getElementById("righthand").src="traffic_red.png";
+ 	return false;
+ }
+});
+
+//Hand lost: ctrl + shift + F1
+	var isCtrl = false;
+	var isShift=false
+	$(document).keyup(function (e) {
+	if(e.which == 17) 
+		isCtrl=false;
+	}).keyup(function (e) {
+	if(e.which == 16) 
+		isCtrl=false;
+	})
+	.keydown(function (e) {
+    if(e.which == 17) 
+		isCtrl=true;
+	if(e.which == 16) 
+		isShift=true;	
+    if(e.which == 112 && isCtrl == true && isShift == true) {
+        	        $("#command_animation").html("found right hand").css('fontSize', '10em').animate({
+                        'left': '-500px'
+                    }, 1100,
+                    function () {
+                        $("#command_animation").html("").css('left', '45%');
+                    });
+					document.getElementById("righthand").src="traffic_green.png";
  	return false;
  }
 });
@@ -1104,6 +1178,13 @@
         function startButton(event) {
             final_transcript = '';
             recognition.start();
+			document.getElementById("speech").src="traffic_green.png";
+			        	        $("#command_animation").html("speech works").css('fontSize', '10em').animate({
+                        'left': '-500px'
+                    }, 1100,
+                    function () {
+                        $("#command_animation").html("").css('left', '45%');
+                    });
         }
     </script>
 </body>
