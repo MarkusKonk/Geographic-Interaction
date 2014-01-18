@@ -584,11 +584,11 @@
             trackResize: true,
             worldCopyJump: false,
             closePopupOnClick: true,
-           // zoomsliderControl: true,
+          // zoomsliderControl: true,
 			measureControl: true,
             loadingControl: true,
 			panControl: false,
-            zoomControl: false, //disable the zoomControl to show only the zoom control, which handles the Fullscreen mode. Otherwise the map would have the ZoomIn and ZoomOut Control twice	
+            zoomControl: true, //disable the zoomControl to show only the zoom control, which handles the Fullscreen mode. Otherwise the map would have the ZoomIn and ZoomOut Control twice	
 			// measureControl:true,    //Here it's implemented via "L.Control.measureControl().addTo(map);"
 			editInOSMControlOptions: {
 				editors: ["id"]		//no other editors enabled
@@ -1021,28 +1021,16 @@
 			polyline: {
 				metric: true
 			},
-			polygon: {
-				allowIntersection: false,
-				showArea: true,
-				drawError: {
-				color: '#bada55',
-				timeout: 1000
-				},
-				shapeOptions: {
-				color: '#b00b00'
-				}
-			},
-			circle: {
-				shapeOptions: {
-				color: '#662d91'
-				}
-			},
+			polygon: false,
+			circle: false,
+			rectangle:false,
+			
 			marker: true
-			},
-			edit: {
-				featureGroup: drawnItems,
-				remove: false
 			}
+			//,edit: {
+				//featureGroup: drawnItems,
+				//remove: false
+			//}
 		});
 	
 		
