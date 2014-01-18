@@ -8,7 +8,7 @@
 
 .leaflet-control-locate a {
 	background-image: url(images/locate.png);
-	background-position: -2px -2px;
+	background-position: 2px 2px;
 }
 
 .leaflet-touch .leaflet-control-locate a {
@@ -21,11 +21,11 @@
 }
 
 .leaflet-control-locate.active a {
-	background-position: -32px -2px;
+	background-position: -28px 2px;
 }
 
 .leaflet-control-locate.active.following a {
-	background-position: -62px -2px;
+	background-position: -58px 2px;
 }
 
 .leaflet-touch .leaflet-control-locate {

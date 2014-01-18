@@ -43,6 +43,12 @@
                         <li>
                             <a href="index_startpage.html">Home</a>
                         </li>
+						 <li>
+                            <a href="#" onclick="showProjects();">Projects</a>
+                        </li>
+						 <li>
+                            <a href="#" onclick="sidebarSpeech.toggle();">Speech</a>
+                        </li>
                         <li class="active">
 						  <a href="MultimodalGIS_Chrome.html">Map-Chrome</a>
 						</li>
@@ -52,22 +58,22 @@
                         <li>
                             <a href="Help&About.html">Help&amp;About</a>
                         </li>
-						<li style="position:relative; top:15; left:30%">
+						<li style="position:relative; top:15; left:15%">
 							<div ><p style="color:white;">Left hand</p></div>						 
 						</li>
-						<li style="position:relative; left:35%">
+						<li style="position:relative; left:17%">
 							<div><img id="lefthand" src="traffic_red.png" alt=""></div>
 						</li>
-						<li style="position:relative; top:15; left:40%">
+						<li style="position:relative; top:15; left:22%">
 							<div ><p style="color:white;">Right hand</p></div>						 
 						</li>
-						<li style="position:relative; left:45%">
+						<li style="position:relative; left:24%">
 							<div><img id="righthand" src="traffic_red.png" alt=""></div>
 						</li>
-						<li style="position:relative; top:15; left:50%">
+						<li style="position:relative; top:15; left:29%">
 							<div ><p style="color:white;">Speech</p></div>						 
 						</li>
-						<li style="position:relative; left:55%">
+						<li style="position:relative; left:31%">
 							<div><img id="speech" src="traffic_red.png" alt=""></div>
 						</li>
                     </ul>
@@ -448,23 +454,9 @@
 	</div>
 									
 									
-    <div id="Togggle_Speech_Sidebar">
-        <button id="sidebar_button_speech" onclick="sidebarSpeech.toggle();">
-            Speech/Layer
-        </button>
-    </div>
-
-    <div id="Togggle_Input_Sidebar">
-        <button id="sidebar_button" onclick="sidebar.toggle();">
-            Input Sidebar
-        </button>
-    </div>
+  
 	
-	<div id="Show_Project_Button">
-        <button id="projects_button" onclick="showProjects();">
-            Show Projects
-        </button>
-    </div>
+
 	
 
 	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
@@ -584,19 +576,19 @@
             trackResize: true,
             worldCopyJump: false,
             closePopupOnClick: true,
-          // zoomsliderControl: true,
+           zoomsliderControl: true,
 			measureControl: true,
             loadingControl: true,
 			panControl: false,
-            zoomControl: true, //disable the zoomControl to show only the zoom control, which handles the Fullscreen mode. Otherwise the map would have the ZoomIn and ZoomOut Control twice	
+            zoomControl: false, //disable the zoomControl to show only the zoom control, which handles the Fullscreen mode. Otherwise the map would have the ZoomIn and ZoomOut Control twice	
 			// measureControl:true,    //Here it's implemented via "L.Control.measureControl().addTo(map);"
-			editInOSMControlOptions: {
-				editors: ["id"]		//no other editors enabled
-				},
-			revealOSMControl: true,		//more options here: https://github.com/yohanboniface/Leaflet.RevealOSM
-				revealOSMControlOptions: {
-					queryTemplate: '[out:json];(node(around:{radius},{lat},{lng})[name];way(around:{radius},{lat},{lng})[name][highway];);out body qt 1;'
-				},
+			//editInOSMControlOptions: {
+				//editors: ["id"]		//no other editors enabled
+				//},
+		//	revealOSMControl: true,		//more options here: https://github.com/yohanboniface/Leaflet.RevealOSM
+				//revealOSMControlOptions: {
+				//	queryTemplate: '[out:json];(node(around:{radius},{lat},{lng})[name];way(around:{radius},{lat},{lng})[name][highway];);out body qt 1;'
+				//},
 			//more options here: https://github.com/aratcliffe/Leaflet.contextmenu
 			/*
 			contextmenu: true,
