@@ -578,7 +578,7 @@
             closePopupOnClick: true,
            zoomsliderControl: true,
 			measureControl: true,
-            loadingControl: true,
+            //loadingControl: true,
 			panControl: false,
             zoomControl: false, //disable the zoomControl to show only the zoom control, which handles the Fullscreen mode. Otherwise the map would have the ZoomIn and ZoomOut Control twice	
 			// measureControl:true,    //Here it's implemented via "L.Control.measureControl().addTo(map);"
@@ -610,7 +610,13 @@
 				}]
 			*/	
 			});
-		
+		//adding loading to top right
+			var loadingControl = L.Control.loading({
+                    position: 'topright',
+                    
+                });
+                map.addControl(loadingControl);		
+		//
 		
 		map.addControl(sidebarPoint);
 		map.addControl(sidebarLine); 
