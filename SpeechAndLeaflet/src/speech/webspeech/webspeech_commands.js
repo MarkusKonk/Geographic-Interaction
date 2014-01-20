@@ -140,6 +140,7 @@
                 L.marker(map.getCenter()).addTo(map);
                 console.log("place marker");
                 final_transcript = '';
+				sidebarPoint.show();
             }
 
             if (final_transcript.indexOf("place large circle") >= 0) {
@@ -305,9 +306,65 @@
                 console.log("disable temperature map");
                 final_transcript = '';
             }
-        }
+        
+	//////////////////////////////////////////////////////////
+	/////Draw lines or points/////////////////////////////////
+	//////////////////////////////////////////////////////////
 	
+			if (final_transcript.indexOf("new point") >= 0) {
+                new L.Draw.Polyline(map).enable();
+                console.log("point");
+                final_transcript = '';
+				new L.Draw.Marker(map).enable();
+            }
+			
+			if (final_transcript.indexOf("new line") >= 0) {
+                new L.Draw.Polyline(map).enable();
+                console.log("new line");
+                final_transcript = '';
+				new L.Draw.Polyline(map).enable();
+            }
+
+			if (final_transcript.indexOf("main road") >= 0) {
+                document.getElementById('alternative').checked = false;
+				document.getElementById('main').checked = true;
+                console.log("main checked");
+                final_transcript = '';
+            }
+			
+			if (final_transcript.indexOf("suggested road") >= 0) {
+                document.getElementById('alternative').checked = true;
+				document.getElementById('main').checked = false;
+                console.log("alternative checked");
+                final_transcript = '';
+            }
+			
+			if (final_transcript.indexOf("name") >= 0) {
+				document.getElementById('linename').focus();
+                console.log("name");
+                final_transcript = '';
+            }
+			
+			if (final_transcript.indexOf("description") >= 0) {
+				document.getElementById('linedes').focus();
+                console.log("description");
+                final_transcript = '';
+            }
+			
+			if (final_transcript.indexOf("submit") >= 0) {
+				al();
+                console.log("submit");
+                final_transcript = '';
+            }
+			
+			if (final_transcript.indexOf("clear") >= 0) {
+				clearForm();
+                console.log("clear");
+                final_transcript = '';
+            }
+		
+		}
 	
+
 	
-	
-	
+			
