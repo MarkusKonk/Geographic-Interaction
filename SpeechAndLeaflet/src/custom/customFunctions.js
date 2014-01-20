@@ -332,10 +332,10 @@ map.panBy([50, 0]);
 }
 
 function showProjects(){
-var tag=document.getElementById("sidebarProjectsContent");
+var tag=document.getElementById("tablebody");
 var i = projects.length-1;
 //for (var i=projects.length-1;i>projects.length-7;i--)
-while (i>projects.length-10 && projects[i]!=null)
+while (i>projects.length-6 && projects[i]!=null)
 {
 /*
 	var coordinate = projects[i].Coord.split(',');
@@ -345,23 +345,21 @@ while (i>projects.length-10 && projects[i]!=null)
 	document.getElementById("name1").innerHTML=projects[i].Name;
 	document.getElementById("des1").innerHTML=projects[i].Description;
 */
-		var sidebarContent = document.createElement("div");
-		sidebarContent.setAttribute("id","sidebarContent");	
-		var newProject = document.createElement("div");		
+		var project = document.createElement("tr");
+		project.setAttribute("class","active");	
+		var newProject = document.createElement("td");		
 		newProject.setAttribute("id","newProject"+i);
-				var newProjectName = document.createElement("div");
-					var nameText = document.createTextNode("Name: ");							
-					var name = document.createTextNode(projects[i].Name);
-					newProjectName.appendChild(nameText);
+				var newProjectName = document.createElement("td");									
+					var name = document.createTextNode(projects[i].Name);	
 					newProjectName.appendChild(name);
-				var newProjectDescription = document.createElement("div");
-					var descriptionText = document.createTextNode("Description: ");
-					var description = document.createTextNode(projects[i].Description);
-					newProjectDescription.appendChild(descriptionText);
+				var newProjectDescription = document.createElement("td");					
+					var description = document.createTextNode(projects[i].Description);	
 					newProjectDescription.appendChild(description);
-				var newProjectButton = 	document.createElement("button");
-				    newProjectButton.setAttribute("id",i);
-					var buttonContent = document.createTextNode("Move to Project");
+				var newProjectButtonTag = 	document.createElement("td");
+					var newProjectButton = document.createElement("button");
+					newProjectButton.setAttribute("id",i);
+					var buttonContent = document.createElement("img");
+						buttonContent.setAttribute("src","running man.png");
 							//var coordinate = projects[i].Coord.split(',');
 							//var longitude = coordinate[0].substr(1,coordinate[0].length-1);
 							//var latitude = coordinate[1].substr(0,coordinate[1].length-1);
@@ -372,18 +370,19 @@ while (i>projects.length-10 && projects[i]!=null)
 					    var latitude = temp[1].substr(0,temp[1].length-1);	
 						map.setView([latitude,longitude],14);};
 					newProjectButton.appendChild(buttonContent);
+					newProjectButtonTag.appendChild(newProjectButton);
 		
-			newProject.appendChild(newProjectName);
+			project.appendChild(newProjectName);
 			var space=document.createElement("br");
 			newProject.appendChild(space);
-			newProject.appendChild(newProjectDescription);
+			project.appendChild(newProjectDescription);
 			newProject.appendChild(space);
-			newProject.appendChild(newProjectButton);
+			project.appendChild(newProjectButtonTag);
 			newProject.appendChild(space);
 			
-	sidebarContent.appendChild(newProject);	
-	sidebarContent.appendChild(space);
-	tag.appendChild(sidebarContent);
+	project.appendChild(newProject);	
+	project.appendChild(space);
+	tag.appendChild(project);
 
 	i--;	
 	}
@@ -396,7 +395,7 @@ sidebarProjects.show();
 }
 
 function clearSidebar(){
-	var list=document.getElementById("sidebarProjectsContent");
+	var list=document.getElementById("tablebody");
 	while (list.firstChild) {
 		list.removeChild(list.firstChild);
 	}
