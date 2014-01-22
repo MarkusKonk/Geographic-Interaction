@@ -132,107 +132,41 @@
             }
 			
 	//////////////////////////////////////////////////////////
-	/////Start using leaflets integrated drawing tool/////////
-	//////////////////////////////////////////////////////////
-			
-			
-            if (final_transcript.indexOf("place marker") >= 0) {
-                L.marker(map.getCenter()).addTo(map);
-                console.log("place marker");
-                final_transcript = '';
-				sidebarPoint.show();
-            }
-
-            if (final_transcript.indexOf("place large circle") >= 0) {
-                L.circle(map.getCenter(), 400).addTo(map);
-                console.log("place large circle");
-                final_transcript = '';
-            }
-
-            if (final_transcript.indexOf("place medium circle") >= 0) {
-                L.circle(map.getCenter(), 200).addTo(map);
-                console.log("place medium circle");
-                final_transcript = '';
-            }
-
-            if (final_transcript.indexOf("place small circle") >= 0) {
-                L.circle(map.getCenter(), 100).addTo(map);
-                console.log("place small circle");
-                final_transcript = '';
-            }
-
-            if (final_transcript.indexOf("place large rectangle") >= 0) {
-                L.rectangle([[map.getCenter().lat - 0.01, map.getCenter().lng - 0.01],[map.getCenter().lat + 0.01, map.getCenter().lng + 0.01]]).addTo(map);
-                console.log("place large rectangle");
-                final_transcript = '';
-            }
-
-
-            if (final_transcript.indexOf("place medium rectangle") >= 0) {
-                L.rectangle([[map.getCenter().lat - 0.005, map.getCenter().lng - 0.005],[map.getCenter().lat + 0.005, map.getCenter().lng + 0.005]]).addTo(map);
-                console.log("place medium rectangle");
-                final_transcript = '';
-            }
-
-
-            if (final_transcript.indexOf("place small rectangle") >= 0) {
-                L.rectangle([[map.getCenter().lat - 0.0025, map.getCenter().lng - 0.0025],[map.getCenter().lat + 0.0025, map.getCenter().lng + 0.0025]]).addTo(map);
-                console.log("place small rectangle");
-                final_transcript = '';
-            }
-
-
-	//////////////////////////////////////////////////////////
 	/////Start using leaflet plugins//////////////////////////
 	//////////////////////////////////////////////////////////
 			
 			
 			
-           if (final_transcript.indexOf("enable location function") >= 0) {
+           if (final_transcript.indexOf("where am i") >= 0) {
                 locater.locate();
-                console.log("enable location function");
+                console.log("where am i");
                 final_transcript = '';
             }
             
             
-            if (final_transcript.indexOf("disable location function") >= 0) {
+            if (final_transcript.indexOf("don't show where i am") >= 0) {
                 locater.stopLocate();
-                console.log("disable location function");
+                console.log("don't show where i am");
                 final_transcript = '';
             }
 
-			
-            if (final_transcript.indexOf("enable additional information") >= 0) {
-                map.revealOSMControl.activate();
-                console.log("enable additional information");
-                final_transcript = '';
-            }
-            
-            
-            if (final_transcript.indexOf("disable additional information") >= 0) {
-                map.revealOSMControl.deactivate();
-                console.log("disable additional information");
-                final_transcript = '';
-            }
-            
-            
-            if (final_transcript.indexOf("go back to home") >= 0) {
+           if (final_transcript.indexOf("go home") >= 0) {
                 map.setView(new L.LatLng(51.95442, 7.62709), 13);
                 console.log("go back to home");
                 final_transcript = '';
             }
             
             
-            if (final_transcript.indexOf("enable measurement") >= 0) {
+            if (final_transcript.indexOf("start measurement") >= 0) {
                 map.measureControl.toggle();
-                console.log("enable measurement");
+                console.log("start measurement");
                 final_transcript = '';
             }
             
             
-            if (final_transcript.indexOf("disable measurement") >= 0) {
+            if (final_transcript.indexOf("stop measurement") >= 0) {
                 map.measureControl.toggle();
-                console.log("disable measurement");
+                console.log("stop measurement");
                 final_transcript = '';
             }
             
@@ -247,78 +181,19 @@
                 console.log("disable mini map");
                 final_transcript = '';
             }
-            
-			
-	//////////////////////////////////////////////////////////
-	/////Start using drawing plugin tool//////////////////////
-	//////////////////////////////////////////////////////////
-			
-	if (final_transcript.indexOf("place a point project") >= 0) {
-                new L.Draw.Marker(map).enable();
-				//or this way: L.Draw.Marker(map, drawControl.options.marker).enable();    https://github.com/Leaflet/Leaflet.draw/issues/179#issuecomment-26500042
-                console.log("place a point project");
-                final_transcript = '';
-            }
-            
-            
-            if (final_transcript.indexOf("place a street project") >= 0) {
-                new L.Draw.Polyline(map).enable();
-                console.log("place a street project");
-                final_transcript = '';
-            }
-            
-            
-            if (final_transcript.indexOf("enable circle drawing") >= 0) {
-                new L.Draw.Circle(map).enable();
-                console.log("enable circle drawing");
-                final_transcript = '';
-            }
-            
-            
-            if (final_transcript.indexOf("enable polygon drawing") >= 0) {
-                new L.Draw.Polygon(map).enable();
-                console.log("enable polygon drawing");
-                final_transcript = '';
-            }
-            
-            
-            if (final_transcript.indexOf("enable rectangle drawing") >= 0) {
-                new L.Draw.Rectangle(map).enable();
-                console.log("enable rectangle drawing");
-                final_transcript = '';
-            }
-        
 
-	//////////////////////////////////////////////////////////
-	/////Start using leaflet layer control////////////////////
-	//////////////////////////////////////////////////////////
-	
-	
-			if (final_transcript.indexOf("enable temperature map") >= 0) {
-                overlayLayers.OpenWeatherMap_Precipitation.onAdd(map);
-                console.log("enable temperature map");
-                final_transcript = '';
-            }
-        	
-		
-		if (final_transcript.indexOf("disable temperature map") >= 0) {
-                overlayLayers.OpenWeatherMap_Precipitation.onRemove(map);
-                console.log("disable temperature map");
-                final_transcript = '';
-            }
-        
 	//////////////////////////////////////////////////////////
 	/////Draw lines or points/////////////////////////////////
 	//////////////////////////////////////////////////////////
 	
-			if (final_transcript.indexOf("new point") >= 0) {
+			if (final_transcript.indexOf("draw point") >= 0) {
                 new L.Draw.Polyline(map).enable();
                 console.log("point");
                 final_transcript = '';
 				new L.Draw.Marker(map).enable();
             }
 			
-			if (final_transcript.indexOf("new line") >= 0) {
+			if (final_transcript.indexOf("draw line") >= 0) {
                 new L.Draw.Polyline(map).enable();
                 console.log("new line");
                 final_transcript = '';
@@ -340,19 +215,31 @@
             }
 			
 			if (final_transcript.indexOf("name") >= 0) {
-				document.getElementById('linename').focus();
+				if (sidebarOpen == 'line'){
+					document.getElementById('linename').focus();
+				}else if (sidebarOpen == 'point'){
+					document.getElementById('pointname').focus();
+				}
                 console.log("name");
                 final_transcript = '';
             }
 			
 			if (final_transcript.indexOf("description") >= 0) {
-				document.getElementById('linedes').focus();
+				if (sidebarOpen == 'line'){
+					document.getElementById('linedes').focus();
+				}else if (sidebarOpen == 'point'){
+					document.getElementById('pointdes').focus();
+				}
                 console.log("description");
                 final_transcript = '';
             }
 			
 			if (final_transcript.indexOf("submit") >= 0) {
-				al();
+				if (sidebarOpen == 'line'){
+					al();
+				}else if (sidebarOpen == 'point'){
+					ap();
+				}
                 console.log("submit");
                 final_transcript = '';
             }
@@ -360,6 +247,12 @@
 			if (final_transcript.indexOf("clear") >= 0) {
 				clearForm();
                 console.log("clear");
+                final_transcript = '';
+            }
+			
+			if (final_transcript.indexOf("submit comment") >= 0) {
+				sendUserComments();
+                console.log("submit comment");
                 final_transcript = '';
             }
 		

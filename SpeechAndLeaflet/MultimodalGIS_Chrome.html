@@ -105,8 +105,8 @@
 		<br> Name:  
 		<input id="linename" type="text" SIZE=30 name="linename" required><br>	
 		<br>Description :<br> <input id="linedes" style="width: 300px; height: 150px;" name="linedescription"><br><br><br> 
-		<input id="main" type="radio" name="Linetype" value="Main"> Planned road<br>
-		<input id="alternative" type="radio" name="Linetype" value="Alternative"> Alternative road<br>  
+		<input id="main" type="radio" name="Linetype" value="Main"> Main road<br>
+		<input id="alternative" type="radio" name="Linetype" value="Alternative"> Suggested road<br>  
 		<button type="button" onclick="al()">Submit</button>
 		<!--<input TYPE="RESET" VALUE="Clear">-->
 		<button type="button" onclick="clearForm()">Clear</button>
@@ -120,7 +120,7 @@
 		<br> User Comment :<br> <textarea id="usercomment" style="width: 300px; height: 150px;" name="description"></textarea><br> 
 		</div>
 	
-		<button type="button" onclick="sendUserComments()">Submit Comments</button>
+		<button type="button" onclick="sendUserComments()">Submit Comment</button>
 		<button type="button" onclick="clearForm()">Clear</button>
 	
 		<div id="sidebarCommentsTable"></div>
@@ -532,6 +532,8 @@
 	
 	<script>
 		
+		startButton(event); //start speech recognition
+		
 		 var sidebarPoint = L.control.sidebar('sidebarPoint', {
 			position: 'right'
 		});
@@ -645,6 +647,7 @@
 			pointname=document.getElementById('pointname').value;
 			pointdes =document.getElementById('pointdes').value;
 			addPointAttributes(pointname,pointdes);
+			sidebarOpen = '';
 		}
 		
 		//add lines
@@ -657,6 +660,7 @@
 			if (document.getElementById('alternative').checked)
 				type = false;*/
 			addLineAttributes(linename,linedes,document.getElementById('main').checked);
+			sidebarOpen = '';
 		}
 		
 		//send comments
@@ -677,6 +681,7 @@
 			document.getElementById('pointdes').value = '';
 			document.getElementById('linename').value = '';
 			document.getElementById('linedes').value = '';
+			sidebarOpen = '';
 		}
 		
 		callPoints();
@@ -1041,6 +1046,7 @@
 			//}
 		});
 	
+		var sidebarOpen = '';
 		
 		map.on('draw:created', function (e) {
 			var type = e.layerType,
@@ -1053,14 +1059,18 @@
 				var coord=coordinates.toString();
 				addPoint(coord);
 				
-            sidebarPoint.show();		
+            sidebarPoint.show();
+			sidebarOpen = 'point';
+			console.debug('sidebar point');
 			}
 			 
 			if (type === 'polyline') {
 				var geojsonFeature = layer.toGeoJSON();
 				
 				addLine(geojsonFeature.geometry.coordinates);
-				sidebarLine.show();				
+				sidebarLine.show();
+				sidebarOpen = 'line';
+				console.debug('sidebar line');
 			}
 				//save to db here , you can check the type is it marker or polygon ... then save it to db
 			//drawnItems.addLayer(layer);
