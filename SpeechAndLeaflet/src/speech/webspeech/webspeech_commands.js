@@ -16,6 +16,7 @@
             for (var i = event.resultIndex; i < event.results.length; ++i) {
                 if (event.results[i].isFinal) {
                     final_transcript = event.results[i][0].transcript;
+                    document.getElementById(document.activeElement.id).value = final_transcript;
                 } else {
                     interim_transcript = event.results[i][0].transcript;
                 }
