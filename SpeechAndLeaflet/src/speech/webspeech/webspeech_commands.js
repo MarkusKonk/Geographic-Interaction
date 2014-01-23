@@ -260,8 +260,22 @@
                 console.log("submit comment");
                 final_transcript = '';
             }
-		
+            
+            //
+            	if(final_transcript.indexOf("submit comment") >= 0)	{
+			sendUserComments();
+			console.log("submit comment");
+			final_transcript = '';
 		}
+			
+		if(final_transcript.indexOf("clear comment") >= 0)	{
+			clearForm();
+			console.log("clear comment");
+			final_transcript = '';
+		}
+            //
+		
+	}
 	
 
 	
