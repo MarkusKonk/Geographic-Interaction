@@ -1,0 +1,35 @@
+zoom in
+zoom out
+left
+right
+up
+down
+
+where am i			(show and hide user's location)
+don't show where i am
+
+go home				(go to initial view, center of Münster)
+
+start measurement
+stop measurement
+
+enable minimap
+disable minimap
+
+draw point
+draw line
+finish line			(not yet implemented)
+
+main road			(only for drawing line)
+alternative road
+
+name				(works for line and point)
+description
+
+submit				(only for drawing line and point)
+clear				(for point, line and comment)
+
+(comment functions not working yet!)
+delete
+comments
+submit comment
