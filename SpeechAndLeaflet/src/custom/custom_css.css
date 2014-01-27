@@ -53,21 +53,7 @@ footer {
         
 /* Map and Map controls------------------------- */
        
-#vertical {
-    height: 100%;
-    border-left: 2px solid blue;
-    position: absolute;
-    left: 50%;
-    z-index: 50;
-}
 
-#horizontal {
-    width: 100%;
-    border-top: 2px solid blue;
-    position: absolute;
-    top: 50%;
-    z-index: 50;
-}
 
 #map {
     height: calc(100% - 50px);
