@@ -1,15 +1,69 @@
-<!doctype html>
-
+<!DOCTYPE html>
 <html>
-  
-  <head>
+
+<head>
     <title>Help and About</title>
     <meta name="viewport" content="width=device-width">
-    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css">
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-    <script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-    <style type="text/css">
+	<link href="src/bootstrap/bootstrap.min.css" rel="stylesheet">
+	    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css">
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>	
+        <script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script type='text/javascript' src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+		<script type='text/javascript' src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.js"></script>
+
+	
+<script type="text/javascript">
+$('#myTab a').click(function(e) {
+    e.preventDefault();
+    $(this).tab('show');
+})
+
+</script>
+<script type="text/javascript">
+$(document).ready(function() {
+  	$('#rootwizard').bootstrapWizard({'tabClass': 'nav nav-tabs'});
+});
+</script>
+<script type="text/javascript">
+function toggleChevron(e) {
+    $(e.target)
+        .prev('.panel-heading')
+        .find("i.indicator")
+        .toggleClass('glyphicon-chevron-down glyphicon-chevron-up');
+}
+$('#accordion').on('hidden.bs.collapse', toggleChevron);
+$('#accordion').on('shown.bs.collapse', toggleChevron);
+</script>
+<!--
+<script type="text/javascript">
+$(document).ready(function()
+{
+    $("#imgAnimate1").hover(
+        function()
+        {
+            $(this).attr('src', 'waveRight.gif');
+        } });
+});
+
+</script>
+
+-->
+
+<script type="text/javascript">
+$(document).ready(function(){
+function onHover()
+{
+    $("#imgAnimate1").attr('src', './waveRight.gif');
+}
+
+function offHover()
+{
+    $("#imgAnimate1").attr('src', './waveLeft.gif');
+}
+});
+</script>
+
+<style type="text/css">
       /*       * Style tweaks       * --------------------------------------------------       */
       body {
         padding-top: 70px;
@@ -50,10 +104,9 @@
         }
       }
     </style>
-  </head>
-  
-  <body>
-    <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+</head>
+<body>
+	  <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -81,36 +134,240 @@
       </div>
       <!-- /.container -->
     </div>
-    <!-- /.navbar -->
-    <div class="container">
-      <div class="jumbotron text-center">
-        <h3>Helppage</h3>
-        <p class="text-left"><font size="3"><span style="line-height: 24.44444465637207px;">Helptext</span></font></p>
-        <hr>
-        <div class="container">
-          <div class="jumbotron">
-            <p></p>
-            <div class="well">
-              <p>Contact:&nbsp;<br>
-                Email:&nbsp;</p>
-            </div>
-          </div>
-        </div>
-        <p></p>
-      </div>
-      <!--/row-->
-      <footer>
-        <p>&copy; Participants --- 2013</p>
-      </footer>
-    </div>
-    <!--/.container-->
-    <script>
-      $(document).ready(function() {
-        $('[data-toggle=offcanvas]').click(function() {
-          $('.row-offcanvas').toggleClass('active');
-        });
-      });
-    </script>
-  </body>
+<div class="container">
 
+<div class="tabbable">
+
+    <ul id="myTab" class="nav nav-tabs nav-justified" >
+	<li class="active"><a href="#main" data-toggle="tab"><strong>Main Information</strong></a></li>
+	<li ><a href="#howtouse" data-toggle="tab"><strong> How To Use the System? </strong></a></li>
+	<li ><a href="#faqs" data-toggle="tab"><strong> FAQs </strong></a></li>
+	<li ><a href="#contactus" data-toggle="tab"><strong>Contact Us</strong></a></li>
+	</ul>
+	
+	    
+    <div class="tab-content">
+        
+      <div class="tab-pane fade in active" id="main">
+
+	  <div class="panel-group" id="accordion">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+		<strong>What is this System?</strong>
+    </a><i class="indicator glyphicon glyphicon-chevron-down  pull-right"></i>
+      </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse in">
+      <div class="panel-body">
+			This system is a multi-modal application. This application allows the users to control the map components by Gesture and Speech with the help of Keyboard and Mouse. To use this application you need Kinect device to detect user gestures, a microphone to detect use speech and an internet connection.
+      <!-- <img id="imgAnimate1" src="./waveLeft.gif" height="50" width="50" onmouseover="onHover();" onmouseout="offHover();"> -->
+      
+	  </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+         <strong> System Data Flow </strong>
+  </a><i class="indicator glyphicon glyphicon-chevron-up  pull-right"></i>
+      </h4>
+    </div>
+    <div id="collapseTwo" class="panel-collapse collapse">
+      <div class="panel-body">
+	  fkdfksd
+	             </br><img class="col-md-3 col-md-offset-3" src="./DataFlow.png" height="500" width="900" ></br>
+
+     </div>
+    </div>
+  </div>
+ 
+</div>	  
+	
+	</div>                 
+   <!--end of div id="main"-->
+     
+         <div class="tab-pane fade in " id="howtouse">
+		 
+		  <div class="panel-group" id="accordion_howtouse">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion_howtouse" href="#collapseOne_howtouse">
+		<strong>Start the system</strong>
+    </a><i class="indicator glyphicon glyphicon-chevron-down  pull-right"></i>
+      </h4>
+    </div>
+    <div id="collapseOne_howtouse" class="panel-collapse collapse in">
+      <div class="panel-body">
+	  <div class="row">
+		- Make sure that the Kinect device is plug-in and the Microphone is on
+        </br>- Stand in front of the Kinect device 
+		</br>- Wave your RIGHT hand until the right hand indicator at the wabpage header become green  
+     <!--   <img id="imgAnimate1" src="./waveLeft.gif" height="50" width="50" onmouseover="onHover();" onmouseout="offHover();"> -->
+
+        <img  src="./waveLeft.gif" height="50" width="50" >
+		</br>- Wave your LEFT hand until the left hand indicator at the wabpage header become green
+		</br>- The Speech recogniser is automatically working  
+		</div>
+       </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion_howtouse" href="#collapseTwo_howtouse">
+         <strong> Navigate the map  </strong>
+  </a><i class="indicator glyphicon glyphicon-chevron-up  pull-right"></i>
+      </h4>
+    </div>
+    <div id="collapseTwo_howtouse" class="panel-collapse collapse">
+      <div class="panel-body">
+	  hiiii</br>
+
+     </div>
+    </div>
+  </div>
+ 
+ <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion_howtouse" href="#collapseThree_howtouse">
+         <strong> Zoom In and Out  </strong>
+  </a><i class="indicator glyphicon glyphicon-chevron-up  pull-right"></i>
+      </h4>
+    </div>
+    <div id="collapseThree_howtouse" class="panel-collapse collapse">
+      <div class="panel-body">
+	  hiiiiiiiii
+
+     </div>
+    </div>
+  </div>
+ <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion_howtouse" href="#collapseFour_howtouse">
+         <strong> Mark a point  </strong>
+  </a><i class="indicator glyphicon glyphicon-chevron-up  pull-right"></i>
+      </h4>
+    </div>
+    <div id="collapseFour_howtouse" class="panel-collapse collapse">
+      <div class="panel-body">
+	  hiiiiiiiii
+
+     </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion_howtouse" href="#collapseFive_howtouse">
+         <strong> Draw a line  </strong>
+  </a><i class="indicator glyphicon glyphicon-chevron-up  pull-right"></i>
+      </h4>
+    </div>
+    <div id="collapseFive_howtouse" class="panel-collapse collapse">
+      <div class="panel-body">
+	  hiiiiiiiii
+
+     </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion_howtouse" href="#collapseSix_howtouse">
+         <strong> Measurement   </strong>
+  </a><i class="indicator glyphicon glyphicon-chevron-up  pull-right"></i>
+      </h4>
+    </div>
+    <div id="collapseSix_howtouse" class="panel-collapse collapse">
+      <div class="panel-body">
+	  hiiiiiiiii
+
+     </div>
+    </div>
+  </div>
+  
+</div>	  
+	
+         
+         </div>
+     <!--end of div id="howtouse"-->
+	  <div class="tab-pane fade in " id="faqs">
+    
+ <div class="panel-group" id="accordion_faqs">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion_faqs" href="#collapseOne_faqs">
+		<strong>What are the system requirements?</strong>
+    </a><i class="indicator glyphicon glyphicon-chevron-down  pull-right"></i>
+      </h4>
+    </div>
+    <div id="collapseOne_faqs" class="panel-collapse collapse in">
+      <div class="panel-body">
+
+	  <b><Strong>Required components for using the map: </strong> </b>
+			<ul>
+			<li>Kinect device. Need to install  <a href="http://www.openni.org/" target="_blank">OpenNI: Open-source SDK for 3D sensors</a> </li> 
+			<li> Microphone </li>
+	  </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion_faqs" href="#collapseTwo_faqs">
+         <strong> How can I know that the system is tracking my hands gestures? </strong>
+  </a><i class="indicator glyphicon glyphicon-chevron-up  pull-right"></i>
+      </h4>
+    </div>
+    <div id="collapseTwo_faqs" class="panel-collapse collapse">
+      <div class="panel-body">
+	  There are two indicators at the page navigation header, one is for the left hand and the other is for  the right hand. Green color mean that the hand is recognized and the Red color mean the hand is not recognised. If one of the hands is not recognised you need to re-wave the unrecognised hand until the indicator convert to green
+	</br>  <img class="col-md-3 col-md-offset-3" src="./handindicator.png" height="100" width="80">
+     </div>
+    </div>
+  </div>
+   <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion_faqs" href="#collapseThree_faqs">
+         <strong> How can I know that the system is recognising my speech? </strong>
+  </a><i class="indicator glyphicon glyphicon-chevron-up  pull-right"></i>
+      </h4>
+    </div>
+    <div id="collapseThree_faqs" class="panel-collapse collapse">
+      <div class="panel-body">
+	  There is a speech indicator at the page navigation header. By default, the system recognised the microphone and the speech indicator is green. <strong> If the indicator convert to red then <strong>.... </strong>
+ </br>	   <img class="col-md-3 col-md-offset-3" src="./speechindicator.png" height="70" width="80">
+     </div>
+    </div>
+  </div>
+ 
+</div>	  
+	
+
+	
+          </div>
+<!--end of div id="faqs"--> 
+       
+          <div class="tab-pane fade in " id="contactus">
+          
+          </div>
+<!--end of div id="conatcus"-->   
+   </div>
+            </div>
+
+</div>
+
+
+</div>		
+	
+	
+</body>
 </html>
