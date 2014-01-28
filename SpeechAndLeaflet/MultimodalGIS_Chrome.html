@@ -42,7 +42,7 @@
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
                         <li>
-                            <a href="index_startpage.html">Home</a>
+                            <a href="MultimodalGIS_Chrome.html">Home</a>
                         </li>
 					
 							 <li>
@@ -97,7 +97,7 @@
 	<div id="sidebarPoint"> 
 		<br> Name:  
 		<input id="pointname" type="text" SIZE=30 maxlength="20" name="pointname"/><br>
-		<br>Description :<br> <input id="pointdes" style="width: 300px; height: 150px;" name="pointdescription" maxlength="100"><br><br><br> 
+		<br>Description :<br> <textarea id="pointdes" style="width: 300px; height: 150px;" name="pointdescription" maxlength="250"></textarea><br><br><br> 
 		<button type="button" onclick="ap()">Submit</button>
 		<!--<input TYPE="RESET" VALUE="Clear">-->
 		<button type="button" onclick="clearForm()">Clear</button>
@@ -106,7 +106,7 @@
 	<div id="sidebarLine"> 
 		<br> Name:  
 		<input id="linename" type="text" SIZE=30 name="linename" maxlength="20"/><br>	
-		<br>Description :<br> <input id="linedes" style="width: 300px; height: 150px;" name="linedescription" maxlength="100"><br><br><br> 
+		<br>Description :<br> <textarea id="linedes" style="width: 300px; height: 150px;" name="linedescription" maxlength="250"></textarea><br><br><br> 
 		<input id="main" type="radio" name="Linetype" value="Main"> Main road<br>
 		<input id="alternative" type="radio" name="Linetype" value="Alternative"> Suggested road<br>  
 		<button type="button" onclick="al()">Submit</button>
@@ -119,7 +119,7 @@
 		<div id="AddComment" style="border: 1px solid #75C0BF; margin = 4"> 
 		<input type="hidden" name="featureid" id = "featureid" size="40" length="40" value="">
 		<br> Citizen Name: <input type="text" id = "featuretype" name="featuretype" size="40" value="" maxlength="20"><BR>	
-		<br> User Comment :<br> <textarea id="usercomment" style="width: 300px; height: 150px;" name="description" maxlength="100"></textarea><br> 
+		<br> User Comment :<br> <textarea id="usercomment" style="width: 300px; height: 150px;" name="description" maxlength="250"></textarea><br> 
 		</div>
 	
 		<button type="button" onclick="sendUserComments()">Submit Comment</button>
