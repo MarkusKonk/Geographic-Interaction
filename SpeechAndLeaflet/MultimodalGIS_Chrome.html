@@ -54,9 +54,9 @@
                         <li class="active">
 						  <a href="MultimodalGIS_Chrome.html">Map-Chrome</a>
 						</li>
-						<li>
+<!--						<li>
 						  <a href="MultimodalGIS_Sphinx.html">Map-Sphinx</a>
-						</li>
+						</li>-->
                         <li>
                             <a href="Help&About.html">Help&amp;About</a>
                         </li>
@@ -96,8 +96,8 @@
 	
 	<div id="sidebarPoint"> 
 		<br> Name:  
-		<input id="pointname" type="text" SIZE=30 name="pointname" required><br>
-		<br>Description :<br> <input id="pointdes" style="width: 300px; height: 150px;" name="pointdescription"><br><br><br> 
+		<input id="pointname" type="text" SIZE=30 maxlength="20" name="pointname"/><br>
+		<br>Description :<br> <input id="pointdes" style="width: 300px; height: 150px;" name="pointdescription" maxlength="100"><br><br><br> 
 		<button type="button" onclick="ap()">Submit</button>
 		<!--<input TYPE="RESET" VALUE="Clear">-->
 		<button type="button" onclick="clearForm()">Clear</button>
@@ -105,8 +105,8 @@
 
 	<div id="sidebarLine"> 
 		<br> Name:  
-		<input id="linename" type="text" SIZE=30 name="linename" required><br>	
-		<br>Description :<br> <input id="linedes" style="width: 300px; height: 150px;" name="linedescription"><br><br><br> 
+		<input id="linename" type="text" SIZE=30 name="linename" maxlength="20"/><br>	
+		<br>Description :<br> <input id="linedes" style="width: 300px; height: 150px;" name="linedescription" maxlength="100"><br><br><br> 
 		<input id="main" type="radio" name="Linetype" value="Main"> Main road<br>
 		<input id="alternative" type="radio" name="Linetype" value="Alternative"> Suggested road<br>  
 		<button type="button" onclick="al()">Submit</button>
@@ -118,8 +118,8 @@
 		<b><font color="#0080C0">Add new comment</font></b>
 		<div id="AddComment" style="border: 1px solid #75C0BF; margin = 4"> 
 		<input type="hidden" name="featureid" id = "featureid" size="40" length="40" value="">
-		<br> Citizen Name: <input type="text" id = "featuretype" name="featuretype" size="40" value=""><BR>	
-		<br> User Comment :<br> <textarea id="usercomment" style="width: 300px; height: 150px;" name="description"></textarea><br> 
+		<br> Citizen Name: <input type="text" id = "featuretype" name="featuretype" size="40" value="" maxlength="20"><BR>	
+		<br> User Comment :<br> <textarea id="usercomment" style="width: 300px; height: 150px;" name="description" maxlength="100"></textarea><br> 
 		</div>
 	
 		<button type="button" onclick="sendUserComments()">Submit Comment</button>
