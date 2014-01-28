@@ -101,6 +101,7 @@
 		<button type="button" onclick="ap()">Submit</button>
 		<!--<input TYPE="RESET" VALUE="Clear">-->
 		<button type="button" onclick="clearForm()">Clear</button>
+		<button type="button" onclick="closeSidebar()">Close</button>
 	</div>
 
 	<div id="sidebarLine"> 
@@ -112,6 +113,7 @@
 		<button type="button" onclick="al()">Submit</button>
 		<!--<input TYPE="RESET" VALUE="Clear">-->
 		<button type="button" onclick="clearForm()">Clear</button>
+		<button type="button" onclick="closeSidebar()">Close</button>
 	</div>
 
 	<div id="sidebarComments"> 
@@ -124,6 +126,7 @@
 	
 		<button type="button" onclick="sendUserComments()">Submit Comment</button>
 		<button type="button" onclick="clearForm()">Clear</button>
+		<button type="button" onclick="closeSidebar()">Close</button>
 	
 		<div id="sidebarCommentsTable"></div>
 	</div>
@@ -687,6 +690,14 @@
 			sidebarOpen = '';
 		}
 		
+		function closeSidebar(){
+			sidebarPoint.hide();
+			sidebarLine.hide();
+			sidebarComments.hide();
+			sidebarProjects.hide();
+			sidebarOpen = '';
+		}
+		
 		callPoints();
 		callLines();
 		
@@ -738,8 +749,8 @@
 		});
 		
 
-		var baseMaps={"Open StreetMap":osm,
-						"arial view": layerOrtho
+		var baseMaps={"OpenStreetMap":osm,
+						"Aerial view": layerOrtho
 					   //,"DTK10":layerDTK10
 					   };
 					   
@@ -1062,7 +1073,8 @@
 				var coord=coordinates.toString();
 				addPoint(coord);
 				
-            sidebarPoint.show();
+            closeSidebar();
+			sidebarPoint.show();
 			sidebarOpen = 'point';
 			console.debug('sidebar point');
 			}
@@ -1071,6 +1083,7 @@
 				var geojsonFeature = layer.toGeoJSON();
 				
 				addLine(geojsonFeature.geometry.coordinates);
+				closeSidebar();
 				sidebarLine.show();
 				sidebarOpen = 'line';
 				console.debug('sidebar line');
