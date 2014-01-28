@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="src/Leaflet.contextmenu/leaflet.contextmenu.css" />
     <link rel="stylesheet" href="src/Leaflet.draw/leaflet.draw.css" />
     <link rel="stylesheet" href="src/Leaflet.MeasureControl/leaflet.measurecontrol.css" />
+	    <link rel="stylesheet" href="src/Projects/leaflet.Projects.css" />
     
     <link rel="stylesheet" href="src/custom/custom_css.css"/>
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
@@ -43,8 +44,9 @@
                         <li>
                             <a href="index_startpage.html">Home</a>
                         </li>
-						 <li>
-                            <a href="#" onclick="showProjects();">Projects</a>
+					
+							 <li>
+                            <a href="#" onclick="InvokeMeasure();">Measure</a>
                         </li>
 						 <li>
                             <a href="#" onclick="sidebarSpeech.toggle();">Speech</a>
@@ -524,6 +526,7 @@
     
     <script src="src/custom/customFunctions.js"></script>
     <script src="src/speech/webspeech/webspeech_commands.js"></script>
+	    <script src="src/Projects/leaflet.Projects.js"></script>
     <!--cutom ones-->
 	
 	
@@ -589,7 +592,7 @@
             trackResize: true,
             worldCopyJump: false,
             closePopupOnClick: true,
-           zoomsliderControl: true,
+           //zoomsliderControl: true,
 			measureControl: true,
             //loadingControl: true,
 			panControl: false,
@@ -1159,6 +1162,7 @@
 			showMarker: true
         }).addTo(map);
 		
+		// Add projects 
 		
 
         // create custom zoom control with fullscreen button
@@ -1178,8 +1182,11 @@
          // init ViewCenter plugin
         var viewCenter = new L.Control.ViewCenter({
         }).addTo(map);
-
 		
+		// projects 
+
+var viewProjects = new L.Control.Projects();
+map.addControl(viewProjects);
 	
         function startButton(event) {
             final_transcript = '';
@@ -1192,6 +1199,10 @@
                         $("#command_animation").html("").css('left', '45%');
                     });
         }
+		function InvokeMeasure()
+		{
+		map.measureControl.toggle();
+		}
     </script>
 </body>
 
