@@ -1057,7 +1057,7 @@
 
 			if (type === 'marker') {
 				layer.bindPopup("<br> Point Name: * <br> <input type='text' SIZE=30 name='id' required><br>");
-				
+				layer.addTo(map);
 				var coordinates = layer.toGeoJSON().geometry.coordinates;
 				var coord=coordinates.toString();
 				addPoint(coord);
@@ -1070,7 +1070,7 @@
 			 
 			if (type === 'polyline') {
 				var geojsonFeature = layer.toGeoJSON();
-				
+				layer.addTo(map);
 				addLine(geojsonFeature.geometry.coordinates);
 				closeSidebar();
 				sidebarLine.show();
@@ -1097,7 +1097,7 @@
 		var circle = L.circleMarker([0, 0], {radius: 5, fillColor: 'white', fillOpacity: 1});
 		var previousColor;	
 		map.on('almost:over', function (e) {
-			map.addLayer(circle);
+			
 			previousColor = e.layer.options.color;
 			e.layer.setStyle({color: 'blue'});
 		});
@@ -1115,16 +1115,6 @@
 			e.layer.openPopup();
 			e.layer.setStyle({});	
 		});  
-		  
-
-		
-	
-							
-
-		//an example marker, which is able to open the popup
-        var marker = L.marker([51.982, 7.597]).addTo(map).on('click', function () {
-            sidebarSpeech.toggle();
-        });
 
 		
 		//new Geolocation tool
