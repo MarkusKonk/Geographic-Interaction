@@ -163,7 +163,7 @@
 	<br><br>
     <p></p>
 	
-		<div id="console" style="margin-top: 100px;">
+		<div id="console" style="margin-top: 40px;">
 			<h3>Console:</h3>
 			<div id="transcript"></div>
 			<div id="interim"></div>
@@ -172,23 +172,17 @@
 		
 		
 		<div id="description">
-			<p class="description">To test it you need to run the html site within a web server. Browse the site with Chrome. To start interacting with the map by speech, first click the button, allow microphone access from browser and then you can use <br>
+			<p class="description">To start interacting with the map by speech, allow microphone access from browser<br>
 				<ul>
 			<li>
 				Basic Map Navigation
 				<ul>
+					<li>						
+						&quot;Zoom out&quot;,&nbsp; &nbsp; &nbsp; &nbsp; &quot;Zoom in&quot;</li>					
 					<li>
-						&quot;Zoom out&quot;,&nbsp;</li>
+						&quot;Up&quot;,&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &quot;Down&quot;</li>					
 					<li>
-						&quot;Zoom in&quot;,&nbsp;</li>
-					<li>
-						&quot;Up&quot;,&nbsp;</li>
-					<li>
-						&quot;Down&quot;,</li>
-					<li>
-						&quot;Left&quot;,&nbsp;</li>
-					<li>
-						&quot;Right&quot;&nbsp;</li>
+						&quot;Left&quot;,&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &quot;Right&quot;</li>					
 				</ul>
 			</li>
 		</ul>
@@ -196,12 +190,7 @@
 			<li>
 				Place fixed-scale geometry objects on the map
 				<ul>
-					<li>
-						&quot; Place Marker&quot;,&nbsp;</li>
-					<li>
-						&quot; Place Large/medium/small circle&quot;,</li>
-					<li>
-						&quot; Place Large/medium/small rectangle&quot;</li>
+					<li>&quot; Place Marker&quot;,&nbsp;</li>
 				</ul>
 			</li>
 		</ul>
@@ -209,16 +198,8 @@
 			<li>
 				Control the drawing control plugin (enable drawing functionalities)
 				<ul>
-					<li>
-						&quot;Place a point project&quot;,</li>
-					<li>
-						&quot;Place a street project&quot;,</li>
-					<li>
-						&quot;Start circle drawing&quot;,&nbsp;</li>
-					<li>
-						&quot;Start polygon drawing&quot;,&nbsp;</li>
-					<li>
-						&quot;Start rectangle drawing&quot;&nbsp;</li>
+					<li>&quot;Place a point project&quot;,</li>
+					<li>&quot;Place a street project&quot;,</li>
 				</ul>
 			</li>
 		</ul>
@@ -232,7 +213,7 @@
 						&quot;Disable location function&quot; &nbsp;</li>
 				</ul>
 			</li>
-		</ul>
+		</ul><!--
 		<ul>
 			<li>
 				To control the Reveal OSM Plugin, which provides additional information via OSM features say:
@@ -243,7 +224,7 @@
 						&quot;Disable additional information&quot;&nbsp;</li>
 				</ul>
 			</li>
-		</ul>
+		</ul>-->
 		<ul>
 			<li>
 				To switch back to the home extend (M&uuml;nster):&nbsp;
@@ -255,7 +236,7 @@
 		</ul>
 		<ul>
 			<li>
-				To Enable or Disable the measurement tool, say
+				To Enable or Disable the measurement tool
 				<ul>
 					<li>
 						&quot;Enable measurement&quot;,</li>
@@ -275,6 +256,7 @@
 				</ul>
 			</li>
 		</ul>
+		<!--
 		<ul>
 			<li>
 				To enable a temperature layer. More layers will follow
@@ -286,23 +268,25 @@
 				</ul>
 			</li>
 		</ul>
+		-->
 		
 		
-		
-		
+		<!--
 		<div id="buttons">
 		<h3>Location, RevealOSM, Measurement, Minimap, Home</h3>
 		<p></p>
-			
+		-->	
 				
 		<!--Locator -->
+                <!--
                 <div id="text" style="margin-top: 10px;>
                     <button id="Locaterbutton_start" class="btn btn-primary" onclick="locater.locate();" class="btn danger">
                         Click to Enable Locate function
                     </button>
                 </div>
-                
+                -->
                 <!--Locator -->
+                <!--
                 <div id="text" style="margin-top: 10px;>
                     <button id="Locaterbutton_end" class="btn btn-primary" onclick="locater.stopLocate();" class="btn danger">
                         Click to Disable Locate function
@@ -310,8 +294,9 @@
                 </div>
 
 		<hr>	
-			
+		-->	
 		<!--Reveal OSM activate-->
+		<!--
                 <div id="text " style="margin-top: 10px;>
                     <button id="revealOSM_activate" class="btn btn-primary" onclick="map.revealOSMControl.activate();" class="btn danger">
                         Click to Enable RevealOSM Plugin
@@ -325,8 +310,9 @@
                 </div>
 
 		<hr>	
-			
+		-->	
 		<!--Measurement Tool -->
+		<!--
                 <div id="text" style="margin-top: 10px;>
                     <button id="measureControl_enable" class="btn btn-primary" onclick="map.measureControl.toggle();" class="btn danger">
                         Click to Enable Measurement Tool
@@ -340,8 +326,9 @@
                 </div>
 
 		<hr>	
-		
+		-->
 		<!--Minimap  -->
+		<!--
                 <div id="text" style="margin-top: 10px;>
                     <button id="minimizeMinimap" class="btn btn-primary" onclick="miniMap._minimize();" class="btn danger">
                         Click to Disable the Overview Minimap
@@ -355,8 +342,9 @@
                 </div>
 
 		<hr>
-
+		-->
 		<!--Layer Controls  -->
+		<!--
                 <div id="text" style="margin-top: 10px;>
                     <button id="minimizeMinimap" class="btn btn-primary" onclick="controlArialMaps._expand();" class="btn danger">
                         Click to Enable the LayerControl ArialMaps
@@ -393,8 +381,9 @@
                     </button>
                 </div>
 		<hr>	
-			
+		-->	
 		<!--Home Extend -->
+		<!--
                 <div id="text" style="margin-top: 10px;>
                     <button id="homeExtend" class="btn btn-primary" onclick="map.setView(new L.LatLng(51.95442, 7.62709), 13)" class="btn danger">
                         Click to switch to home extend
@@ -405,52 +394,58 @@
 		<p></p>
 		<h3>Drawing Options with Drawing Plugin	</h3>
 		<p></p>
-				
+		-->		
 				
 			<!--Drawing Tool - Marker 
 				https://github.com/Leaflet/Leaflet.draw/issues/179 -->
+                <!--
                 <div id="text" style="margin-top: 10px;>
                     <button id="markerdraw" class="btn btn-primary" onclick="new L.Draw.Marker(map).enable();" class="btn danger">
 					<!-- or this way: L.Draw.Marker(map, drawControl.options.marker).enable();    https://github.com/Leaflet/Leaflet.draw/issues/179#issuecomment-26500042 -->
                         Click to place a point project
                     </button>
                 </div>
-				
+		-->		
 			<!--Drawing Tool - Line -->
+		<!--
                 <div id="text" style="margin-top: 10px;>
                     <button id="linedraw" class="btn btn-primary" onclick="new L.Draw.Polyline(map).enable();" class="btn danger">
                         Click place a street project
                     </button>
                 </div>
-				
-			<!--Drawing Tool - Circle -->
+		-->		
+		<!--Drawing Tool - Circle -->
+		<!--
                 <div id="text" style="margin-top: 10px;>
                     <button id="circledraw" class="btn btn-primary" onclick="new L.Draw.Circle(map).enable();" class="btn danger">
                         Click to start drawing a circle
                     </button>
                 </div>
-				
-			<!--Drawing Tool - Polygon -->
+		-->		
+		<!--Drawing Tool - Polygon -->
+		<!--
                 <div id="text" style="margin-top: 10px;>
                     <button id="polygondraw" class="btn btn-primary" onclick="new L.Draw.Polygon(map).enable();" class="btn danger">
                         Click to start drawing a polygon
                     </button>
                 </div>
-				
-			<!--Drawing Tool - Rectangle -->
+		-->		
+		<!--Drawing Tool - Rectangle -->
+		<!--
                 <div id="text" style="margin-top: 10px;>
                     <button id="rectangledraw" class="btn btn-primary" onclick="new L.Draw.Rectangle(map).enable();" class="btn danger">
                         Click to start drawing a rectangle
                     </button>
                 </div>
-        
 			
 		<hr>
 		<p></p>
 		<h3>Layer Control</h3>
 		<p></p>		
-			
-			<!--Layer Controll -->
+		-->
+		
+		<!--Layer Controll -->
+		<!--
                 <div id="text" style="margin-top: 10px;>
                     <button id="testlayercontrol" class="btn btn-primary" onclick="overlayLayers.OpenWeatherMap_Temperature.onAdd(map);" class="btn danger">
                         Click to Enable OpenWeatherMap_Temperature layer
@@ -463,17 +458,11 @@
                     </button>
                 </div>
 		</div>
+		-->
 		
-
-		
+		<br>
 		</div>
 	</div>
-									
-									
-  
-	
-
-	
 
 	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
