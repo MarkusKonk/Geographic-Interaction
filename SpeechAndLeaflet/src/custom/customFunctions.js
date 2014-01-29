@@ -99,7 +99,7 @@ xmlhttp.onreadystatechange=function()
 			.setIcon(icon)				
 			.addTo(map)
                        
-                        //selectedObjectId = parseInt(obj[i].ID);
+                        selectedObjectId = parseInt(obj[i].ID);
 		var container = $('<div />');
 			container.html('<b>Name:</b> '+obj[i].Name+'<br> <b>Description:</b> '+obj[i].Description+' <br>'+"<a href='#' font-size=30 ></a>"+ '&#09' +"<button type='button' onclick='deleting("+obj[i].ID+")' style='align:left;'>Delete</button>"+ '&#09' +"<button type='button' onclick='AddComment("+obj[i].ID+")' font-size=30 > Comments </button>");
 			marker.bindPopup(container[0]);
