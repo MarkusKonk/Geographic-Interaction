@@ -270,19 +270,20 @@
                 final_transcript = '';
             }
 			
-			if (final_transcript.indexOf("submit comment") >= 0) {
+	    if (final_transcript.indexOf("submit comment") >= 0) {
 				sendUserComments();
                 console.log("submit comment");
                 final_transcript = '';
             }
             
+            /*
             if (final_transcript.indexOf("submit comment") >= 0)	{
 				sendUserComments();
 				console.log("submit comment");
 				final_transcript = '';
-			}
+			}*/
 			
-			if (final_transcript.indexOf("clear comment") >= 0)	{
+	    if (final_transcript.indexOf("clear comment") >= 0)	{
 				clearForm();
 				console.log("clear comment");
 				final_transcript = '';
@@ -304,6 +305,20 @@
 			if (final_transcript.indexOf("aerial view") >= 0)	{
 				
 				console.log("aerial view");
+				final_transcript = '';
+			}
+			
+			if (final_transcript.indexOf("show comment") >= 0)	{
+				//alert(selectedObjectId);
+				AddComment(selectedObjectId);
+				console.log("show comment");
+				final_transcript = '';
+			}
+			
+			if (final_transcript.indexOf("delete comment") >= 0)	{
+				//alert(selectedObjectId);
+				deleting(selectedObjectId);
+				console.log("delete comment");
 				final_transcript = '';
 			}
 	}
