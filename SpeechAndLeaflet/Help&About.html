@@ -35,21 +35,6 @@ function toggleChevron(e) {
 $('#accordion').on('hidden.bs.collapse', toggleChevron);
 $('#accordion').on('shown.bs.collapse', toggleChevron);
 </script>
-<!--
-<script type="text/javascript">
-$(document).ready(function()
-{
-    $("#imgAnimate1").hover(
-        function()
-        {
-            $(this).attr('src', 'waveRight.gif');
-        } });
-});
-
-</script>
-
--->
-
 <script type="text/javascript">
 $(document).ready(function(){
 function onHover()
@@ -107,7 +92,7 @@ function offHover()
     </style>
 </head>
 <body>
-	  <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+ <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -134,10 +119,14 @@ function offHover()
         <!-- /.nav-collapse -->
       </div>
       <!-- /.container -->
-    </div>
-<div class="container">
+    </div>	
+	</div>
+	      <!-- Container of the content -->
+
+	<div class="container">
 
 <div class="tabbable">
+      <!-- Main Tabs -->
 
     <ul id="myTab" class="nav nav-tabs nav-justified" >
 	<li class="active"><a href="#main" data-toggle="tab"><strong>Main Information</strong></a></li>
@@ -145,24 +134,22 @@ function offHover()
 	<li ><a href="#faqs" data-toggle="tab"><strong> FAQs </strong></a></li>
 	<li ><a href="#contactus" data-toggle="tab"><strong>Contact Us</strong></a></li>
 	</ul>
-	
-	    
-    <div class="tab-content">
-        
-      <div class="tab-pane fade in active" id="main">
+      <!-- /.End of main tabs -->
+ <div class="tab-content">
+ <div class="tab-pane fade in active" id="main">
 
 	  <div class="panel-group" id="accordion">
   <div class="panel panel-default">
     <div class="panel-heading">
       <h4 class="panel-title">
-        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne_main">
 		<strong>What is this System?</strong>
     </a><i class="indicator glyphicon glyphicon-chevron-down  pull-right"></i>
       </h4>
     </div>
-    <div id="collapseOne" class="panel-collapse collapse in">
+    <div id="collapseOne_main" class="panel-collapse collapse ">
       <div class="panel-body">
-			This system is a multi-modal application. This application allows the users to control the map components by Gesture and Speech with the help of Keyboard and Mouse. To use this application you need Kinect device to detect user gestures, a microphone to detect use speech and an internet connection.
+			This system is a multi-modal application. This application allows the users to control the map components by Gesture and Speech commands with the help of Keyboard and Mouse. To use this application you need Kinect device to detect user gestures, a microphone to detect use speech and an internet connection.
       <!-- <img id="imgAnimate1" src="./waveLeft.gif" height="50" width="50" onmouseover="onHover();" onmouseout="offHover();"> -->
       
 	  </div>
@@ -171,25 +158,23 @@ function offHover()
   <div class="panel panel-default">
     <div class="panel-heading">
       <h4 class="panel-title">
-        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-         <strong> System Data Flow </strong>
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo_main">
+         <strong> System Data Flow Architecture</strong>
   </a><i class="indicator glyphicon glyphicon-chevron-up  pull-right"></i>
       </h4>
     </div>
-    <div id="collapseTwo" class="panel-collapse collapse">
+    <div id="collapseTwo_main" class="panel-collapse collapse">
       <div class="panel-body">
-	  fkdfksd
-	             </br><img class="col-md-3 col-md-offset-3" src="./DataFlow.png" height="500" width="900" ></br>
-
+        </br><img class="col-md-3 col-md-offset-3" src="./System_Architecture.png" ></br>
      </div>
     </div>
   </div>
  
 </div>	  
 	
-	</div>                 
+	</div>              
    <!--end of div id="main"-->
-     
+   
          <div class="tab-pane fade in " id="howtouse">
 		 
 		  <div class="panel-group" id="accordion_howtouse">
@@ -201,18 +186,15 @@ function offHover()
     </a><i class="indicator glyphicon glyphicon-chevron-down  pull-right"></i>
       </h4>
     </div>
-    <div id="collapseOne_howtouse" class="panel-collapse collapse in">
+    <div id="collapseOne_howtouse" class="panel-collapse collapse">
       <div class="panel-body">
-	  <div class="row">
+	  
 		- Make sure that the Kinect device is plug-in and the Microphone is on
         </br>- Stand in front of the Kinect device 
 		</br>- Wave your RIGHT hand until the right hand indicator at the wabpage header become green  
-     <!--   <img id="imgAnimate1" src="./waveLeft.gif" height="50" width="50" onmouseover="onHover();" onmouseout="offHover();"> -->
-
-        <img  src="./waveLeft.gif" height="50" width="50" >
 		</br>- Wave your LEFT hand until the left hand indicator at the wabpage header become green
 		</br>- The Speech recogniser is automatically working  
-		</div>
+		
        </div>
     </div>
   </div>
@@ -226,10 +208,21 @@ function offHover()
     </div>
     <div id="collapseTwo_howtouse" class="panel-collapse collapse">
       <div class="panel-body">
-	  hiiii</br>
-
+		
+		<h5>  You can navigate the map using the gestures AND/OR speech commands </h5>
+			<strong> Gestures : </strong >
+			</br>- To use the gestures make sure that the Left and Hand indicators at the webpage header are green.  
+			</br>- Grap your left hand (keep grapping throw navigation)
+			</br>- Move your right hand to move the map 
+			</br><strong > Speech Commands:</strong>
+				</br> - To move-up the map; Say :  <strong>"Up" </strong>
+				</br> - To move-down the map; Say : <strong> "Down" </strong>
+				</br> - To move the map to the left; Say : <strong> "Left" </strong>
+				</br> - To move the map to the right; Say : <strong> "Right" </strong>
+		</br><Strong> Note: </strong>  you can use the gestures and speech commands at the same time. 
+		
      </div>
-    </div>
+  </div>  
   </div>
  
  <div class="panel panel-default">
@@ -242,22 +235,36 @@ function offHover()
     </div>
     <div id="collapseThree_howtouse" class="panel-collapse collapse">
       <div class="panel-body">
-	  hiiiiiiiii
-
-     </div>
+	
+					<h4> Zoom In </h4 >
+					</br>- Perform the Zoom In Gesture :     <Strong> OR </Strong> 
+					</br>- Say : <strong>"Zoom in" </strong> 
+					</br> <strong> Note: </strong> In both cases a message "Zoom In" will appear 
+					</br></br><h4> Zoom Out </h4>
+					</br>- Perform the Zoom Out Gesture :     <Strong> OR </Strong> 
+					</br>- Say : <strong>"Zoom out" </strong> 
+					</br> <strong> Note: </strong> In both cases a message "Zoom out" will appear 			
+					</div>
     </div>
   </div>
  <div class="panel panel-default">
     <div class="panel-heading">
       <h4 class="panel-title">
         <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion_howtouse" href="#collapseFour_howtouse">
-         <strong> Mark a point  </strong>
+         <strong> Mark a point (Marker) </strong>
   </a><i class="indicator glyphicon glyphicon-chevron-up  pull-right"></i>
       </h4>
     </div>
     <div id="collapseFour_howtouse" class="panel-collapse collapse">
       <div class="panel-body">
-	  hiiiiiiiii
+	 
+					- Perform the "Clicking" gesture using your right or left hand:     <Strong> OR </Strong> 
+					</br>-  Say : <strong> "point" </strong> 
+					</br>-  In both cases a side bar will appear, Then
+					</br>      -Enter the point name by speech or using the keyboard 
+					</br>      -Perform the "Tab" gesture to move to description field
+					</br>      -Enter the point description by speech or by using the keyboard 
+		
 
      </div>
     </div>
@@ -266,13 +273,19 @@ function offHover()
     <div class="panel-heading">
       <h4 class="panel-title">
         <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion_howtouse" href="#collapseFive_howtouse">
-         <strong> Draw a line  </strong>
+         <strong> Draw a Road  </strong>
   </a><i class="indicator glyphicon glyphicon-chevron-up  pull-right"></i>
       </h4>
     </div>
     <div id="collapseFive_howtouse" class="panel-collapse collapse">
       <div class="panel-body">
-	  hiiiiiiiii
+	
+				    - To start  drawing a road ; say : <strong>"Road"</strong> 
+					</br> -Perform the "Clicking" gesture to assign points
+					</br> - !!!!!!!!!!!!!!!<strong>"!!!!!!!!!!!!!!!!!!"</strong> 
+		
+	
+	  
 
      </div>
     </div>
@@ -281,26 +294,50 @@ function offHover()
     <div class="panel-heading">
       <h4 class="panel-title">
         <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion_howtouse" href="#collapseSix_howtouse">
-         <strong> Measurement   </strong>
+         <strong> Enable or Disable MiniMap  </strong>
   </a><i class="indicator glyphicon glyphicon-chevron-up  pull-right"></i>
       </h4>
     </div>
     <div id="collapseSix_howtouse" class="panel-collapse collapse">
       <div class="panel-body">
-	  hiiiiiiiii
+	 
+					<h4> Enable MiniMap </h4 >
+					</br>- Say : <strong>"Enable MiniMap" </strong> 
+					</br></br><h4> Disable MiinMap </h4 >
+					</br>- Say : <strong>"Disable MiniMap" </strong> 
+		
+	
 
      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion_howtouse" href="#collapseSeven_howtouse">
+         <strong> Measurement   </strong>
+  </a><i class="indicator glyphicon glyphicon-chevron-up  pull-right"></i>
+      </h4>
+    </div>
+    <div id="collapseSeven_howtouse" class="panel-collapse collapse">
+      <div class="panel-body">
+	  
+	   
+				    - To start the measurement tool; say : <strong>"Start Measurement"</strong> 
+					</br> - Perform the "Clicking" gesture to assign points
+					</br> - To stop the measurement tool; Say : <strong>"Stop Measurement"</strong> 
+	  </div>
     </div>
   </div>
   
 </div>	  
 	
          
-         </div>
-     <!--end of div id="howtouse"-->
-	  <div class="tab-pane fade in " id="faqs">
-    
- <div class="panel-group" id="accordion_faqs">
+         </div>   
+		 <!--end of div id="howtouse"-->
+		 		 
+		 	  <div class="tab-pane fade in " id="faqs">
+<div class="panel-group" id="accordion_faqs">
   <div class="panel panel-default">
     <div class="panel-heading">
       <h4 class="panel-title">
@@ -309,7 +346,7 @@ function offHover()
     </a><i class="indicator glyphicon glyphicon-chevron-down  pull-right"></i>
       </h4>
     </div>
-    <div id="collapseOne_faqs" class="panel-collapse collapse in">
+    <div id="collapseOne_faqs" class="panel-collapse collapse">
       <div class="panel-body">
 
 	  <b><Strong>Required components for using the map: </strong> </b>
@@ -318,7 +355,9 @@ function offHover()
 			<li> Microphone </li>
 	  </div>
     </div>
-  </div>
+  </div> 
+ 
+  
   <div class="panel panel-default">
     <div class="panel-heading">
       <h4 class="panel-title">
@@ -350,24 +389,26 @@ function offHover()
     </div>
   </div>
  
-</div>	  
-	
+     </div> 
+		  </div >
+		  </div>
+		  </div>
+		  
 
-	
+
+			
+			  <!--End of Faqs-->
+			    <div class="tab-pane fade in " id="contactus">
           </div>
-<!--end of div id="faqs"--> 
-       
-          <div class="tab-pane fade in " id="contactus">
-          
-          </div>
-<!--end of div id="conatcus"-->   
-   </div>
-            </div>
 
-</div>
+ </div>      <!-- /.End of tab contents -->
+ 
 
+	
+	</div>       <!-- End of Tabbale -->
 
-</div>		
+	     </div> <!-- end of main content container -->
+
 	
 	
 </body>
