@@ -206,10 +206,9 @@
 	//////////////////////////////////////////////////////////
 	
 			if (final_transcript.indexOf("point") >= 0) {
-                new L.Draw.Polyline(map).enable();
+                new L.Draw.Marker(map).enable();
                 console.log("point");
                 final_transcript = '';
-				new L.Draw.Marker(map).enable();
             }
 			
 			if ((final_transcript.indexOf("road") >= 0)
@@ -217,7 +216,6 @@
                 new L.Draw.Polyline(map).enable();
                 console.log("road");
                 final_transcript = '';
-				new L.Draw.Polyline(map).enable();
             }
 
 			if (final_transcript.indexOf("main road") >= 0) {
