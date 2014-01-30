@@ -334,6 +334,20 @@ function mapright(){
 map.panBy([50, 0]);
 }
 
+function baselayerOSM(){
+	if (map.hasLayer(layerOrtho)){
+		map.addLayer(osm);
+		map.removeLayer(layerOrtho);
+		}
+}
+
+function baselayerAerialView(){
+	if (map.hasLayer(osm)){
+		map.addLayer(layerOrtho);
+		map.removeLayer(osm);
+		}
+}
+
 function showProjects(){
 var tag=document.getElementById("tablebody");
 var i = projects.length-1;

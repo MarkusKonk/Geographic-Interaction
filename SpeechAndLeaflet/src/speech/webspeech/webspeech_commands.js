@@ -297,13 +297,13 @@
 			}
 			
 			if (final_transcript.indexOf("openstreetmap") >= 0)	{
-				
+				baselayerOSM();
 				console.log("openstreetmap");
 				final_transcript = '';
 			}
 			
 			if (final_transcript.indexOf("aerial view") >= 0)	{
-				
+				baselayerAerialView();
 				console.log("aerial view");
 				final_transcript = '';
 			}
