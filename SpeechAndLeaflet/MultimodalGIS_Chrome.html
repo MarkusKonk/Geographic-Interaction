@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="src/Leaflet.contextmenu/leaflet.contextmenu.css" />
     <link rel="stylesheet" href="src/Leaflet.draw/leaflet.draw.css" />
     <link rel="stylesheet" href="src/Leaflet.MeasureControl/leaflet.measurecontrol.css" />
+	    <link rel="stylesheet" href="src/Projects/leaflet.Projects.css" />
     
     <link rel="stylesheet" href="src/custom/custom_css.css"/>
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
@@ -41,10 +42,11 @@
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
                         <li>
-                            <a href="index_startpage.html">Home</a>
+                            <a href="MultimodalGIS_Chrome.html">Home</a>
                         </li>
-						 <li>
-                            <a href="#" onclick="showProjects();">Projects</a>
+					
+							 <li>
+                            <a href="#" onclick="InvokeMeasure();">Measure</a>
                         </li>
 						 <li>
                             <a href="#" onclick="sidebarSpeech.toggle();">Speech</a>
@@ -52,9 +54,9 @@
                         <li class="active">
 						  <a href="MultimodalGIS_Chrome.html">Map-Chrome</a>
 						</li>
-						<li>
+<!--						<li>
 						  <a href="MultimodalGIS_Sphinx.html">Map-Sphinx</a>
-						</li>
+						</li>-->
                         <li>
                             <a href="Help&About.html">Help&amp;About</a>
                         </li>
@@ -84,7 +86,7 @@
 	
 </head>
 
-<body>  
+<body onload="startButton();">  
     <div id="map">
 		<!--One vertical and one horizontal line within the map-->
         <div id="vertical"></div>
@@ -94,34 +96,37 @@
 	
 	<div id="sidebarPoint"> 
 		<br> Name:  
-		<input id="pointname" type="text" SIZE=30 name="pointname" required><br>
-		<br>Description :<br> <input id="pointdes" style="width: 300px; height: 150px;" name="pointdescription"><br><br><br> 
+		<input id="pointname" type="text" SIZE=30 maxlength="20" name="pointname"/><br>
+		<br>Description :<br> <textarea id="pointdes" style="width: 300px; height: 150px;" name="pointdescription" maxlength="250"></textarea><br><br><br> 
 		<button type="button" onclick="ap()">Submit</button>
 		<!--<input TYPE="RESET" VALUE="Clear">-->
 		<button type="button" onclick="clearForm()">Clear</button>
+		<button type="button" onclick="closeSidebar()">Close</button>
 	</div>
 
 	<div id="sidebarLine"> 
 		<br> Name:  
-		<input id="linename" type="text" SIZE=30 name="linename" required><br>	
-		<br>Description :<br> <input id="linedes" style="width: 300px; height: 150px;" name="linedescription"><br><br><br> 
+		<input id="linename" type="text" SIZE=30 name="linename" maxlength="20"/><br>	
+		<br>Description :<br> <textarea id="linedes" style="width: 300px; height: 150px;" name="linedescription" maxlength="250"></textarea><br><br><br> 
 		<input id="main" type="radio" name="Linetype" value="Main"> Main road<br>
 		<input id="alternative" type="radio" name="Linetype" value="Alternative"> Suggested road<br>  
 		<button type="button" onclick="al()">Submit</button>
 		<!--<input TYPE="RESET" VALUE="Clear">-->
 		<button type="button" onclick="clearForm()">Clear</button>
+		<button type="button" onclick="closeSidebar()">Close</button>
 	</div>
 
 	<div id="sidebarComments"> 
 		<b><font color="#0080C0">Add new comment</font></b>
 		<div id="AddComment" style="border: 1px solid #75C0BF; margin = 4"> 
 		<input type="hidden" name="featureid" id = "featureid" size="40" length="40" value="">
-		<br> Citizen Name: <input type="text" id = "featuretype" name="featuretype" size="40" value=""><BR>	
-		<br> User Comment :<br> <textarea id="usercomment" style="width: 300px; height: 150px;" name="description"></textarea><br> 
+		<br> Citizen Name: <input type="text" id = "featuretype" name="featuretype" size="40" value="" maxlength="20"><BR>	
+		<br> User Comment :<br> <textarea id="usercomment" style="width: 300px; height: 150px;" name="description" maxlength="250"></textarea><br> 
 		</div>
 	
 		<button type="button" onclick="sendUserComments()">Submit Comment</button>
 		<button type="button" onclick="clearForm()">Clear</button>
+		<button type="button" onclick="closeSidebar()">Close</button>
 	
 		<div id="sidebarCommentsTable"></div>
 	</div>
@@ -158,7 +163,7 @@
 	<br><br>
     <p></p>
 	
-		<div id="console" style="margin-top: 100px;">
+		<div id="console" style="margin-top: 40px;">
 			<h3>Console:</h3>
 			<div id="transcript"></div>
 			<div id="interim"></div>
@@ -167,23 +172,17 @@
 		
 		
 		<div id="description">
-			<p class="description">To test it you need to run the html site within a web server. Browse the site with Chrome. To start interacting with the map by speech, first click the button, allow microphone access from browser and then you can use <br>
+			<p class="description">To start interacting with the map by speech, allow microphone access from browser<br>
 				<ul>
 			<li>
 				Basic Map Navigation
 				<ul>
+					<li>						
+						&quot;Zoom out&quot;,&nbsp; &nbsp; &nbsp; &nbsp; &quot;Zoom in&quot;</li>					
 					<li>
-						&quot;Zoom out&quot;,&nbsp;</li>
+						&quot;Up&quot;,&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &quot;Down&quot;</li>					
 					<li>
-						&quot;Zoom in&quot;,&nbsp;</li>
-					<li>
-						&quot;Up&quot;,&nbsp;</li>
-					<li>
-						&quot;Down&quot;,</li>
-					<li>
-						&quot;Left&quot;,&nbsp;</li>
-					<li>
-						&quot;Right&quot;&nbsp;</li>
+						&quot;Left&quot;,&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &quot;Right&quot;</li>					
 				</ul>
 			</li>
 		</ul>
@@ -191,12 +190,7 @@
 			<li>
 				Place fixed-scale geometry objects on the map
 				<ul>
-					<li>
-						&quot; Place Marker&quot;,&nbsp;</li>
-					<li>
-						&quot; Place Large/medium/small circle&quot;,</li>
-					<li>
-						&quot; Place Large/medium/small rectangle&quot;</li>
+					<li>&quot; Place Marker&quot;,&nbsp;</li>
 				</ul>
 			</li>
 		</ul>
@@ -204,16 +198,8 @@
 			<li>
 				Control the drawing control plugin (enable drawing functionalities)
 				<ul>
-					<li>
-						&quot;Place a point project&quot;,</li>
-					<li>
-						&quot;Place a street project&quot;,</li>
-					<li>
-						&quot;Start circle drawing&quot;,&nbsp;</li>
-					<li>
-						&quot;Start polygon drawing&quot;,&nbsp;</li>
-					<li>
-						&quot;Start rectangle drawing&quot;&nbsp;</li>
+					<li>&quot;Place a point project&quot;,</li>
+					<li>&quot;Place a street project&quot;,</li>
 				</ul>
 			</li>
 		</ul>
@@ -227,7 +213,7 @@
 						&quot;Disable location function&quot; &nbsp;</li>
 				</ul>
 			</li>
-		</ul>
+		</ul><!--
 		<ul>
 			<li>
 				To control the Reveal OSM Plugin, which provides additional information via OSM features say:
@@ -238,7 +224,7 @@
 						&quot;Disable additional information&quot;&nbsp;</li>
 				</ul>
 			</li>
-		</ul>
+		</ul>-->
 		<ul>
 			<li>
 				To switch back to the home extend (M&uuml;nster):&nbsp;
@@ -250,7 +236,7 @@
 		</ul>
 		<ul>
 			<li>
-				To Enable or Disable the measurement tool, say
+				To Enable or Disable the measurement tool
 				<ul>
 					<li>
 						&quot;Enable measurement&quot;,</li>
@@ -270,6 +256,7 @@
 				</ul>
 			</li>
 		</ul>
+		<!--
 		<ul>
 			<li>
 				To enable a temperature layer. More layers will follow
@@ -281,23 +268,25 @@
 				</ul>
 			</li>
 		</ul>
+		-->
 		
 		
-		
-		
+		<!--
 		<div id="buttons">
 		<h3>Location, RevealOSM, Measurement, Minimap, Home</h3>
 		<p></p>
-			
+		-->	
 				
 		<!--Locator -->
+                <!--
                 <div id="text" style="margin-top: 10px;>
                     <button id="Locaterbutton_start" class="btn btn-primary" onclick="locater.locate();" class="btn danger">
                         Click to Enable Locate function
                     </button>
                 </div>
-                
+                -->
                 <!--Locator -->
+                <!--
                 <div id="text" style="margin-top: 10px;>
                     <button id="Locaterbutton_end" class="btn btn-primary" onclick="locater.stopLocate();" class="btn danger">
                         Click to Disable Locate function
@@ -305,8 +294,9 @@
                 </div>
 
 		<hr>	
-			
+		-->	
 		<!--Reveal OSM activate-->
+		<!--
                 <div id="text " style="margin-top: 10px;>
                     <button id="revealOSM_activate" class="btn btn-primary" onclick="map.revealOSMControl.activate();" class="btn danger">
                         Click to Enable RevealOSM Plugin
@@ -320,8 +310,9 @@
                 </div>
 
 		<hr>	
-			
+		-->	
 		<!--Measurement Tool -->
+		<!--
                 <div id="text" style="margin-top: 10px;>
                     <button id="measureControl_enable" class="btn btn-primary" onclick="map.measureControl.toggle();" class="btn danger">
                         Click to Enable Measurement Tool
@@ -335,8 +326,9 @@
                 </div>
 
 		<hr>	
-		
+		-->
 		<!--Minimap  -->
+		<!--
                 <div id="text" style="margin-top: 10px;>
                     <button id="minimizeMinimap" class="btn btn-primary" onclick="miniMap._minimize();" class="btn danger">
                         Click to Disable the Overview Minimap
@@ -350,8 +342,9 @@
                 </div>
 
 		<hr>
-
+		-->
 		<!--Layer Controls  -->
+		<!--
                 <div id="text" style="margin-top: 10px;>
                     <button id="minimizeMinimap" class="btn btn-primary" onclick="controlArialMaps._expand();" class="btn danger">
                         Click to Enable the LayerControl ArialMaps
@@ -388,8 +381,9 @@
                     </button>
                 </div>
 		<hr>	
-			
+		-->	
 		<!--Home Extend -->
+		<!--
                 <div id="text" style="margin-top: 10px;>
                     <button id="homeExtend" class="btn btn-primary" onclick="map.setView(new L.LatLng(51.95442, 7.62709), 13)" class="btn danger">
                         Click to switch to home extend
@@ -400,52 +394,58 @@
 		<p></p>
 		<h3>Drawing Options with Drawing Plugin	</h3>
 		<p></p>
-				
+		-->		
 				
 			<!--Drawing Tool - Marker 
 				https://github.com/Leaflet/Leaflet.draw/issues/179 -->
+                <!--
                 <div id="text" style="margin-top: 10px;>
                     <button id="markerdraw" class="btn btn-primary" onclick="new L.Draw.Marker(map).enable();" class="btn danger">
 					<!-- or this way: L.Draw.Marker(map, drawControl.options.marker).enable();    https://github.com/Leaflet/Leaflet.draw/issues/179#issuecomment-26500042 -->
                         Click to place a point project
                     </button>
                 </div>
-				
+		-->		
 			<!--Drawing Tool - Line -->
+		<!--
                 <div id="text" style="margin-top: 10px;>
                     <button id="linedraw" class="btn btn-primary" onclick="new L.Draw.Polyline(map).enable();" class="btn danger">
                         Click place a street project
                     </button>
                 </div>
-				
-			<!--Drawing Tool - Circle -->
+		-->		
+		<!--Drawing Tool - Circle -->
+		<!--
                 <div id="text" style="margin-top: 10px;>
                     <button id="circledraw" class="btn btn-primary" onclick="new L.Draw.Circle(map).enable();" class="btn danger">
                         Click to start drawing a circle
                     </button>
                 </div>
-				
-			<!--Drawing Tool - Polygon -->
+		-->		
+		<!--Drawing Tool - Polygon -->
+		<!--
                 <div id="text" style="margin-top: 10px;>
                     <button id="polygondraw" class="btn btn-primary" onclick="new L.Draw.Polygon(map).enable();" class="btn danger">
                         Click to start drawing a polygon
                     </button>
                 </div>
-				
-			<!--Drawing Tool - Rectangle -->
+		-->		
+		<!--Drawing Tool - Rectangle -->
+		<!--
                 <div id="text" style="margin-top: 10px;>
                     <button id="rectangledraw" class="btn btn-primary" onclick="new L.Draw.Rectangle(map).enable();" class="btn danger">
                         Click to start drawing a rectangle
                     </button>
                 </div>
-        
 			
 		<hr>
 		<p></p>
 		<h3>Layer Control</h3>
 		<p></p>		
-			
-			<!--Layer Controll -->
+		-->
+		
+		<!--Layer Controll -->
+		<!--
                 <div id="text" style="margin-top: 10px;>
                     <button id="testlayercontrol" class="btn btn-primary" onclick="overlayLayers.OpenWeatherMap_Temperature.onAdd(map);" class="btn danger">
                         Click to Enable OpenWeatherMap_Temperature layer
@@ -458,17 +458,11 @@
                     </button>
                 </div>
 		</div>
+		-->
 		
-
-		
+		<br>
 		</div>
 	</div>
-									
-									
-  
-	
-
-	
 
 	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
@@ -524,6 +518,7 @@
     
     <script src="src/custom/customFunctions.js"></script>
     <script src="src/speech/webspeech/webspeech_commands.js"></script>
+	    <script src="src/Projects/leaflet.Projects.js"></script>
     <!--cutom ones-->
 	
 	
@@ -589,7 +584,7 @@
             trackResize: true,
             worldCopyJump: false,
             closePopupOnClick: true,
-           zoomsliderControl: true,
+           //zoomsliderControl: true,
 			measureControl: true,
             //loadingControl: true,
 			panControl: false,
@@ -684,6 +679,14 @@
 			sidebarOpen = '';
 		}
 		
+		function closeSidebar(){
+			sidebarPoint.hide();
+			sidebarLine.hide();
+			sidebarComments.hide();
+			sidebarProjects.hide();
+			sidebarOpen = '';
+		}
+		
 		callPoints();
 		callLines();
 		
@@ -735,8 +738,8 @@
 		});
 		
 
-		var baseMaps={"Open StreetMap":osm,
-						"arial view": layerOrtho
+		var baseMaps={"OpenStreetMap":osm,
+						"Aerial view": layerOrtho
 					   //,"DTK10":layerDTK10
 					   };
 					   
@@ -1054,20 +1057,22 @@
 
 			if (type === 'marker') {
 				layer.bindPopup("<br> Point Name: * <br> <input type='text' SIZE=30 name='id' required><br>");
-				
+				layer.addTo(map);
 				var coordinates = layer.toGeoJSON().geometry.coordinates;
 				var coord=coordinates.toString();
 				addPoint(coord);
 				
-            sidebarPoint.show();
+            closeSidebar();
+			sidebarPoint.show();
 			sidebarOpen = 'point';
 			console.debug('sidebar point');
 			}
 			 
 			if (type === 'polyline') {
 				var geojsonFeature = layer.toGeoJSON();
-				
+				layer.addTo(map);
 				addLine(geojsonFeature.geometry.coordinates);
+				closeSidebar();
 				sidebarLine.show();
 				sidebarOpen = 'line';
 				console.debug('sidebar line');
@@ -1092,7 +1097,7 @@
 		var circle = L.circleMarker([0, 0], {radius: 5, fillColor: 'white', fillOpacity: 1});
 		var previousColor;	
 		map.on('almost:over', function (e) {
-			map.addLayer(circle);
+			
 			previousColor = e.layer.options.color;
 			e.layer.setStyle({color: 'blue'});
 		});
@@ -1110,16 +1115,6 @@
 			e.layer.openPopup();
 			e.layer.setStyle({});	
 		});  
-		  
-
-		
-	
-							
-
-		//an example marker, which is able to open the popup
-        var marker = L.marker([51.982, 7.597]).addTo(map).on('click', function () {
-            sidebarSpeech.toggle();
-        });
 
 		
 		//new Geolocation tool
@@ -1159,6 +1154,7 @@
 			showMarker: true
         }).addTo(map);
 		
+		// Add projects 
 		
 
         // create custom zoom control with fullscreen button
@@ -1178,8 +1174,11 @@
          // init ViewCenter plugin
         var viewCenter = new L.Control.ViewCenter({
         }).addTo(map);
-
 		
+		// projects 
+
+var viewProjects = new L.Control.Projects();
+map.addControl(viewProjects);
 	
         function startButton(event) {
             final_transcript = '';
@@ -1192,6 +1191,10 @@
                         $("#command_animation").html("").css('left', '45%');
                     });
         }
+		function InvokeMeasure()
+		{
+		map.measureControl.toggle();
+		}
     </script>
 </body>
 

@@ -136,6 +136,20 @@
                 final_transcript = '';
             }
 			
+			recognition.onend = function() {
+				recognizing = false;
+				document.getElementById("speech").src = "red_circle.png";
+				// automatically restart the speech recognition in case it stops
+				recognition.start();
+				
+				/*
+				//used for manual restart via click on icon
+				$("#speech").click(function() {
+					recognition.start();
+				});
+				*/
+			}
+			
 	//////////////////////////////////////////////////////////
 	/////Start using leaflet plugins//////////////////////////
 	//////////////////////////////////////////////////////////
@@ -191,16 +205,17 @@
 	/////Draw lines or points/////////////////////////////////
 	//////////////////////////////////////////////////////////
 	
-			if (final_transcript.indexOf("draw point") >= 0) {
+			if (final_transcript.indexOf("point") >= 0) {
                 new L.Draw.Polyline(map).enable();
                 console.log("point");
                 final_transcript = '';
 				new L.Draw.Marker(map).enable();
             }
 			
-			if (final_transcript.indexOf("draw line") >= 0) {
+			if ((final_transcript.indexOf("road") >= 0)
+				||(final_transcript.indexOf("world") >= 0)){
                 new L.Draw.Polyline(map).enable();
-                console.log("new line");
+                console.log("road");
                 final_transcript = '';
 				new L.Draw.Polyline(map).enable();
             }
@@ -255,26 +270,57 @@
                 final_transcript = '';
             }
 			
-			if (final_transcript.indexOf("submit comment") >= 0) {
+	    if (final_transcript.indexOf("submit comment") >= 0) {
 				sendUserComments();
                 console.log("submit comment");
                 final_transcript = '';
             }
             
-            //
-            	if(final_transcript.indexOf("submit comment") >= 0)	{
-			sendUserComments();
-			console.log("submit comment");
-			final_transcript = '';
-		}
+            /*
+            if (final_transcript.indexOf("submit comment") >= 0)	{
+				sendUserComments();
+				console.log("submit comment");
+				final_transcript = '';
+			}*/
 			
-		if(final_transcript.indexOf("clear comment") >= 0)	{
-			clearForm();
-			console.log("clear comment");
-			final_transcript = '';
-		}
-            //
-		
+	    if (final_transcript.indexOf("clear comment") >= 0)	{
+				clearForm();
+				console.log("clear comment");
+				final_transcript = '';
+			}
+            
+			if ((final_transcript.indexOf("close") >= 0)
+				||(final_transcript.indexOf("clothes") >= 0)){
+				closeSidebar();
+				console.log("close");
+				final_transcript = '';
+			}
+			
+			if (final_transcript.indexOf("openstreetmap") >= 0)	{
+				baselayerOSM();
+				console.log("openstreetmap");
+				final_transcript = '';
+			}
+			
+			if (final_transcript.indexOf("aerial view") >= 0)	{
+				baselayerAerialView();
+				console.log("aerial view");
+				final_transcript = '';
+			}
+			
+			if (final_transcript.indexOf("show comment") >= 0)	{
+				//alert(selectedObjectId);
+				AddComment(selectedObjectId);
+				console.log("show comment");
+				final_transcript = '';
+			}
+			
+			if (final_transcript.indexOf("delete comment") >= 0)	{
+				//alert(selectedObjectId);
+				deleting(selectedObjectId);
+				console.log("delete comment");
+				final_transcript = '';
+			}
 	}
 	
 
