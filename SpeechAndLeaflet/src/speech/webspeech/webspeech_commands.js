@@ -171,7 +171,7 @@
 
            if (final_transcript.indexOf("go home") >= 0) {
                 map.setView(new L.LatLng(51.95442, 7.62709), 13);
-                console.log("go back to home");
+                console.log("go home");
                 final_transcript = '';
             }
             
@@ -238,6 +238,9 @@
 				}else if (sidebarOpen == 'point'){
 					document.getElementById('pointname').focus();
 				}
+				else if (sidebarOpen == 'comment'){
+					document.getElementById('featuretype').focus();
+				}
                 console.log("name");
                 final_transcript = '';
             }
@@ -252,11 +255,18 @@
                 final_transcript = '';
             }
 			
+			if ((final_transcript.indexOf("user comment") >= 0 || final_transcript.indexOf("user comments") >= 0)
+				&& sidebarOpen == 'comment'){
+					document.getElementById('usercomment').focus();
+				}
+			
 			if (final_transcript.indexOf("submit") >= 0) {
 				if (sidebarOpen == 'line'){
 					al();
 				}else if (sidebarOpen == 'point'){
 					ap();
+				}else if (sidebarOpen == 'comment'){
+					sendUserComments();
 				}
                 console.log("submit");
                 final_transcript = '';
@@ -268,24 +278,12 @@
                 final_transcript = '';
             }
 			
-	    if (final_transcript.indexOf("submit comment") >= 0) {
+			//
+			if (final_transcript.indexOf("submit comment") >= 0) {
 				sendUserComments();
                 console.log("submit comment");
                 final_transcript = '';
             }
-            
-            /*
-            if (final_transcript.indexOf("submit comment") >= 0)	{
-				sendUserComments();
-				console.log("submit comment");
-				final_transcript = '';
-			}*/
-			
-	    if (final_transcript.indexOf("clear comment") >= 0)	{
-				clearForm();
-				console.log("clear comment");
-				final_transcript = '';
-			}
             
 			if ((final_transcript.indexOf("close") >= 0)
 				||(final_transcript.indexOf("clothes") >= 0)){
@@ -306,17 +304,17 @@
 				final_transcript = '';
 			}
 			
-			if (final_transcript.indexOf("show comment") >= 0)	{
-				//alert(selectedObjectId);
+			if (final_transcript.indexOf("comments") >= 0)	{
 				AddComment(selectedObjectId);
-				console.log("show comment");
+				console.log("comments");
 				final_transcript = '';
 			}
 			
-			if (final_transcript.indexOf("delete comment") >= 0)	{
-				//alert(selectedObjectId);
+			//
+			if (final_transcript.indexOf("delete") >= 0)	{
 				deleting(selectedObjectId);
-				console.log("delete comment");
+				console.log("delete");
+				console.log(selectedObjectId);
 				final_transcript = '';
 			}
 	}

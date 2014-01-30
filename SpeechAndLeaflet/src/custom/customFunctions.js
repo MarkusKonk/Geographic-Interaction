@@ -230,6 +230,7 @@ var currentID;
 function AddComment(id){
 	currentID = id;
 	sidebarComments.show();
+	sidebarOpen = 'comment';
 	$.get( "AddandDisplayComments.php?fid="+id, function( data ) {
 		document.getElementById('sidebarCommentsTable').innerHTML = data;
 	});
