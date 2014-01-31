@@ -317,6 +317,13 @@
 				console.log(selectedObjectId);
 				final_transcript = '';
 			}
+			
+			if ((final_transcript.indexOf("projects") >= 0)
+				||(final_transcript.indexOf("project") >= 0)){
+				showProjects();
+				console.log("projects");
+				final_transcript = '';
+			}
 	}
 	
 
