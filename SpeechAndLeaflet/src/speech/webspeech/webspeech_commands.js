@@ -69,8 +69,8 @@
                 final_transcript = '';
             }
 
-            if ((final_transcript.indexOf("left") >= 0) 
-				||(final_transcript.indexOf("net") >= 0)
+            if ((final_transcript.indexOf("left") >= 0) ||(final_transcript.indexOf("list") >= 0)
+				||(final_transcript.indexOf("net") >= 0) ||(final_transcript.indexOf("love") >= 0)
 				||(final_transcript.indexOf("next") >= 0))				{
 				centerPoint = map.getCenter();
 				var m = (map.getBounds().getEast()- map.getBounds().getWest())/4;
@@ -105,7 +105,7 @@
                 final_transcript = '';
             }
 
-            if ((final_transcript.indexOf("up") >= 0) 
+            if ((final_transcript.indexOf("up") >= 0) || (final_transcript.indexOf("app") >= 0)
 				|| (final_transcript.indexOf("apple") >= 0)){
                 centerPoint = map.getCenter();
 				var m = (map.getBounds().getNorth() - map.getBounds().getSouth())/4;
@@ -210,10 +210,11 @@
                 final_transcript = '';
             }
 			
-			if ((final_transcript.indexOf("road") >= 0)
-				||(final_transcript.indexOf("world") >= 0)){
+			if ((final_transcript.indexOf("road") >= 0 || final_transcript.indexOf("world") >= 0)
+				&& (sidebarOpen != 'line')){
                 new L.Draw.Polyline(map).enable();
                 console.log("road");
+				console.log(sidebarOpen);
                 final_transcript = '';
             }
 
@@ -254,12 +255,14 @@
                 final_transcript = '';
             }
 			
-			if ((final_transcript.indexOf("user comment") >= 0 || final_transcript.indexOf("user comments") >= 0)
+			if ((final_transcript.indexOf("user comment") >= 0 || final_transcript.indexOf("user comments") >= 0 ||
+				final_transcript.indexOf("user comet") >= 0 || final_transcript.indexOf("user command") >= 0 ||
+				final_transcript.indexOf("user common") >= 0 || final_transcript.indexOf("user command") >= 0)
 				&& sidebarOpen == 'comment'){
 					document.getElementById('usercomment').focus();
 				}
 			
-			if (final_transcript.indexOf("submit") >= 0) {
+			if (final_transcript.indexOf("submit" || final_transcript.indexOf("summit") >= 0) {
 				if (sidebarOpen == 'line'){
 					al();
 				}else if (sidebarOpen == 'point'){
@@ -271,7 +274,7 @@
                 final_transcript = '';
             }
 			
-			if (final_transcript.indexOf("clear") >= 0) {
+			if (final_transcript.indexOf("clear") >= 0 || final_transcript.indexOf("clip") >= 0) {
 				clearForm();
                 console.log("clear");
                 final_transcript = '';
