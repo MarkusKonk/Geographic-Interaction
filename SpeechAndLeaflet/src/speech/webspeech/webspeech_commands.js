@@ -138,7 +138,6 @@
 			
 			recognition.onend = function() {
 				recognizing = false;
-				document.getElementById("speech").src = "red_circle.png";
 				// automatically restart the speech recognition in case it stops
 				recognition.start();
 				
@@ -278,12 +277,8 @@
                 final_transcript = '';
             }
 			
-			//
-			if (final_transcript.indexOf("submit comment") >= 0) {
-				sendUserComments();
-                console.log("submit comment");
-                final_transcript = '';
-            }
+			
+			
             
 			if ((final_transcript.indexOf("close") >= 0)
 				||(final_transcript.indexOf("clothes") >= 0)){
@@ -303,14 +298,15 @@
 				console.log("aerial view");
 				final_transcript = '';
 			}
-			
-			if (final_transcript.indexOf("comments") >= 0)	{
-				AddComment(selectedObjectId);
-				console.log("comments");
+						
+			if ((final_transcript.indexOf("projects") >= 0)
+				||(final_transcript.indexOf("project") >= 0)){
+				showProjects();
+				console.log("projects");
 				final_transcript = '';
 			}
 			
-			//
+			/* unfinished functions: object ID of the selected object could not be accessed
 			if (final_transcript.indexOf("delete") >= 0)	{
 				deleting(selectedObjectId);
 				console.log("delete");
@@ -318,12 +314,13 @@
 				final_transcript = '';
 			}
 			
-			if ((final_transcript.indexOf("projects") >= 0)
-				||(final_transcript.indexOf("project") >= 0)){
-				showProjects();
-				console.log("projects");
+			if (final_transcript.indexOf("comments") >= 0)	{
+				AddComment(selectedObjectId);
+				console.log("comments");
 				final_transcript = '';
 			}
+			
+			**/
 	}
 	
 

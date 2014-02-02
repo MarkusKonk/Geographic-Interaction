@@ -37,46 +37,30 @@
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                         <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index_startpage.html">IWGI Gesture & Speech</a>
+                    <a class="navbar-brand" href="MultimodalGIS_Chrome.html">IWGI Gesture & Speech</a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
-                        <li>
-                            <a href="MultimodalGIS_Chrome.html">Home</a>
-                        </li>
-					
-							 <li>
-                            <a href="#" onclick="InvokeMeasure();">Measure</a>
-                        </li>
-						 <li>
-                            <a href="#" onclick="sidebarSpeech.toggle();">Speech</a>
-                        </li>
                         <li class="active">
-						  <a href="MultimodalGIS_Chrome.html">Map-Chrome</a>
+						  <a href="MultimodalGIS_Chrome.html">Map</a>
 						</li>
-<!--						<li>
-						  <a href="MultimodalGIS_Sphinx.html">Map-Sphinx</a>
-						</li>-->
                         <li>
                             <a href="Help&About.html">Support</a>
                         </li>
-						<li style="position:relative; top:15; left:15%">
+						<li style="position:relative; left:210%">
+                            <a href="#" onclick="sidebarSpeech.toggle();">Speech</a>
+                        </li>
+						<li style="position:relative; top:15; left:115%">
 							<div ><p style="color:white;">Left hand</p></div>						 
 						</li>
-						<li style="position:relative; left:17%">
+						<li style="position:relative; left:117%">
 							<div><img id="lefthand" src="traffic_red.png" alt=""></div>
 						</li>
-						<li style="position:relative; top:15; left:22%">
+						<li style="position:relative; top:15; left:122%">
 							<div ><p style="color:white;">Right hand</p></div>						 
 						</li>
-						<li style="position:relative; left:24%">
+						<li style="position:relative; left:124%">
 							<div><img id="righthand" src="traffic_red.png" alt=""></div>
-						</li>
-						<li style="position:relative; top:15; left:29%">
-							<div ><p style="color:white;">Speech</p></div>						 
-						</li>
-						<li style="position:relative; left:31%">
-							<div><img id="speech" src="traffic_red.png" alt=""></div>
 						</li>
                     </ul>
                 </div>
@@ -87,36 +71,30 @@
 </head>
 
 <body onload="startButton();">  
-    <div id="map">
-		<!--One vertical and one horizontal line within the map-->
-        <div id="vertical"></div>
-        <div id="horizontal"></div>
-    </div>
-	<div id="command_animation"></div>
+    <div id="map"></div>
+	<!-- <div id="command_animation"></div> -->
 	
-	<div id="sidebarPoint"> 
+	<div id="sidebarPoint" class="sidebar"> 
 		<br> Name:  
 		<input id="pointname" type="text" SIZE=30 maxlength="20" name="pointname"/><br>
 		<br>Description :<br> <textarea id="pointdes" style="width: 300px; height: 150px;" name="pointdescription" maxlength="250"></textarea><br><br><br> 
 		<button type="button" onclick="ap()">Submit</button>
-		<!--<input TYPE="RESET" VALUE="Clear">-->
 		<button type="button" onclick="clearForm()">Clear</button>
 		<button type="button" onclick="closeSidebar()">Close</button>
 	</div>
 
-	<div id="sidebarLine"> 
+	<div id="sidebarLine" class="sidebar"> 
 		<br> Name:  
 		<input id="linename" type="text" SIZE=30 name="linename" maxlength="20"/><br>	
 		<br>Description :<br> <textarea id="linedes" style="width: 300px; height: 150px;" name="linedescription" maxlength="250"></textarea><br><br><br> 
 		<input id="main" type="radio" name="Linetype" value="Main"> Main road<br>
-		<input id="alternative" type="radio" name="Linetype" value="Alternative"> Suggested road<br>  
+		<input id="alternative" type="radio" name="Linetype" value="Alternative"> Suggested road<br><br>  
 		<button type="button" onclick="al()">Submit</button>
-		<!--<input TYPE="RESET" VALUE="Clear">-->
 		<button type="button" onclick="clearForm()">Clear</button>
 		<button type="button" onclick="closeSidebar()">Close</button>
 	</div>
 
-	<div id="sidebarComments"> 
+	<div id="sidebarComments" class="sidebar"> 
 		<b><font color="#0080C0">Add new comment</font></b>
 		<div id="AddComment" style="border: 1px solid #75C0BF; margin = 4"> 
 		<input type="hidden" name="featureid" id = "featureid" size="40" length="40" value="">
@@ -124,14 +102,14 @@
 		<br> User Comment :<br> <textarea id="usercomment" style="width: 300px; height: 150px;" name="description" maxlength="250"></textarea><br> 
 		</div>
 	
-		<button type="button" onclick="sendUserComments()">Submit Comment</button>
+		<button type="button" onclick="sendUserComments()">Submit</button>
 		<button type="button" onclick="clearForm()">Clear</button>
 		<button type="button" onclick="closeSidebar()">Close</button>
 	
 		<div id="sidebarCommentsTable"></div>
 	</div>
 
-	<div id="sidebarProjects">
+	<div id="sidebarProjects" class="sidebar">
 		<div>
 			<b>
 				<big>Recent Projects</big>
@@ -153,314 +131,59 @@
 	</div>
 	
 	
-	<div id="sidebarSpeech">
+	<div id="sidebarSpeech" class="sidebar">
 	
-	<div id="text" >
-        <button id="start_button" class="btn btn-primary" onclick="startButton(event);" class="btn success">
-        Click to start speaking with the map!
-        </button>
-	</div>
-	<br><br>
-    <p></p>
+		<div id="text" >
+			<button id="start_button" class="btn btn-primary" onclick="startButton(event);" class="btn success">
+				Restart speech recognition
+			</button>
+		</div>
 	
 		<div id="console" style="margin-top: 40px;">
-			<h3>Console:</h3>
+			<h5>Recognized speech input:</h5>
 			<div id="transcript"></div>
 			<div id="interim"></div>
 		</div>
-		
-		
-		
-		<div id="description">
-			<p class="description">To start interacting with the map by speech, allow microphone access from browser<br>
-				<ul>
-			<li>
-				Basic Map Navigation
-				<ul>
-					<li>						
-						&quot;Zoom out&quot;,&nbsp; &nbsp; &nbsp; &nbsp; &quot;Zoom in&quot;</li>					
-					<li>
-						&quot;Up&quot;,&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &quot;Down&quot;</li>					
-					<li>
-						&quot;Left&quot;,&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &quot;Right&quot;</li>					
-				</ul>
-			</li>
-		</ul>
-		<ul>
-			<li>
-				Place fixed-scale geometry objects on the map
-				<ul>
-					<li>&quot; Place Marker&quot;,&nbsp;</li>
-				</ul>
-			</li>
-		</ul>
-		<ul>
-			<li>
-				Control the drawing control plugin (enable drawing functionalities)
-				<ul>
-					<li>&quot;Place a point project&quot;,</li>
-					<li>&quot;Place a street project&quot;,</li>
-				</ul>
-			</li>
-		</ul>
-		<ul>
-			<li>
-				Locate yourself using the Geolocate Tool
-				<ul>
-					<li>
-						&quot;Enable location function,</li>
-					<li>
-						&quot;Disable location function&quot; &nbsp;</li>
-				</ul>
-			</li>
-		</ul><!--
-		<ul>
-			<li>
-				To control the Reveal OSM Plugin, which provides additional information via OSM features say:
-				<ul>
-					<li>
-						&quot;Enable additional information&quot;,</li>
-					<li>
-						&quot;Disable additional information&quot;&nbsp;</li>
-				</ul>
-			</li>
-		</ul>-->
-		<ul>
-			<li>
-				To switch back to the home extend (M&uuml;nster):&nbsp;
-				<ul>
-					<li>
-						&quot;Go back to home&quot;&nbsp;</li>
-				</ul>
-			</li>
-		</ul>
-		<ul>
-			<li>
-				To Enable or Disable the measurement tool
-				<ul>
-					<li>
-						&quot;Enable measurement&quot;,</li>
-					<li>
-						&quot;Disable measurement&quot;</li>
-				</ul>
-			</li>
-		</ul>
-		<ul>
-			<li>
-				To control the minimap.
-				<ul>
-					<li>
-						&quot;Enable minimap&quot;,</li>
-					<li>
-						&quot;Disable minimap&quot;</li>
-				</ul>
-			</li>
-		</ul>
-		<!--
-		<ul>
-			<li>
-				To enable a temperature layer. More layers will follow
-				<ul>
-					<li>
-						&quot;Enable temperature map&quot;,</li>
-					<li>
-						&quot;Disable temperature map&quot;</li>
-				</ul>
-			</li>
-		</ul>
-		-->
-		
-		
-		<!--
-		<div id="buttons">
-		<h3>Location, RevealOSM, Measurement, Minimap, Home</h3>
-		<p></p>
-		-->	
-				
-		<!--Locator -->
-                <!--
-                <div id="text" style="margin-top: 10px;>
-                    <button id="Locaterbutton_start" class="btn btn-primary" onclick="locater.locate();" class="btn danger">
-                        Click to Enable Locate function
-                    </button>
-                </div>
-                -->
-                <!--Locator -->
-                <!--
-                <div id="text" style="margin-top: 10px;>
-                    <button id="Locaterbutton_end" class="btn btn-primary" onclick="locater.stopLocate();" class="btn danger">
-                        Click to Disable Locate function
-                    </button>
-                </div>
-
-		<hr>	
-		-->	
-		<!--Reveal OSM activate-->
-		<!--
-                <div id="text " style="margin-top: 10px;>
-                    <button id="revealOSM_activate" class="btn btn-primary" onclick="map.revealOSMControl.activate();" class="btn danger">
-                        Click to Enable RevealOSM Plugin
-                    </button>
-                </div>
-
-                <div id="text" style="margin-top: 10px;>
-                    <button id="revealOSM_deactivate" class="btn btn-primary" onclick="map.revealOSMControl.deactivate();" class="btn danger">
-                        Click to Disable RevealOSM Plugin
-                    </button>
-                </div>
-
-		<hr>	
-		-->	
-		<!--Measurement Tool -->
-		<!--
-                <div id="text" style="margin-top: 10px;>
-                    <button id="measureControl_enable" class="btn btn-primary" onclick="map.measureControl.toggle();" class="btn danger">
-                        Click to Enable Measurement Tool
-                    </button>
-                </div>
-				
-                <div id="text" style="margin-top: 10px;>
-                    <button id="measureControl_disable" class="btn btn-primary" onclick="map.measureControl.toggle();" class="btn danger">
-                        Click to Disable Measurement Tool
-                    </button>
-                </div>
-
-		<hr>	
-		-->
-		<!--Minimap  -->
-		<!--
-                <div id="text" style="margin-top: 10px;>
-                    <button id="minimizeMinimap" class="btn btn-primary" onclick="miniMap._minimize();" class="btn danger">
-                        Click to Disable the Overview Minimap
-                    </button>
-                </div>	
-                
-                <div id="text" style="margin-top: 10px;>
-                    <button id="resoreMinimap" class="btn btn-primary" onclick="miniMap._restore();" class="btn danger">
-                        Click to Enable Overview Minimap
-                    </button>
-                </div>
-
-		<hr>
-		-->
-		<!--Layer Controls  -->
-		<!--
-                <div id="text" style="margin-top: 10px;>
-                    <button id="minimizeMinimap" class="btn btn-primary" onclick="controlArialMaps._expand();" class="btn danger">
-                        Click to Enable the LayerControl ArialMaps
-                    </button>
-                </div>	
-                
-                <div id="text" style="margin-top: 10px;>
-                    <button id="resoreMinimap" class="btn btn-primary" onclick="controlArialMaps._collapse();" class="btn danger">
-                        Click to Disable the LayerControl ArialMaps
-                    </button>
-                </div>
-
-				<div id="text" style="margin-top: 10px;>
-                    <button id="minimizeMinimap" class="btn btn-primary" onclick="controlBasemaps._expand();" class="btn danger">
-                        Click to Enable the LayerControl Basemaps
-                    </button>
-                </div>	
-
-                <div id="text" style="margin-top: 10px;>
-                    <button id="resoreMinimap" class="btn btn-primary" onclick="controlBasemaps._collapse();" class="btn danger">
-                        Click to Disable the LayerControl Basemaps
-                    </button>
-                </div>
-				
-				<div id="text" style="margin-top: 10px;>
-                    <button id="minimizeMinimap" class="btn btn-primary" onclick="controlOverlaylayers._expand();" class="btn danger">
-                        Click to Enable the LayerControl Overlaylayers
-                    </button>
-                </div>	
-                
-                <div id="text" style="margin-top: 10px;>
-                    <button id="resoreMinimap" class="btn btn-primary" onclick="controlOverlaylayers._collapse();" class="btn danger">
-                        Click to Disable the LayerControl Overlaylayers
-                    </button>
-                </div>
-		<hr>	
-		-->	
-		<!--Home Extend -->
-		<!--
-                <div id="text" style="margin-top: 10px;>
-                    <button id="homeExtend" class="btn btn-primary" onclick="map.setView(new L.LatLng(51.95442, 7.62709), 13)" class="btn danger">
-                        Click to switch to home extend
-                    </button>
-                </div>
-					
-					
-		<p></p>
-		<h3>Drawing Options with Drawing Plugin	</h3>
-		<p></p>
-		-->		
-				
-			<!--Drawing Tool - Marker 
-				https://github.com/Leaflet/Leaflet.draw/issues/179 -->
-                <!--
-                <div id="text" style="margin-top: 10px;>
-                    <button id="markerdraw" class="btn btn-primary" onclick="new L.Draw.Marker(map).enable();" class="btn danger">
-					<!-- or this way: L.Draw.Marker(map, drawControl.options.marker).enable();    https://github.com/Leaflet/Leaflet.draw/issues/179#issuecomment-26500042 -->
-                        Click to place a point project
-                    </button>
-                </div>
-		-->		
-			<!--Drawing Tool - Line -->
-		<!--
-                <div id="text" style="margin-top: 10px;>
-                    <button id="linedraw" class="btn btn-primary" onclick="new L.Draw.Polyline(map).enable();" class="btn danger">
-                        Click place a street project
-                    </button>
-                </div>
-		-->		
-		<!--Drawing Tool - Circle -->
-		<!--
-                <div id="text" style="margin-top: 10px;>
-                    <button id="circledraw" class="btn btn-primary" onclick="new L.Draw.Circle(map).enable();" class="btn danger">
-                        Click to start drawing a circle
-                    </button>
-                </div>
-		-->		
-		<!--Drawing Tool - Polygon -->
-		<!--
-                <div id="text" style="margin-top: 10px;>
-                    <button id="polygondraw" class="btn btn-primary" onclick="new L.Draw.Polygon(map).enable();" class="btn danger">
-                        Click to start drawing a polygon
-                    </button>
-                </div>
-		-->		
-		<!--Drawing Tool - Rectangle -->
-		<!--
-                <div id="text" style="margin-top: 10px;>
-                    <button id="rectangledraw" class="btn btn-primary" onclick="new L.Draw.Rectangle(map).enable();" class="btn danger">
-                        Click to start drawing a rectangle
-                    </button>
-                </div>
-			
-		<hr>
-		<p></p>
-		<h3>Layer Control</h3>
-		<p></p>		
-		-->
-		
-		<!--Layer Controll -->
-		<!--
-                <div id="text" style="margin-top: 10px;>
-                    <button id="testlayercontrol" class="btn btn-primary" onclick="overlayLayers.OpenWeatherMap_Temperature.onAdd(map);" class="btn danger">
-                        Click to Enable OpenWeatherMap_Temperature layer
-                    </button>
-                </div>
-				
-				<div id="text" style="margin-top: 10px;>
-                    <button id="testlayercontrol" class="btn btn-primary" onclick="overlayLayers.OpenWeatherMap_Temperature.onRemove(map);" class="btn danger">
-                        Click to Disable OpenWeatherMap_Temperature layer
-                    </button>
-                </div>
-		</div>
-		-->
-		
 		<br>
+		<div id="description">
+			<table width="400">
+				<tr>
+					<td>Zooming</td>
+					<td>zoom in / out</td>
+				</tr>
+				<tr>
+					<td>Panning</td>
+					<td>up, down, left, right</td>
+				</tr>
+				<tr>
+					<td>User's location</td>
+					<td>where am I / don't show where i am</td>
+				</tr>
+				<tr>
+					<td>Initial view</td>
+					<td>go home</td>
+				</tr>
+				<tr>
+					<td>Measurement tool </td>
+					<td> start / stop measurement</td>
+				</tr>
+				<tr>
+					<td>Minimap</td>
+					<td>enable / disable minimap</td>
+				</tr>
+				<tr>
+					<td>Draw features</td>
+					<td>point / line</td>
+				</tr>
+				<tr>
+					<td>Change baselayer</td>
+					<td><i>read the corresponding label</i></td>
+				</tr>
+				<tr>
+					<td>Sidebar controls</td>
+					<td><i>read the corresponding label</i></td>
+				</tr>
+			</table>
 		</div>
 	</div>
 
@@ -1183,13 +906,6 @@ map.addControl(viewProjects);
         function startButton(event) {
             final_transcript = '';
             recognition.start();
-			document.getElementById("speech").src="traffic_green.png";
-			        	        $("#command_animation").html("speech works").css('fontSize', '10em').animate({
-                        'left': '-500px'
-                    }, 1100,
-                    function () {
-                        $("#command_animation").html("").css('left', '45%');
-                    });
         }
 		function InvokeMeasure()
 		{
