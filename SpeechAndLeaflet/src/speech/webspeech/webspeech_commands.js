@@ -262,7 +262,7 @@
 					document.getElementById('usercomment').focus();
 				}
 			
-			if (final_transcript.indexOf("submit" || final_transcript.indexOf("summit") >= 0) {
+			if (final_transcript.indexOf("submit") >= 0 || final_transcript.indexOf("summit") >= 0) {
 				if (sidebarOpen == 'line'){
 					al();
 				}else if (sidebarOpen == 'point'){
