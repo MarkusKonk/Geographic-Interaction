@@ -246,14 +246,7 @@ function addPointAttributes(name,des){
 		ID:lastIDPoint
 		},
 		function(data){
-			sidebarProjects.hide();
-	                $("#command_animation").html("added point ").css('fontSize', '10em').animate({
-                        'left': '-500px'
-                    }, 1100,
-                    function () {
-                        $("#command_animation").html("").css('left', '45%');
-						javascript:location.reload()
-                    });
+			javascript:location.reload();
 		}	
 		);		
 }
@@ -269,14 +262,8 @@ function addLineAttributes(name,des,type){
 		ID:lastIDLine
 		},
 		function(data){
-				
-				$("#command_animation").html("added line ").css('fontSize', '10em').animate({
-					'left': '-500px'
-				}, 1100,
-				function () {
-					$("#command_animation").html("").css('left', '45%');
-					javascript:location.reload()
-				});}	
+			javascript:location.reload();
+		}	
 		);		
 }
 
